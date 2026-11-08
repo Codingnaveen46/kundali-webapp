@@ -1,0 +1,84 @@
+{
+  "version": "1.0.0",
+  "name": "Nadi Koota",
+  "max_points": 8,
+  "citation": "Brihat Parashara Hora Shastra Chapter 81 Slokas 26-28; Muhurtha Chintamani; Narada Samhita",
+  "description": "Evaluates physiological, nervous, genetic, and progeny compatibility mapped to Ayurvedic humors (Vata, Pitta, Kapha).",
+  "nakshatra_nadi_mapping": {
+    "Ashwini": "Adi",
+    "Bharani": "Madhya",
+    "Krittika": "Antya",
+    "Rohini": "Antya",
+    "Mrigashira": "Madhya",
+    "Ardra": "Adi",
+    "Punarvasu": "Adi",
+    "Pushya": "Madhya",
+    "Ashlesha": "Antya",
+    "Magha": "Antya",
+    "Purva Phalguni": "Madhya",
+    "Uttara Phalguni": "Adi",
+    "Hasta": "Adi",
+    "Chitra": "Madhya",
+    "Swati": "Antya",
+    "Vishakha": "Antya",
+    "Anuradha": "Madhya",
+    "Jyeshtha": "Adi",
+    "Mula": "Adi",
+    "Purva Ashadha": "Madhya",
+    "Uttara Ashadha": "Antya",
+    "Shravana": "Antya",
+    "Dhanishta": "Madhya",
+    "Shatabhisha": "Adi",
+    "Purva Bhadrapada": "Adi",
+    "Uttara Bhadrapada": "Madhya",
+    "Revati": "Antya"
+  },
+  "nadi_doshas": {
+    "Adi": {"constitution": "Vata", "dosha_description": "Vata imbalance; prone to restlessness, nervous stress"},
+    "Madhya": {"constitution": "Pitta", "dosha_description": "Pitta imbalance; metabolic heat, friction"},
+    "Antya": {"constitution": "Kapha", "dosha_description": "Kapha imbalance; lethargy, fluid balance issues"}
+  },
+  "exempt_nakshatras": [
+    "Rohini",
+    "Mrigashira",
+    "Ardra",
+    "Punarvasu",
+    "Pushya",
+    "Shravana",
+    "Dhanishta",
+    "Shatabhisha",
+    "Uttara Bhadrapada"
+  ],
+  "cancellation_rules": [
+    {
+      "code": "NADI_SAME_RASHI_DIFF_NAKSHATRA",
+      "name": "Same Rashi, Different Nakshatras",
+      "description": "If both partners have the same Moon Rashi but different Nakshatras, Nadi Dosha is cancelled.",
+      "authority": "Muhurtha Chintamani; BPHS"
+    },
+    {
+      "code": "NADI_SAME_NAKSHATRA_DIFF_RASHI",
+      "name": "Same Nakshatra, Different Rashis",
+      "description": "If the Moon falls in the same Nakshatra but spans across two different Rashis, Nadi Dosha is cancelled.",
+      "authority": "Narada Samhita; Muhurtha Chintamani"
+    },
+    {
+      "code": "NADI_EXEMPT_NAKSHATRA",
+      "name": "Classical Exempt Nakshatra",
+      "description": "Classical authorities exempt Rohini, Mrigashira, Ardra, Punarvasu, Pushya, Shravana, Dhanishta, Shatabhisha, and Uttara Bhadrapada from severe Nadi Dosha.",
+      "authority": "Muhurtha Chintamani"
+    },
+    {
+      "code": "NADI_DIFF_PADA_SAME_NAKSHATRA",
+      "name": "Different Padas in Same Nakshatra",
+      "description": "If both belong to the same Nakshatra but different quarters (padas), the dosha severity is significantly reduced or cancelled.",
+      "authority": "Jataka Parijata"
+    },
+    {
+      "code": "NADI_RASHI_LORD_FRIENDSHIP",
+      "name": "Same or Friendly Moon Lords",
+      "description": "When Moon sign lords are the same or mutual friends and Gana / Bhakoot are favorable, Nadi Dosha is mitigated.",
+      "authority": "Phaladeepika"
+    }
+  ]
+}

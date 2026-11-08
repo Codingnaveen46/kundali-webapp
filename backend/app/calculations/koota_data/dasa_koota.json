@@ -1,0 +1,60 @@
+{
+  "version": "1.0.0",
+  "name": "Dasa Koota (10 Poruthams)",
+  "citation": "Kalaprakashika; Muhurtha Ratna; Tamil & Kannada Classical Jyotish Traditions",
+  "description": "Traditional South Indian 10-fold matching system evaluating vital life dimensions with primary focus on Rajju and Vedha.",
+  "poruthams": [
+    "Dina",
+    "Gana",
+    "Mahendra",
+    "Stree Deergha",
+    "Yoni",
+    "Rasi",
+    "Rasyadhipathi",
+    "Vashya",
+    "Rajju",
+    "Vedha"
+  ],
+  "rajju_types": {
+    "Shiro": {
+      "name": "Head (Shiro / Siras)",
+      "impact": "Endangers longevity of husband if same",
+      "nakshatras": ["Mrigashira", "Chitra", "Dhanishta"]
+    },
+    "Kantha": {
+      "name": "Neck (Kantha)",
+      "impact": "Endangers longevity of wife if same",
+      "nakshatras": ["Rohini", "Ardra", "Hasta", "Swati", "Shravana", "Shatabhisha"]
+    },
+    "Udara": {
+      "name": "Stomach / Navel (Nabhi / Udara)",
+      "impact": "Endangers progeny / children if same",
+      "nakshatras": ["Krittika", "Punarvasu", "Uttara Phalguni", "Vishakha", "Uttara Ashadha", "Purva Bhadrapada"]
+    },
+    "Kati": {
+      "name": "Thigh / Hip (Kati)",
+      "impact": "Causes financial distress / poverty if same",
+      "nakshatras": ["Bharani", "Pushya", "Purva Phalguni", "Anuradha", "Purva Ashadha", "Uttara Bhadrapada"]
+    },
+    "Pada": {
+      "name": "Foot (Pada)",
+      "impact": "Causes aimless wandering / instability if same",
+      "nakshatras": ["Ashwini", "Ashlesha", "Magha", "Jyeshtha", "Mula", "Revati"]
+    }
+  },
+  "vedha_pairs": [
+    ["Ashwini", "Jyeshtha"],
+    ["Bharani", "Anuradha"],
+    ["Krittika", "Vishakha"],
+    ["Rohini", "Swati"],
+    ["Ardra", "Shravana"],
+    ["Punarvasu", "Uttara Ashadha"],
+    ["Pushya", "Purva Ashadha"],
+    ["Ashlesha", "Mula"],
+    ["Magha", "Revati"],
+    ["Purva Phalguni", "Uttara Bhadrapada"],
+    ["Uttara Phalguni", "Purva Bhadrapada"],
+    ["Hasta", "Shatabhisha"],
+    ["Mrigashira", "Dhanishta"]
+  ]
+}

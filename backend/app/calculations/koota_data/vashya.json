@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "name": "Vashya Koota",
+  "max_points": 2,
+  "citation": "Brihat Parashara Hora Shastra, Chapter 81, Slokas 4-6; Kalaprakashika; Muhurtha Chintamani",
+  "description": "Evaluates mutual attraction, power balance, and amenability between partners.",
+  "default_school": "parashari_direct",
+  "schools": {
+    "parashari_direct": {
+      "citation": "Brihat Parashara Hora Shastra Chapter 81 Slokas 4-6",
+      "vashya_targets": {
+        "Aries": ["Leo", "Scorpio"],
+        "Taurus": ["Cancer", "Libra"],
+        "Gemini": ["Virgo"],
+        "Cancer": ["Scorpio", "Sagittarius"],
+        "Leo": ["Libra"],
+        "Virgo": ["Pisces", "Gemini"],
+        "Libra": ["Capricorn", "Virgo"],
+        "Scorpio": ["Cancer"],
+        "Sagittarius": ["Pisces"],
+        "Capricorn": ["Aries", "Aquarius"],
+        "Aquarius": ["Aries"],
+        "Pisces": ["Capricorn"]
+      },
+      "rules": {
+        "mutual_vashya_or_same_sign": 2.0,
+        "one_way_vashya": 1.0,
+        "friendly_non_vashya": 0.5,
+        "enemy_or_bhakshya": 0.0
+      }
+    },
+    "category_matrix": {
+      "citation": "Muhurtha Chintamani Chapter 1; Kalaprakashika",
+      "categories": {
+        "Chatushpada": ["Aries", "Taurus"],
+        "Manava": ["Gemini", "Virgo", "Libra", "Aquarius"],
+        "Jalachara": ["Cancer", "Pisces"],
+        "Keeta": ["Scorpio"],
+        "Vanachara": ["Leo"],
+        "Sagittarius": "Dwi-pada 1st half, Chatushpada 2nd half",
+        "Capricorn": "Chatushpada 1st half, Jalachara 2nd half"
+      },
+      "matrix": {
+        "Chatushpada": {"Chatushpada": 2.0, "Manava": 0.5, "Jalachara": 1.0, "Keeta": 1.0, "Vanachara": 0.0},
+        "Manava": {"Chatushpada": 1.0, "Manava": 2.0, "Jalachara": 0.5, "Keeta": 1.0, "Vanachara": 0.0},
+        "Jalachara": {"Chatushpada": 1.0, "Manava": 0.5, "Jalachara": 2.0, "Keeta": 1.0, "Vanachara": 1.0},
+        "Keeta": {"Chatushpada": 1.0, "Manava": 1.0, "Jalachara": 1.0, "Keeta": 2.0, "Vanachara": 0.0},
+        "Vanachara": {"Chatushpada": 0.0, "Manava": 0.0, "Jalachara": 0.0, "Keeta": 0.0, "Vanachara": 2.0}
+      }
+    }
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "version": "1.0.0",
+  "name": "Gana Koota",
+  "max_points": 6,
+  "citation": "Brihat Parashara Hora Shastra Chapter 81 Slokas 19-21; Muhurtha Chintamani",
+  "description": "Temperament, spiritual orientation, and social behavior categorized into Deva, Manushya, and Rakshasa.",
+  "nakshatra_gana_mapping": {
+    "Ashwini": "Deva",
+    "Bharani": "Manushya",
+    "Krittika": "Rakshasa",
+    "Rohini": "Manushya",
+    "Mrigashira": "Deva",
+    "Ardra": "Manushya",
+    "Punarvasu": "Deva",
+    "Pushya": "Deva",
+    "Ashlesha": "Rakshasa",
+    "Magha": "Rakshasa",
+    "Purva Phalguni": "Manushya",
+    "Uttara Phalguni": "Manushya",
+    "Hasta": "Deva",
+    "Chitra": "Rakshasa",
+    "Swati": "Deva",
+    "Vishakha": "Rakshasa",
+    "Anuradha": "Deva",
+    "Jyeshtha": "Rakshasa",
+    "Mula": "Rakshasa",
+    "Purva Ashadha": "Manushya",
+    "Uttara Ashadha": "Manushya",
+    "Shravana": "Deva",
+    "Dhanishta": "Rakshasa",
+    "Shatabhisha": "Rakshasa",
+    "Purva Bhadrapada": "Manushya",
+    "Uttara Bhadrapada": "Manushya",
+    "Revati": "Deva"
+  },
+  "default_school": "standard_parashari",
+  "schools": {
+    "standard_parashari": {
+      "citation": "Brihat Parashara Hora Shastra Chapter 81",
+      "matrix": {
+        "Deva":     {"Deva": 6.0, "Manushya": 5.0, "Rakshasa": 0.0},
+        "Manushya": {"Deva": 6.0, "Manushya": 6.0, "Rakshasa": 0.0},
+        "Rakshasa": {"Deva": 0.0, "Manushya": 0.0, "Rakshasa": 6.0}
+      }
+    },
+    "muhurtha_chintamani": {
+      "citation": "Muhurtha Chintamani",
+      "matrix": {
+        "Deva":     {"Deva": 6.0, "Manushya": 6.0, "Rakshasa": 1.0},
+        "Manushya": {"Deva": 5.0, "Manushya": 6.0, "Rakshasa": 0.0},
+        "Rakshasa": {"Deva": 0.0, "Manushya": 0.0, "Rakshasa": 6.0}
+      }
+    }
+  }
+}

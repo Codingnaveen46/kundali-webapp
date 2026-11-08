@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "name": "Bhakoot (Rashi) Koota",
+  "max_points": 7,
+  "citation": "Brihat Parashara Hora Shastra Chapter 81 Slokas 22-25; Muhurtha Chintamani; Jataka Deshamarga",
+  "description": "Evaluates emotional closeness, wealth accumulation, progeny welfare, and relational harmony through Moon sign relative positions.",
+  "relative_dispositions": {
+    "1_1": {"score": 7.0, "status": "Auspicious", "description": "Same Rashi"},
+    "1_7": {"score": 7.0, "status": "Auspicious", "description": "Samasaptaka (Mutual 7th)"},
+    "3_11": {"score": 7.0, "status": "Auspicious", "description": "Triteeya-Ekadasha (3rd and 11th)"},
+    "4_10": {"score": 7.0, "status": "Auspicious", "description": "Chaturtha-Dashama (4th and 10th)"},
+    "2_12": {"score": 0.0, "status": "Dosha", "dosha_name": "Dwirdwadasha Dosha", "description": "2nd and 12th relative placement, potential financial expenditure or discord"},
+    "5_9": {"score": 0.0, "status": "Dosha", "dosha_name": "Navapanchama Dosha", "description": "5th and 9th relative placement, potential progeny challenges or philosophical difference"},
+    "6_8": {"score": 0.0, "status": "Dosha", "dosha_name": "Shadashtaka Dosha", "description": "6th and 8th relative placement, potential health strain or ego friction"}
+  },
+  "cancellation_rules": [
+    {
+      "code": "BHAKOOT_SAME_LORD",
+      "name": "Same Rashi Lord",
+      "description": "Bhakoot dosha is completely nullified if both signs are ruled by the same planetary lord (Aries-Scorpio ruled by Mars, Taurus-Libra ruled by Venus, Capricorn-Aquarius ruled by Saturn).",
+      "applies_to": ["6_8", "2_12"],
+      "pairs": [
+        ["Aries", "Scorpio"],
+        ["Taurus", "Libra"],
+        ["Capricorn", "Aquarius"]
+      ]
+    },
+    {
+      "code": "BHAKOOT_FRIENDLY_LORDS",
+      "name": "Mutual Friendship of Rashi Lords",
+      "description": "Bhakoot dosha is nullified when the planetary rulers of both Moon signs are natural mutual friends.",
+      "applies_to": ["6_8", "2_12", "5_9"]
+    },
+    {
+      "code": "BHAKOOT_NAVAMSA_LORD_FRIENDSHIP",
+      "name": "Navamsa Lord Friendship",
+      "description": "Bhakoot dosha is neutralized if Moon Navamsa lords of both partners are friends or identical.",
+      "applies_to": ["6_8", "2_12", "5_9"]
+    },
+    {
+      "code": "BHAKOOT_STRONG_NADI_MAITRI",
+      "name": "Full Nadi and Graha Maitri Support",
+      "description": "Classical texts cite that if Nadi (8/8) and Graha Maitri (5/5) are auspicious, Bhakoot dosha loses harmful efficacy.",
+      "applies_to": ["6_8", "2_12", "5_9"]
+    }
+  ]
+}

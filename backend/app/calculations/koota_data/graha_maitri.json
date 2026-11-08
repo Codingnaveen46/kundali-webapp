@@ -1,0 +1,70 @@
+{
+  "version": "1.0.0",
+  "name": "Graha Maitri Koota",
+  "max_points": 5,
+  "citation": "Brihat Parashara Hora Shastra Chapter 3 (Graha Sambandha) and Chapter 81 Slokas 15-18; Muhurtha Chintamani",
+  "description": "Evaluates psychological alignment, mental wavelength, and mutual understanding through planetary friendship of Moon sign lords.",
+  "sign_lords": {
+    "Aries": "Mars",
+    "Taurus": "Venus",
+    "Gemini": "Mercury",
+    "Cancer": "Moon",
+    "Leo": "Sun",
+    "Virgo": "Mercury",
+    "Libra": "Venus",
+    "Scorpio": "Mars",
+    "Sagittarius": "Jupiter",
+    "Capricorn": "Saturn",
+    "Aquarius": "Saturn",
+    "Pisces": "Jupiter"
+  },
+  "naisargika_sambandha": {
+    "Sun": {
+      "friends": ["Moon", "Mars", "Jupiter"],
+      "neutrals": ["Mercury"],
+      "enemies": ["Venus", "Saturn"]
+    },
+    "Moon": {
+      "friends": ["Sun", "Mercury"],
+      "neutrals": ["Mars", "Jupiter", "Venus", "Saturn"],
+      "enemies": []
+    },
+    "Mars": {
+      "friends": ["Sun", "Moon", "Jupiter"],
+      "neutrals": ["Venus", "Saturn"],
+      "enemies": ["Mercury"]
+    },
+    "Mercury": {
+      "friends": ["Sun", "Venus"],
+      "neutrals": ["Mars", "Jupiter", "Saturn"],
+      "enemies": ["Moon"]
+    },
+    "Jupiter": {
+      "friends": ["Sun", "Moon", "Mars"],
+      "neutrals": ["Saturn"],
+      "enemies": ["Mercury", "Venus"]
+    },
+    "Venus": {
+      "friends": ["Mercury", "Saturn"],
+      "neutrals": ["Mars", "Jupiter"],
+      "enemies": ["Sun", "Moon"]
+    },
+    "Saturn": {
+      "friends": ["Mercury", "Venus"],
+      "neutrals": ["Jupiter"],
+      "enemies": ["Sun", "Moon", "Mars"]
+    }
+  },
+  "score_matrix": {
+    "same_lord": 5.0,
+    "friend_friend": 5.0,
+    "friend_neutral": 4.0,
+    "neutral_friend": 4.0,
+    "neutral_neutral": 3.0,
+    "friend_enemy": 1.0,
+    "enemy_friend": 1.0,
+    "neutral_enemy": 0.5,
+    "enemy_neutral": 0.5,
+    "enemy_enemy": 0.0
+  }
+}

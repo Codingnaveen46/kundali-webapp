@@ -1,0 +1,3074 @@
+[
+  {
+    "name": "B.V. Raman",
+    "dob": "1912-08-08",
+    "tob": "19:38:00",
+    "lat": 12.9716,
+    "lon": 77.5946,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 309.131542,
+      "sign": "Aquarius",
+      "degree_in_sign": 9,
+      "minute_in_sign": 7,
+      "nakshatra": "Shatabhisha",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 112.984378,
+        "sign": "Cancer",
+        "degree_in_sign": 22,
+        "minute_in_sign": 59,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 53.635216,
+        "sign": "Taurus",
+        "degree_in_sign": 23,
+        "minute_in_sign": 38,
+        "nakshatra": "Mrigashira",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 141.362067,
+        "sign": "Leo",
+        "degree_in_sign": 21,
+        "minute_in_sign": 21,
+        "nakshatra": "Purva Phalguni",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 133.956583,
+        "sign": "Leo",
+        "degree_in_sign": 13,
+        "minute_in_sign": 57,
+        "nakshatra": "Purva Phalguni",
+        "pada": 1
+      },
+      "Jupiter": {
+        "longitude": 222.967106,
+        "sign": "Scorpio",
+        "degree_in_sign": 12,
+        "minute_in_sign": 58,
+        "nakshatra": "Anuradha",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 122.243555,
+        "sign": "Leo",
+        "degree_in_sign": 2,
+        "minute_in_sign": 14,
+        "nakshatra": "Magha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 40.158584,
+        "sign": "Taurus",
+        "degree_in_sign": 10,
+        "minute_in_sign": 9,
+        "nakshatra": "Rohini",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 351.649955,
+        "sign": "Pisces",
+        "degree_in_sign": 21,
+        "minute_in_sign": 38,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 171.649955,
+        "sign": "Virgo",
+        "degree_in_sign": 21,
+        "minute_in_sign": 38,
+        "nakshatra": "Hasta",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mars",
+      "balance_years": 6.8415,
+      "balance_days": 2498.8,
+      "fraction_remaining": 0.9774
+    }
+  },
+  {
+    "name": "Mahatma Gandhi",
+    "dob": "1869-10-02",
+    "tob": "07:11:00",
+    "lat": 21.6417,
+    "lon": 69.6293,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 167.11611,
+      "sign": "Virgo",
+      "degree_in_sign": 17,
+      "minute_in_sign": 6,
+      "nakshatra": "Hasta",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 166.841637,
+        "sign": "Virgo",
+        "degree_in_sign": 16,
+        "minute_in_sign": 50,
+        "nakshatra": "Hasta",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 117.178956,
+        "sign": "Cancer",
+        "degree_in_sign": 27,
+        "minute_in_sign": 10,
+        "nakshatra": "Ashlesha",
+        "pada": 4
+      },
+      "Mars": {
+        "longitude": 206.329095,
+        "sign": "Libra",
+        "degree_in_sign": 26,
+        "minute_in_sign": 19,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 191.702879,
+        "sign": "Libra",
+        "degree_in_sign": 11,
+        "minute_in_sign": 42,
+        "nakshatra": "Swati",
+        "pada": 2
+      },
+      "Jupiter": {
+        "longitude": 28.142517,
+        "sign": "Aries",
+        "degree_in_sign": 28,
+        "minute_in_sign": 8,
+        "nakshatra": "Krittika",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 204.336715,
+        "sign": "Libra",
+        "degree_in_sign": 24,
+        "minute_in_sign": 20,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 230.324134,
+        "sign": "Scorpio",
+        "degree_in_sign": 20,
+        "minute_in_sign": 19,
+        "nakshatra": "Jyeshtha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 103.661223,
+        "sign": "Cancer",
+        "degree_in_sign": 13,
+        "minute_in_sign": 39,
+        "nakshatra": "Pushya",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 283.661223,
+        "sign": "Capricorn",
+        "degree_in_sign": 13,
+        "minute_in_sign": 39,
+        "nakshatra": "Shravana",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mercury",
+      "balance_years": 3.5968,
+      "balance_days": 1313.7,
+      "fraction_remaining": 0.2116
+    }
+  },
+  {
+    "name": "Jawaharlal Nehru",
+    "dob": "1889-11-14",
+    "tob": "23:06:00",
+    "lat": 25.4358,
+    "lon": 81.8463,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 114.966789,
+      "sign": "Cancer",
+      "degree_in_sign": 24,
+      "minute_in_sign": 58,
+      "nakshatra": "Ashlesha",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 210.27046,
+        "sign": "Scorpio",
+        "degree_in_sign": 0,
+        "minute_in_sign": 16,
+        "nakshatra": "Vishakha",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 107.954764,
+        "sign": "Cancer",
+        "degree_in_sign": 17,
+        "minute_in_sign": 57,
+        "nakshatra": "Ashlesha",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 159.983484,
+        "sign": "Virgo",
+        "degree_in_sign": 9,
+        "minute_in_sign": 59,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 4
+      },
+      "Mercury": {
+        "longitude": 197.147679,
+        "sign": "Libra",
+        "degree_in_sign": 17,
+        "minute_in_sign": 8,
+        "nakshatra": "Swati",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 255.175196,
+        "sign": "Sagittarius",
+        "degree_in_sign": 15,
+        "minute_in_sign": 10,
+        "nakshatra": "Purva Ashadha",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 187.36226,
+        "sign": "Libra",
+        "degree_in_sign": 7,
+        "minute_in_sign": 21,
+        "nakshatra": "Swati",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 130.794506,
+        "sign": "Leo",
+        "degree_in_sign": 10,
+        "minute_in_sign": 47,
+        "nakshatra": "Magha",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 71.443707,
+        "sign": "Gemini",
+        "degree_in_sign": 11,
+        "minute_in_sign": 26,
+        "nakshatra": "Ardra",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 251.443707,
+        "sign": "Sagittarius",
+        "degree_in_sign": 11,
+        "minute_in_sign": 26,
+        "nakshatra": "Mula",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mercury",
+      "balance_years": 15.3577,
+      "balance_days": 5609.3,
+      "fraction_remaining": 0.9034
+    }
+  },
+  {
+    "name": "Indira Gandhi",
+    "dob": "1917-11-19",
+    "tob": "23:11:00",
+    "lat": 25.4358,
+    "lon": 81.8463,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 117.365533,
+      "sign": "Cancer",
+      "degree_in_sign": 27,
+      "minute_in_sign": 21,
+      "nakshatra": "Ashlesha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 214.125176,
+        "sign": "Scorpio",
+        "degree_in_sign": 4,
+        "minute_in_sign": 7,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 275.588047,
+        "sign": "Capricorn",
+        "degree_in_sign": 5,
+        "minute_in_sign": 35,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 136.374927,
+        "sign": "Leo",
+        "degree_in_sign": 16,
+        "minute_in_sign": 22,
+        "nakshatra": "Purva Phalguni",
+        "pada": 1
+      },
+      "Mercury": {
+        "longitude": 223.229421,
+        "sign": "Scorpio",
+        "degree_in_sign": 13,
+        "minute_in_sign": 13,
+        "nakshatra": "Anuradha",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 45.001867,
+        "sign": "Taurus",
+        "degree_in_sign": 15,
+        "minute_in_sign": 0,
+        "nakshatra": "Rohini",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 261.005388,
+        "sign": "Sagittarius",
+        "degree_in_sign": 21,
+        "minute_in_sign": 0,
+        "nakshatra": "Purva Ashadha",
+        "pada": 3
+      },
+      "Saturn": {
+        "longitude": 111.787414,
+        "sign": "Cancer",
+        "degree_in_sign": 21,
+        "minute_in_sign": 47,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 249.204508,
+        "sign": "Sagittarius",
+        "degree_in_sign": 9,
+        "minute_in_sign": 12,
+        "nakshatra": "Mula",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 69.204508,
+        "sign": "Gemini",
+        "degree_in_sign": 9,
+        "minute_in_sign": 12,
+        "nakshatra": "Ardra",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Sun",
+      "balance_years": 1.9854,
+      "balance_days": 725.1,
+      "fraction_remaining": 0.3309
+    }
+  },
+  {
+    "name": "Swami Vivekananda",
+    "dob": "1863-01-12",
+    "tob": "06:33:00",
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 266.057922,
+      "sign": "Sagittarius",
+      "degree_in_sign": 26,
+      "minute_in_sign": 3,
+      "nakshatra": "Purva Ashadha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 269.423232,
+        "sign": "Sagittarius",
+        "degree_in_sign": 29,
+        "minute_in_sign": 25,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 167.447932,
+        "sign": "Virgo",
+        "degree_in_sign": 17,
+        "minute_in_sign": 26,
+        "nakshatra": "Hasta",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 6.3235,
+        "sign": "Aries",
+        "degree_in_sign": 6,
+        "minute_in_sign": 19,
+        "nakshatra": "Ashwini",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 281.772821,
+        "sign": "Capricorn",
+        "degree_in_sign": 11,
+        "minute_in_sign": 46,
+        "nakshatra": "Shravana",
+        "pada": 1
+      },
+      "Jupiter": {
+        "longitude": 184.013813,
+        "sign": "Libra",
+        "degree_in_sign": 4,
+        "minute_in_sign": 0,
+        "nakshatra": "Chitra",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 277.102905,
+        "sign": "Capricorn",
+        "degree_in_sign": 7,
+        "minute_in_sign": 6,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 163.573605,
+        "sign": "Virgo",
+        "degree_in_sign": 13,
+        "minute_in_sign": 34,
+        "nakshatra": "Hasta",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 233.502071,
+        "sign": "Scorpio",
+        "degree_in_sign": 23,
+        "minute_in_sign": 30,
+        "nakshatra": "Jyeshtha",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 53.502071,
+        "sign": "Taurus",
+        "degree_in_sign": 23,
+        "minute_in_sign": 30,
+        "nakshatra": "Mrigashira",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Moon",
+      "balance_years": 4.4141,
+      "balance_days": 1612.2,
+      "fraction_remaining": 0.4414
+    }
+  },
+  {
+    "name": "Rabindranath Tagore",
+    "dob": "1861-05-07",
+    "tob": "04:02:00",
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 358.183925,
+      "sign": "Pisces",
+      "degree_in_sign": 28,
+      "minute_in_sign": 11,
+      "nakshatra": "Revati",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 24.384383,
+        "sign": "Aries",
+        "degree_in_sign": 24,
+        "minute_in_sign": 23,
+        "nakshatra": "Bharani",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 351.121135,
+        "sign": "Pisces",
+        "degree_in_sign": 21,
+        "minute_in_sign": 7,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 60.178934,
+        "sign": "Gemini",
+        "degree_in_sign": 0,
+        "minute_in_sign": 10,
+        "nakshatra": "Mrigashira",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 7.928666,
+        "sign": "Aries",
+        "degree_in_sign": 7,
+        "minute_in_sign": 55,
+        "nakshatra": "Ashwini",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 115.949697,
+        "sign": "Cancer",
+        "degree_in_sign": 25,
+        "minute_in_sign": 56,
+        "nakshatra": "Ashlesha",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 23.118289,
+        "sign": "Aries",
+        "degree_in_sign": 23,
+        "minute_in_sign": 7,
+        "nakshatra": "Bharani",
+        "pada": 3
+      },
+      "Saturn": {
+        "longitude": 130.743276,
+        "sign": "Leo",
+        "degree_in_sign": 10,
+        "minute_in_sign": 44,
+        "nakshatra": "Magha",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 263.550747,
+        "sign": "Sagittarius",
+        "degree_in_sign": 23,
+        "minute_in_sign": 33,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 83.550747,
+        "sign": "Gemini",
+        "degree_in_sign": 23,
+        "minute_in_sign": 33,
+        "nakshatra": "Punarvasu",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mercury",
+      "balance_years": 11.3206,
+      "balance_days": 4134.7,
+      "fraction_remaining": 0.6659
+    }
+  },
+  {
+    "name": "Albert Einstein",
+    "dob": "1879-03-14",
+    "tob": "11:30:00",
+    "lat": 48.4011,
+    "lon": 9.9876,
+    "tz": "Europe/Berlin",
+    "expected_lagna": {
+      "longitude": 76.649874,
+      "sign": "Gemini",
+      "degree_in_sign": 16,
+      "minute_in_sign": 38,
+      "nakshatra": "Ardra",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 331.324186,
+        "sign": "Pisces",
+        "degree_in_sign": 1,
+        "minute_in_sign": 19,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 232.221491,
+        "sign": "Scorpio",
+        "degree_in_sign": 22,
+        "minute_in_sign": 13,
+        "nakshatra": "Jyeshtha",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 274.733162,
+        "sign": "Capricorn",
+        "degree_in_sign": 4,
+        "minute_in_sign": 43,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 340.95139,
+        "sign": "Pisces",
+        "degree_in_sign": 10,
+        "minute_in_sign": 57,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 305.307654,
+        "sign": "Aquarius",
+        "degree_in_sign": 5,
+        "minute_in_sign": 18,
+        "nakshatra": "Dhanishta",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 354.799256,
+        "sign": "Pisces",
+        "degree_in_sign": 24,
+        "minute_in_sign": 47,
+        "nakshatra": "Revati",
+        "pada": 3
+      },
+      "Saturn": {
+        "longitude": 342.01442,
+        "sign": "Pisces",
+        "degree_in_sign": 12,
+        "minute_in_sign": 0,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 280.551841,
+        "sign": "Capricorn",
+        "degree_in_sign": 10,
+        "minute_in_sign": 33,
+        "nakshatra": "Shravana",
+        "pada": 1
+      },
+      "Ketu": {
+        "longitude": 100.551841,
+        "sign": "Cancer",
+        "degree_in_sign": 10,
+        "minute_in_sign": 33,
+        "nakshatra": "Pushya",
+        "pada": 3
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mercury",
+      "balance_years": 9.9176,
+      "balance_days": 3622.3,
+      "fraction_remaining": 0.5834
+    }
+  },
+  {
+    "name": "Sri Aurobindo",
+    "dob": "1872-08-15",
+    "tob": "05:00:00",
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 118.521692,
+      "sign": "Cancer",
+      "degree_in_sign": 28,
+      "minute_in_sign": 31,
+      "nakshatra": "Ashlesha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 120.327651,
+        "sign": "Leo",
+        "degree_in_sign": 0,
+        "minute_in_sign": 19,
+        "nakshatra": "Magha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 245.837022,
+        "sign": "Sagittarius",
+        "degree_in_sign": 5,
+        "minute_in_sign": 50,
+        "nakshatra": "Mula",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 95.389792,
+        "sign": "Cancer",
+        "degree_in_sign": 5,
+        "minute_in_sign": 23,
+        "nakshatra": "Pushya",
+        "pada": 1
+      },
+      "Mercury": {
+        "longitude": 143.513596,
+        "sign": "Leo",
+        "degree_in_sign": 23,
+        "minute_in_sign": 30,
+        "nakshatra": "Purva Phalguni",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 111.58814,
+        "sign": "Cancer",
+        "degree_in_sign": 21,
+        "minute_in_sign": 35,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 128.54259,
+        "sign": "Leo",
+        "degree_in_sign": 8,
+        "minute_in_sign": 32,
+        "nakshatra": "Magha",
+        "pada": 3
+      },
+      "Saturn": {
+        "longitude": 263.499532,
+        "sign": "Sagittarius",
+        "degree_in_sign": 23,
+        "minute_in_sign": 29,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 47.712602,
+        "sign": "Taurus",
+        "degree_in_sign": 17,
+        "minute_in_sign": 42,
+        "nakshatra": "Rohini",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 227.712602,
+        "sign": "Scorpio",
+        "degree_in_sign": 17,
+        "minute_in_sign": 42,
+        "nakshatra": "Jyeshtha",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Ketu",
+      "balance_years": 3.9356,
+      "balance_days": 1437.4,
+      "fraction_remaining": 0.5622
+    }
+  },
+  {
+    "name": "Ramana Maharshi",
+    "dob": "1879-12-30",
+    "tob": "01:00:00",
+    "lat": 9.53,
+    "lon": 78.2,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 178.820855,
+      "sign": "Virgo",
+      "degree_in_sign": 28,
+      "minute_in_sign": 49,
+      "nakshatra": "Chitra",
+      "pada": 2
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 255.592988,
+        "sign": "Sagittarius",
+        "degree_in_sign": 15,
+        "minute_in_sign": 35,
+        "nakshatra": "Purva Ashadha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 88.328186,
+        "sign": "Gemini",
+        "degree_in_sign": 28,
+        "minute_in_sign": 19,
+        "nakshatra": "Punarvasu",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 21.968607,
+        "sign": "Aries",
+        "degree_in_sign": 21,
+        "minute_in_sign": 58,
+        "nakshatra": "Bharani",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 233.107253,
+        "sign": "Scorpio",
+        "degree_in_sign": 23,
+        "minute_in_sign": 6,
+        "nakshatra": "Jyeshtha",
+        "pada": 2
+      },
+      "Jupiter": {
+        "longitude": 316.485937,
+        "sign": "Aquarius",
+        "degree_in_sign": 16,
+        "minute_in_sign": 29,
+        "nakshatra": "Shatabhisha",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 210.475957,
+        "sign": "Scorpio",
+        "degree_in_sign": 0,
+        "minute_in_sign": 28,
+        "nakshatra": "Vishakha",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 347.059661,
+        "sign": "Pisces",
+        "degree_in_sign": 17,
+        "minute_in_sign": 3,
+        "nakshatra": "Revati",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 263.339983,
+        "sign": "Sagittarius",
+        "degree_in_sign": 23,
+        "minute_in_sign": 20,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 83.339983,
+        "sign": "Gemini",
+        "degree_in_sign": 23,
+        "minute_in_sign": 20,
+        "nakshatra": "Punarvasu",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Jupiter",
+      "balance_years": 6.0062,
+      "balance_days": 2193.7,
+      "fraction_remaining": 0.3754
+    }
+  },
+  {
+    "name": "A.P.J. Abdul Kalam",
+    "dob": "1931-10-15",
+    "tob": "01:15:00",
+    "lat": 9.2876,
+    "lon": 79.3129,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 105.687621,
+      "sign": "Cancer",
+      "degree_in_sign": 15,
+      "minute_in_sign": 41,
+      "nakshatra": "Pushya",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 177.594083,
+        "sign": "Virgo",
+        "degree_in_sign": 27,
+        "minute_in_sign": 35,
+        "nakshatra": "Chitra",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 223.031033,
+        "sign": "Scorpio",
+        "degree_in_sign": 13,
+        "minute_in_sign": 1,
+        "nakshatra": "Anuradha",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 205.939546,
+        "sign": "Libra",
+        "degree_in_sign": 25,
+        "minute_in_sign": 56,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 174.819471,
+        "sign": "Virgo",
+        "degree_in_sign": 24,
+        "minute_in_sign": 49,
+        "nakshatra": "Chitra",
+        "pada": 1
+      },
+      "Jupiter": {
+        "longitude": 115.130445,
+        "sign": "Cancer",
+        "degree_in_sign": 25,
+        "minute_in_sign": 7,
+        "nakshatra": "Ashlesha",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 187.304798,
+        "sign": "Libra",
+        "degree_in_sign": 7,
+        "minute_in_sign": 18,
+        "nakshatra": "Swati",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 264.176648,
+        "sign": "Sagittarius",
+        "degree_in_sign": 24,
+        "minute_in_sign": 10,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 342.428031,
+        "sign": "Pisces",
+        "degree_in_sign": 12,
+        "minute_in_sign": 25,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 162.428031,
+        "sign": "Virgo",
+        "degree_in_sign": 12,
+        "minute_in_sign": 25,
+        "nakshatra": "Hasta",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Saturn",
+      "balance_years": 5.1808,
+      "balance_days": 1892.2,
+      "fraction_remaining": 0.2727
+    }
+  },
+  {
+    "name": "Srinivasa Ramanujan",
+    "dob": "1887-12-22",
+    "tob": "18:00:00",
+    "lat": 11.341,
+    "lon": 77.7172,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 70.610972,
+      "sign": "Gemini",
+      "degree_in_sign": 10,
+      "minute_in_sign": 36,
+      "nakshatra": "Ardra",
+      "pada": 2
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 248.117074,
+        "sign": "Sagittarius",
+        "degree_in_sign": 8,
+        "minute_in_sign": 7,
+        "nakshatra": "Mula",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 340.67403,
+        "sign": "Pisces",
+        "degree_in_sign": 10,
+        "minute_in_sign": 40,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 165.907398,
+        "sign": "Virgo",
+        "degree_in_sign": 15,
+        "minute_in_sign": 54,
+        "nakshatra": "Hasta",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 233.022449,
+        "sign": "Scorpio",
+        "degree_in_sign": 23,
+        "minute_in_sign": 1,
+        "nakshatra": "Jyeshtha",
+        "pada": 2
+      },
+      "Jupiter": {
+        "longitude": 213.386814,
+        "sign": "Scorpio",
+        "degree_in_sign": 3,
+        "minute_in_sign": 23,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 202.482134,
+        "sign": "Libra",
+        "degree_in_sign": 22,
+        "minute_in_sign": 28,
+        "nakshatra": "Vishakha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 103.174636,
+        "sign": "Cancer",
+        "degree_in_sign": 13,
+        "minute_in_sign": 10,
+        "nakshatra": "Pushya",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 108.223164,
+        "sign": "Cancer",
+        "degree_in_sign": 18,
+        "minute_in_sign": 13,
+        "nakshatra": "Ashlesha",
+        "pada": 1
+      },
+      "Ketu": {
+        "longitude": 288.223164,
+        "sign": "Capricorn",
+        "degree_in_sign": 18,
+        "minute_in_sign": 13,
+        "nakshatra": "Shravana",
+        "pada": 3
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Saturn",
+      "balance_years": 8.5395,
+      "balance_days": 3119.0,
+      "fraction_remaining": 0.4494
+    }
+  },
+  {
+    "name": "Subhas Chandra Bose",
+    "dob": "1897-01-23",
+    "tob": "12:10:00",
+    "lat": 20.4625,
+    "lon": 85.8828,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 27.874061,
+      "sign": "Aries",
+      "degree_in_sign": 27,
+      "minute_in_sign": 52,
+      "nakshatra": "Krittika",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 281.165698,
+        "sign": "Capricorn",
+        "degree_in_sign": 11,
+        "minute_in_sign": 9,
+        "nakshatra": "Shravana",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 157.599195,
+        "sign": "Virgo",
+        "degree_in_sign": 7,
+        "minute_in_sign": 35,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 4
+      },
+      "Mars": {
+        "longitude": 49.441353,
+        "sign": "Taurus",
+        "degree_in_sign": 19,
+        "minute_in_sign": 26,
+        "nakshatra": "Rohini",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 279.589661,
+        "sign": "Capricorn",
+        "degree_in_sign": 9,
+        "minute_in_sign": 35,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 136.490188,
+        "sign": "Leo",
+        "degree_in_sign": 16,
+        "minute_in_sign": 29,
+        "nakshatra": "Purva Phalguni",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 326.330705,
+        "sign": "Aquarius",
+        "degree_in_sign": 26,
+        "minute_in_sign": 19,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 216.64007,
+        "sign": "Scorpio",
+        "degree_in_sign": 6,
+        "minute_in_sign": 38,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 292.861231,
+        "sign": "Capricorn",
+        "degree_in_sign": 22,
+        "minute_in_sign": 51,
+        "nakshatra": "Shravana",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 112.861231,
+        "sign": "Cancer",
+        "degree_in_sign": 22,
+        "minute_in_sign": 51,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Sun",
+      "balance_years": 1.0804,
+      "balance_days": 394.6,
+      "fraction_remaining": 0.1801
+    }
+  },
+  {
+    "name": "B.R. Ambedkar",
+    "dob": "1891-04-14",
+    "tob": "12:00:00",
+    "lat": 22.5539,
+    "lon": 75.7638,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 92.598082,
+      "sign": "Cancer",
+      "degree_in_sign": 2,
+      "minute_in_sign": 35,
+      "nakshatra": "Punarvasu",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 1.698627,
+        "sign": "Aries",
+        "degree_in_sign": 1,
+        "minute_in_sign": 41,
+        "nakshatra": "Ashwini",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 71.184471,
+        "sign": "Gemini",
+        "degree_in_sign": 11,
+        "minute_in_sign": 11,
+        "nakshatra": "Ardra",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 33.608745,
+        "sign": "Taurus",
+        "degree_in_sign": 3,
+        "minute_in_sign": 36,
+        "nakshatra": "Krittika",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 20.647268,
+        "sign": "Aries",
+        "degree_in_sign": 20,
+        "minute_in_sign": 38,
+        "nakshatra": "Bharani",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 315.902273,
+        "sign": "Aquarius",
+        "degree_in_sign": 15,
+        "minute_in_sign": 54,
+        "nakshatra": "Shatabhisha",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 322.137452,
+        "sign": "Aquarius",
+        "degree_in_sign": 22,
+        "minute_in_sign": 8,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 138.675246,
+        "sign": "Leo",
+        "degree_in_sign": 18,
+        "minute_in_sign": 40,
+        "nakshatra": "Purva Phalguni",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 43.836679,
+        "sign": "Taurus",
+        "degree_in_sign": 13,
+        "minute_in_sign": 50,
+        "nakshatra": "Rohini",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 223.836679,
+        "sign": "Scorpio",
+        "degree_in_sign": 13,
+        "minute_in_sign": 50,
+        "nakshatra": "Anuradha",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Rahu",
+      "balance_years": 11.901,
+      "balance_days": 4346.7,
+      "fraction_remaining": 0.6612
+    }
+  },
+  {
+    "name": "Sarvepalli Radhakrishnan",
+    "dob": "1888-09-05",
+    "tob": "12:30:00",
+    "lat": 13.1812,
+    "lon": 79.6341,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 234.823859,
+      "sign": "Scorpio",
+      "degree_in_sign": 24,
+      "minute_in_sign": 49,
+      "nakshatra": "Jyeshtha",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 140.810828,
+        "sign": "Leo",
+        "degree_in_sign": 20,
+        "minute_in_sign": 48,
+        "nakshatra": "Purva Phalguni",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 129.045075,
+        "sign": "Leo",
+        "degree_in_sign": 9,
+        "minute_in_sign": 2,
+        "nakshatra": "Magha",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 214.076753,
+        "sign": "Scorpio",
+        "degree_in_sign": 4,
+        "minute_in_sign": 4,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      },
+      "Mercury": {
+        "longitude": 151.61573,
+        "sign": "Virgo",
+        "degree_in_sign": 1,
+        "minute_in_sign": 36,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 2
+      },
+      "Jupiter": {
+        "longitude": 216.955351,
+        "sign": "Scorpio",
+        "degree_in_sign": 6,
+        "minute_in_sign": 57,
+        "nakshatra": "Anuradha",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 156.017116,
+        "sign": "Virgo",
+        "degree_in_sign": 6,
+        "minute_in_sign": 1,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 3
+      },
+      "Saturn": {
+        "longitude": 112.081136,
+        "sign": "Cancer",
+        "degree_in_sign": 22,
+        "minute_in_sign": 4,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 97.532277,
+        "sign": "Cancer",
+        "degree_in_sign": 7,
+        "minute_in_sign": 31,
+        "nakshatra": "Pushya",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 277.532277,
+        "sign": "Capricorn",
+        "degree_in_sign": 7,
+        "minute_in_sign": 31,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Ketu",
+      "balance_years": 2.2513,
+      "balance_days": 822.3,
+      "fraction_remaining": 0.3216
+    }
+  },
+  {
+    "name": "Lal Bahadur Shastri",
+    "dob": "1904-10-02",
+    "tob": "11:15:00",
+    "lat": 25.2818,
+    "lon": 83.1205,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 238.696892,
+      "sign": "Scorpio",
+      "degree_in_sign": 28,
+      "minute_in_sign": 41,
+      "nakshatra": "Jyeshtha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 166.074155,
+        "sign": "Virgo",
+        "degree_in_sign": 16,
+        "minute_in_sign": 4,
+        "nakshatra": "Hasta",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 71.945409,
+        "sign": "Gemini",
+        "degree_in_sign": 11,
+        "minute_in_sign": 56,
+        "nakshatra": "Ardra",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 127.888341,
+        "sign": "Leo",
+        "degree_in_sign": 7,
+        "minute_in_sign": 53,
+        "nakshatra": "Magha",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 148.225713,
+        "sign": "Leo",
+        "degree_in_sign": 28,
+        "minute_in_sign": 13,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 1
+      },
+      "Jupiter": {
+        "longitude": 4.81779,
+        "sign": "Aries",
+        "degree_in_sign": 4,
+        "minute_in_sign": 49,
+        "nakshatra": "Ashwini",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 189.161399,
+        "sign": "Libra",
+        "degree_in_sign": 9,
+        "minute_in_sign": 9,
+        "nakshatra": "Swati",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 292.062396,
+        "sign": "Capricorn",
+        "degree_in_sign": 22,
+        "minute_in_sign": 3,
+        "nakshatra": "Shravana",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 145.798608,
+        "sign": "Leo",
+        "degree_in_sign": 25,
+        "minute_in_sign": 47,
+        "nakshatra": "Purva Phalguni",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 325.798608,
+        "sign": "Aquarius",
+        "degree_in_sign": 25,
+        "minute_in_sign": 47,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Rahu",
+      "balance_years": 10.8737,
+      "balance_days": 3971.5,
+      "fraction_remaining": 0.6041
+    }
+  },
+  {
+    "name": "Mother Teresa",
+    "dob": "1910-08-26",
+    "tob": "14:25:00",
+    "lat": 41.9981,
+    "lon": 21.4254,
+    "tz": "Europe/Skopje",
+    "expected_lagna": {
+      "longitude": 241.65043,
+      "sign": "Sagittarius",
+      "degree_in_sign": 1,
+      "minute_in_sign": 39,
+      "nakshatra": "Mula",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 129.804478,
+        "sign": "Leo",
+        "degree_in_sign": 9,
+        "minute_in_sign": 48,
+        "nakshatra": "Magha",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 26.014849,
+        "sign": "Aries",
+        "degree_in_sign": 26,
+        "minute_in_sign": 0,
+        "nakshatra": "Bharani",
+        "pada": 4
+      },
+      "Mars": {
+        "longitude": 140.405644,
+        "sign": "Leo",
+        "degree_in_sign": 20,
+        "minute_in_sign": 24,
+        "nakshatra": "Purva Phalguni",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 156.589189,
+        "sign": "Virgo",
+        "degree_in_sign": 6,
+        "minute_in_sign": 35,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 171.211843,
+        "sign": "Virgo",
+        "degree_in_sign": 21,
+        "minute_in_sign": 12,
+        "nakshatra": "Hasta",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 106.287613,
+        "sign": "Cancer",
+        "degree_in_sign": 16,
+        "minute_in_sign": 17,
+        "nakshatra": "Pushya",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 13.934468,
+        "sign": "Aries",
+        "degree_in_sign": 13,
+        "minute_in_sign": 56,
+        "nakshatra": "Bharani",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 30.184544,
+        "sign": "Taurus",
+        "degree_in_sign": 0,
+        "minute_in_sign": 11,
+        "nakshatra": "Krittika",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 210.184544,
+        "sign": "Scorpio",
+        "degree_in_sign": 0,
+        "minute_in_sign": 11,
+        "nakshatra": "Vishakha",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Venus",
+      "balance_years": 0.9777,
+      "balance_days": 357.1,
+      "fraction_remaining": 0.0489
+    }
+  },
+  {
+    "name": "Nelson Mandela",
+    "dob": "1918-07-18",
+    "tob": "14:54:00",
+    "lat": -31.95,
+    "lon": 28.51,
+    "tz": "Africa/Johannesburg",
+    "expected_lagna": {
+      "longitude": 240.950674,
+      "sign": "Sagittarius",
+      "degree_in_sign": 0,
+      "minute_in_sign": 57,
+      "nakshatra": "Mula",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 92.346431,
+        "sign": "Cancer",
+        "degree_in_sign": 2,
+        "minute_in_sign": 20,
+        "nakshatra": "Punarvasu",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 207.531723,
+        "sign": "Libra",
+        "degree_in_sign": 27,
+        "minute_in_sign": 31,
+        "nakshatra": "Vishakha",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 169.853869,
+        "sign": "Virgo",
+        "degree_in_sign": 19,
+        "minute_in_sign": 51,
+        "nakshatra": "Hasta",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 113.408958,
+        "sign": "Cancer",
+        "degree_in_sign": 23,
+        "minute_in_sign": 24,
+        "nakshatra": "Ashlesha",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 68.443171,
+        "sign": "Gemini",
+        "degree_in_sign": 8,
+        "minute_in_sign": 26,
+        "nakshatra": "Ardra",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 59.855017,
+        "sign": "Taurus",
+        "degree_in_sign": 29,
+        "minute_in_sign": 51,
+        "nakshatra": "Mrigashira",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 112.308115,
+        "sign": "Cancer",
+        "degree_in_sign": 22,
+        "minute_in_sign": 18,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 239.10849,
+        "sign": "Scorpio",
+        "degree_in_sign": 29,
+        "minute_in_sign": 6,
+        "nakshatra": "Jyeshtha",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 59.10849,
+        "sign": "Taurus",
+        "degree_in_sign": 29,
+        "minute_in_sign": 6,
+        "nakshatra": "Mrigashira",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Jupiter",
+      "balance_years": 6.9619,
+      "balance_days": 2542.8,
+      "fraction_remaining": 0.4351
+    }
+  },
+  {
+    "name": "Martin Luther King Jr.",
+    "dob": "1929-01-15",
+    "tob": "12:00:00",
+    "lat": 33.749,
+    "lon": -84.388,
+    "tz": "America/New_York",
+    "expected_lagna": {
+      "longitude": 0.176476,
+      "sign": "Aries",
+      "degree_in_sign": 0,
+      "minute_in_sign": 10,
+      "nakshatra": "Ashwini",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 272.229674,
+        "sign": "Capricorn",
+        "degree_in_sign": 2,
+        "minute_in_sign": 13,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 326.183598,
+        "sign": "Aquarius",
+        "degree_in_sign": 26,
+        "minute_in_sign": 11,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 59.041457,
+        "sign": "Taurus",
+        "degree_in_sign": 29,
+        "minute_in_sign": 2,
+        "nakshatra": "Mrigashira",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 288.830447,
+        "sign": "Capricorn",
+        "degree_in_sign": 18,
+        "minute_in_sign": 49,
+        "nakshatra": "Shravana",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 8.308116,
+        "sign": "Aries",
+        "degree_in_sign": 8,
+        "minute_in_sign": 18,
+        "nakshatra": "Ashwini",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 317.643193,
+        "sign": "Aquarius",
+        "degree_in_sign": 17,
+        "minute_in_sign": 38,
+        "nakshatra": "Shatabhisha",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 242.485256,
+        "sign": "Sagittarius",
+        "degree_in_sign": 2,
+        "minute_in_sign": 29,
+        "nakshatra": "Mula",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 35.782955,
+        "sign": "Taurus",
+        "degree_in_sign": 5,
+        "minute_in_sign": 46,
+        "nakshatra": "Krittika",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 215.782955,
+        "sign": "Scorpio",
+        "degree_in_sign": 5,
+        "minute_in_sign": 46,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Jupiter",
+      "balance_years": 8.5797,
+      "balance_days": 3133.7,
+      "fraction_remaining": 0.5362
+    }
+  },
+  {
+    "name": "Abraham Lincoln",
+    "dob": "1809-02-12",
+    "tob": "06:54:00",
+    "lat": 37.5741,
+    "lon": -85.7346,
+    "tz": "America/New_York",
+    "expected_lagna": {
+      "longitude": 285.213886,
+      "sign": "Capricorn",
+      "degree_in_sign": 15,
+      "minute_in_sign": 12,
+      "nakshatra": "Shravana",
+      "pada": 2
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 302.22953,
+        "sign": "Aquarius",
+        "degree_in_sign": 2,
+        "minute_in_sign": 13,
+        "nakshatra": "Dhanishta",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 275.340641,
+        "sign": "Capricorn",
+        "degree_in_sign": 5,
+        "minute_in_sign": 20,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 184.295711,
+        "sign": "Libra",
+        "degree_in_sign": 4,
+        "minute_in_sign": 17,
+        "nakshatra": "Chitra",
+        "pada": 4
+      },
+      "Mercury": {
+        "longitude": 319.061287,
+        "sign": "Aquarius",
+        "degree_in_sign": 19,
+        "minute_in_sign": 3,
+        "nakshatra": "Shatabhisha",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 330.882866,
+        "sign": "Pisces",
+        "degree_in_sign": 0,
+        "minute_in_sign": 52,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 346.228933,
+        "sign": "Pisces",
+        "degree_in_sign": 16,
+        "minute_in_sign": 13,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 221.946283,
+        "sign": "Scorpio",
+        "degree_in_sign": 11,
+        "minute_in_sign": 56,
+        "nakshatra": "Anuradha",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 194.974386,
+        "sign": "Libra",
+        "degree_in_sign": 14,
+        "minute_in_sign": 58,
+        "nakshatra": "Swati",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 14.974386,
+        "sign": "Aries",
+        "degree_in_sign": 14,
+        "minute_in_sign": 58,
+        "nakshatra": "Bharani",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Sun",
+      "balance_years": 2.0967,
+      "balance_days": 765.8,
+      "fraction_remaining": 0.3495
+    }
+  },
+  {
+    "name": "Steve Jobs",
+    "dob": "1955-02-24",
+    "tob": "19:15:00",
+    "lat": 37.7749,
+    "lon": -122.4194,
+    "tz": "America/Los_Angeles",
+    "expected_lagna": {
+      "longitude": 149.055557,
+      "sign": "Leo",
+      "degree_in_sign": 29,
+      "minute_in_sign": 3,
+      "nakshatra": "Uttara Phalguni",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 312.512443,
+        "sign": "Aquarius",
+        "degree_in_sign": 12,
+        "minute_in_sign": 30,
+        "nakshatra": "Shatabhisha",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 344.511478,
+        "sign": "Pisces",
+        "degree_in_sign": 14,
+        "minute_in_sign": 30,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 4
+      },
+      "Mars": {
+        "longitude": 5.85478,
+        "sign": "Aries",
+        "degree_in_sign": 5,
+        "minute_in_sign": 51,
+        "nakshatra": "Ashwini",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 291.12603,
+        "sign": "Capricorn",
+        "degree_in_sign": 21,
+        "minute_in_sign": 7,
+        "nakshatra": "Shravana",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 87.272193,
+        "sign": "Gemini",
+        "degree_in_sign": 27,
+        "minute_in_sign": 16,
+        "nakshatra": "Punarvasu",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 267.936186,
+        "sign": "Sagittarius",
+        "degree_in_sign": 27,
+        "minute_in_sign": 56,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 207.926998,
+        "sign": "Libra",
+        "degree_in_sign": 27,
+        "minute_in_sign": 55,
+        "nakshatra": "Vishakha",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 250.175706,
+        "sign": "Sagittarius",
+        "degree_in_sign": 10,
+        "minute_in_sign": 10,
+        "nakshatra": "Mula",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 70.175706,
+        "sign": "Gemini",
+        "degree_in_sign": 10,
+        "minute_in_sign": 10,
+        "nakshatra": "Ardra",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Saturn",
+      "balance_years": 3.0711,
+      "balance_days": 1121.7,
+      "fraction_remaining": 0.1616
+    }
+  },
+  {
+    "name": "Marie Curie",
+    "dob": "1867-11-07",
+    "tob": "12:00:00",
+    "lat": 52.2297,
+    "lon": 21.0122,
+    "tz": "Europe/Warsaw",
+    "expected_lagna": {
+      "longitude": 260.067031,
+      "sign": "Sagittarius",
+      "degree_in_sign": 20,
+      "minute_in_sign": 4,
+      "nakshatra": "Purva Ashadha",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 202.566184,
+        "sign": "Libra",
+        "degree_in_sign": 22,
+        "minute_in_sign": 33,
+        "nakshatra": "Vishakha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 324.47013,
+        "sign": "Aquarius",
+        "degree_in_sign": 24,
+        "minute_in_sign": 28,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 217.60688,
+        "sign": "Scorpio",
+        "degree_in_sign": 7,
+        "minute_in_sign": 36,
+        "nakshatra": "Anuradha",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 224.624368,
+        "sign": "Scorpio",
+        "degree_in_sign": 14,
+        "minute_in_sign": 37,
+        "nakshatra": "Anuradha",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 305.995344,
+        "sign": "Aquarius",
+        "degree_in_sign": 5,
+        "minute_in_sign": 59,
+        "nakshatra": "Dhanishta",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 213.564619,
+        "sign": "Scorpio",
+        "degree_in_sign": 3,
+        "minute_in_sign": 33,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 213.265274,
+        "sign": "Scorpio",
+        "degree_in_sign": 3,
+        "minute_in_sign": 15,
+        "nakshatra": "Vishakha",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 140.352951,
+        "sign": "Leo",
+        "degree_in_sign": 20,
+        "minute_in_sign": 21,
+        "nakshatra": "Purva Phalguni",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 320.352951,
+        "sign": "Aquarius",
+        "degree_in_sign": 20,
+        "minute_in_sign": 21,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Jupiter",
+      "balance_years": 10.6358,
+      "balance_days": 3884.7,
+      "fraction_remaining": 0.6647
+    }
+  },
+  {
+    "name": "Isaac Newton",
+    "dob": "1643-01-04",
+    "tob": "01:38:00",
+    "lat": 52.81,
+    "lon": -0.63,
+    "tz": "Europe/London",
+    "expected_lagna": {
+      "longitude": 187.133777,
+      "sign": "Libra",
+      "degree_in_sign": 7,
+      "minute_in_sign": 8,
+      "nakshatra": "Swati",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 264.803873,
+        "sign": "Sagittarius",
+        "degree_in_sign": 24,
+        "minute_in_sign": 48,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 73.574393,
+        "sign": "Gemini",
+        "degree_in_sign": 13,
+        "minute_in_sign": 34,
+        "nakshatra": "Ardra",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 18.642787,
+        "sign": "Aries",
+        "degree_in_sign": 18,
+        "minute_in_sign": 38,
+        "nakshatra": "Bharani",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 242.062772,
+        "sign": "Sagittarius",
+        "degree_in_sign": 2,
+        "minute_in_sign": 3,
+        "nakshatra": "Mula",
+        "pada": 1
+      },
+      "Jupiter": {
+        "longitude": 325.253387,
+        "sign": "Aquarius",
+        "degree_in_sign": 25,
+        "minute_in_sign": 15,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 308.323871,
+        "sign": "Aquarius",
+        "degree_in_sign": 8,
+        "minute_in_sign": 19,
+        "nakshatra": "Shatabhisha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 331.01568,
+        "sign": "Pisces",
+        "degree_in_sign": 1,
+        "minute_in_sign": 0,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 170.557316,
+        "sign": "Virgo",
+        "degree_in_sign": 20,
+        "minute_in_sign": 33,
+        "nakshatra": "Hasta",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 350.557316,
+        "sign": "Pisces",
+        "degree_in_sign": 20,
+        "minute_in_sign": 33,
+        "nakshatra": "Revati",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Rahu",
+      "balance_years": 8.6746,
+      "balance_days": 3168.3,
+      "fraction_remaining": 0.4819
+    }
+  },
+  {
+    "name": "Indian Independence 1947",
+    "dob": "1947-08-15",
+    "tob": "00:00:00",
+    "lat": 28.6139,
+    "lon": 77.209,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 37.73227,
+      "sign": "Taurus",
+      "degree_in_sign": 7,
+      "minute_in_sign": 43,
+      "nakshatra": "Krittika",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 117.989021,
+        "sign": "Cancer",
+        "degree_in_sign": 27,
+        "minute_in_sign": 59,
+        "nakshatra": "Ashlesha",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 93.983538,
+        "sign": "Cancer",
+        "degree_in_sign": 3,
+        "minute_in_sign": 59,
+        "nakshatra": "Pushya",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 67.456229,
+        "sign": "Gemini",
+        "degree_in_sign": 7,
+        "minute_in_sign": 27,
+        "nakshatra": "Ardra",
+        "pada": 1
+      },
+      "Mercury": {
+        "longitude": 103.674277,
+        "sign": "Cancer",
+        "degree_in_sign": 13,
+        "minute_in_sign": 40,
+        "nakshatra": "Pushya",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 205.877703,
+        "sign": "Libra",
+        "degree_in_sign": 25,
+        "minute_in_sign": 52,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 112.561206,
+        "sign": "Cancer",
+        "degree_in_sign": 22,
+        "minute_in_sign": 33,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 110.473015,
+        "sign": "Cancer",
+        "degree_in_sign": 20,
+        "minute_in_sign": 28,
+        "nakshatra": "Ashlesha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 35.742628,
+        "sign": "Taurus",
+        "degree_in_sign": 5,
+        "minute_in_sign": 44,
+        "nakshatra": "Krittika",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 215.742628,
+        "sign": "Scorpio",
+        "degree_in_sign": 5,
+        "minute_in_sign": 44,
+        "nakshatra": "Anuradha",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Saturn",
+      "balance_years": 18.0735,
+      "balance_days": 6601.2,
+      "fraction_remaining": 0.9512
+    }
+  },
+  {
+    "name": "Millennium Benchmark 2000",
+    "dob": "2000-01-01",
+    "tob": "00:00:00",
+    "lat": 28.6139,
+    "lon": 77.209,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 160.06649,
+      "sign": "Virgo",
+      "degree_in_sign": 10,
+      "minute_in_sign": 3,
+      "nakshatra": "Hasta",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 255.772415,
+        "sign": "Sagittarius",
+        "degree_in_sign": 15,
+        "minute_in_sign": 46,
+        "nakshatra": "Purva Ashadha",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 190.661714,
+        "sign": "Libra",
+        "degree_in_sign": 10,
+        "minute_in_sign": 39,
+        "nakshatra": "Swati",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 303.544531,
+        "sign": "Aquarius",
+        "degree_in_sign": 3,
+        "minute_in_sign": 32,
+        "nakshatra": "Dhanishta",
+        "pada": 4
+      },
+      "Mercury": {
+        "longitude": 246.902705,
+        "sign": "Sagittarius",
+        "degree_in_sign": 6,
+        "minute_in_sign": 54,
+        "nakshatra": "Mula",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 1.371012,
+        "sign": "Aries",
+        "degree_in_sign": 1,
+        "minute_in_sign": 22,
+        "nakshatra": "Ashwini",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 216.831316,
+        "sign": "Scorpio",
+        "degree_in_sign": 6,
+        "minute_in_sign": 49,
+        "nakshatra": "Anuradha",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 16.557472,
+        "sign": "Aries",
+        "degree_in_sign": 16,
+        "minute_in_sign": 33,
+        "nakshatra": "Bharani",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 100.136456,
+        "sign": "Cancer",
+        "degree_in_sign": 10,
+        "minute_in_sign": 8,
+        "nakshatra": "Pushya",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 280.136456,
+        "sign": "Capricorn",
+        "degree_in_sign": 10,
+        "minute_in_sign": 8,
+        "nakshatra": "Shravana",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Rahu",
+      "balance_years": 12.6067,
+      "balance_days": 4604.5,
+      "fraction_remaining": 0.7004
+    }
+  },
+  {
+    "name": "Standard Benchmark 1985",
+    "dob": "1985-07-15",
+    "tob": "08:30:00",
+    "lat": 19.076,
+    "lon": 72.8777,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 119.659817,
+      "sign": "Cancer",
+      "degree_in_sign": 29,
+      "minute_in_sign": 39,
+      "nakshatra": "Ashlesha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 88.925271,
+        "sign": "Gemini",
+        "degree_in_sign": 28,
+        "minute_in_sign": 55,
+        "nakshatra": "Punarvasu",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 54.941113,
+        "sign": "Taurus",
+        "degree_in_sign": 24,
+        "minute_in_sign": 56,
+        "nakshatra": "Mrigashira",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 89.835082,
+        "sign": "Gemini",
+        "degree_in_sign": 29,
+        "minute_in_sign": 50,
+        "nakshatra": "Punarvasu",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 115.433933,
+        "sign": "Cancer",
+        "degree_in_sign": 25,
+        "minute_in_sign": 26,
+        "nakshatra": "Ashlesha",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 290.896361,
+        "sign": "Capricorn",
+        "degree_in_sign": 20,
+        "minute_in_sign": 53,
+        "nakshatra": "Shravana",
+        "pada": 4
+      },
+      "Venus": {
+        "longitude": 45.887971,
+        "sign": "Taurus",
+        "degree_in_sign": 15,
+        "minute_in_sign": 53,
+        "nakshatra": "Rohini",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 207.908223,
+        "sign": "Libra",
+        "degree_in_sign": 27,
+        "minute_in_sign": 54,
+        "nakshatra": "Vishakha",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 22.452692,
+        "sign": "Aries",
+        "degree_in_sign": 22,
+        "minute_in_sign": 27,
+        "nakshatra": "Bharani",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 202.452692,
+        "sign": "Libra",
+        "degree_in_sign": 22,
+        "minute_in_sign": 27,
+        "nakshatra": "Vishakha",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mars",
+      "balance_years": 6.1559,
+      "balance_days": 2248.4,
+      "fraction_remaining": 0.8794
+    }
+  },
+  {
+    "name": "Standard Benchmark 1995",
+    "dob": "1995-10-24",
+    "tob": "16:45:00",
+    "lat": 13.0827,
+    "lon": 80.2707,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 349.976731,
+      "sign": "Pisces",
+      "degree_in_sign": 19,
+      "minute_in_sign": 58,
+      "nakshatra": "Revati",
+      "pada": 1
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 186.7695,
+        "sign": "Libra",
+        "degree_in_sign": 6,
+        "minute_in_sign": 46,
+        "nakshatra": "Swati",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 190.446198,
+        "sign": "Libra",
+        "degree_in_sign": 10,
+        "minute_in_sign": 26,
+        "nakshatra": "Swati",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 218.775747,
+        "sign": "Scorpio",
+        "degree_in_sign": 8,
+        "minute_in_sign": 46,
+        "nakshatra": "Anuradha",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 169.377414,
+        "sign": "Virgo",
+        "degree_in_sign": 19,
+        "minute_in_sign": 22,
+        "nakshatra": "Hasta",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 230.737856,
+        "sign": "Scorpio",
+        "degree_in_sign": 20,
+        "minute_in_sign": 44,
+        "nakshatra": "Jyeshtha",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 203.803068,
+        "sign": "Libra",
+        "degree_in_sign": 23,
+        "minute_in_sign": 48,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 324.881745,
+        "sign": "Aquarius",
+        "degree_in_sign": 24,
+        "minute_in_sign": 52,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 182.72561,
+        "sign": "Libra",
+        "degree_in_sign": 2,
+        "minute_in_sign": 43,
+        "nakshatra": "Chitra",
+        "pada": 3
+      },
+      "Ketu": {
+        "longitude": 2.72561,
+        "sign": "Aries",
+        "degree_in_sign": 2,
+        "minute_in_sign": 43,
+        "nakshatra": "Ashwini",
+        "pada": 1
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Rahu",
+      "balance_years": 12.8976,
+      "balance_days": 4710.8,
+      "fraction_remaining": 0.7165
+    }
+  },
+  {
+    "name": "Standard Benchmark 2010",
+    "dob": "2010-03-21",
+    "tob": "06:00:00",
+    "lat": 17.385,
+    "lon": 78.4867,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 328.96038,
+      "sign": "Aquarius",
+      "degree_in_sign": 28,
+      "minute_in_sign": 57,
+      "nakshatra": "Purva Bhadrapada",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 336.283997,
+        "sign": "Pisces",
+        "degree_in_sign": 6,
+        "minute_in_sign": 17,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 1
+      },
+      "Moon": {
+        "longitude": 36.011738,
+        "sign": "Taurus",
+        "degree_in_sign": 6,
+        "minute_in_sign": 0,
+        "nakshatra": "Krittika",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 96.915715,
+        "sign": "Cancer",
+        "degree_in_sign": 6,
+        "minute_in_sign": 54,
+        "nakshatra": "Pushya",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 342.689339,
+        "sign": "Pisces",
+        "degree_in_sign": 12,
+        "minute_in_sign": 41,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 320.671361,
+        "sign": "Aquarius",
+        "degree_in_sign": 20,
+        "minute_in_sign": 40,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 352.758944,
+        "sign": "Pisces",
+        "degree_in_sign": 22,
+        "minute_in_sign": 45,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 157.361384,
+        "sign": "Virgo",
+        "degree_in_sign": 7,
+        "minute_in_sign": 21,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 263.900567,
+        "sign": "Sagittarius",
+        "degree_in_sign": 23,
+        "minute_in_sign": 54,
+        "nakshatra": "Purva Ashadha",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 83.900567,
+        "sign": "Gemini",
+        "degree_in_sign": 23,
+        "minute_in_sign": 54,
+        "nakshatra": "Punarvasu",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Sun",
+      "balance_years": 1.7947,
+      "balance_days": 655.5,
+      "fraction_remaining": 0.2991
+    }
+  },
+  {
+    "name": "Standard Benchmark 1978",
+    "dob": "1978-05-10",
+    "tob": "22:15:00",
+    "lat": 23.0225,
+    "lon": 72.5714,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 247.670528,
+      "sign": "Sagittarius",
+      "degree_in_sign": 7,
+      "minute_in_sign": 40,
+      "nakshatra": "Mula",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 26.10676,
+        "sign": "Aries",
+        "degree_in_sign": 26,
+        "minute_in_sign": 6,
+        "nakshatra": "Bharani",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 65.478515,
+        "sign": "Gemini",
+        "degree_in_sign": 5,
+        "minute_in_sign": 28,
+        "nakshatra": "Mrigashira",
+        "pada": 4
+      },
+      "Mars": {
+        "longitude": 108.833778,
+        "sign": "Cancer",
+        "degree_in_sign": 18,
+        "minute_in_sign": 50,
+        "nakshatra": "Ashlesha",
+        "pada": 1
+      },
+      "Mercury": {
+        "longitude": 359.920848,
+        "sign": "Pisces",
+        "degree_in_sign": 29,
+        "minute_in_sign": 55,
+        "nakshatra": "Revati",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 71.273016,
+        "sign": "Gemini",
+        "degree_in_sign": 11,
+        "minute_in_sign": 16,
+        "nakshatra": "Ardra",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 52.699299,
+        "sign": "Taurus",
+        "degree_in_sign": 22,
+        "minute_in_sign": 41,
+        "nakshatra": "Rohini",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 120.30128,
+        "sign": "Leo",
+        "degree_in_sign": 0,
+        "minute_in_sign": 18,
+        "nakshatra": "Magha",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 161.362477,
+        "sign": "Virgo",
+        "degree_in_sign": 11,
+        "minute_in_sign": 21,
+        "nakshatra": "Hasta",
+        "pada": 1
+      },
+      "Ketu": {
+        "longitude": 341.362477,
+        "sign": "Pisces",
+        "degree_in_sign": 11,
+        "minute_in_sign": 21,
+        "nakshatra": "Uttara Bhadrapada",
+        "pada": 3
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mars",
+      "balance_years": 0.6238,
+      "balance_days": 227.8,
+      "fraction_remaining": 0.0891
+    }
+  },
+  {
+    "name": "Standard Benchmark 2020",
+    "dob": "2020-11-11",
+    "tob": "11:11:00",
+    "lat": 18.5204,
+    "lon": 73.8567,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 266.392672,
+      "sign": "Sagittarius",
+      "degree_in_sign": 26,
+      "minute_in_sign": 23,
+      "nakshatra": "Purva Ashadha",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 205.144881,
+        "sign": "Libra",
+        "degree_in_sign": 25,
+        "minute_in_sign": 8,
+        "nakshatra": "Vishakha",
+        "pada": 2
+      },
+      "Moon": {
+        "longitude": 149.501017,
+        "sign": "Leo",
+        "degree_in_sign": 29,
+        "minute_in_sign": 30,
+        "nakshatra": "Uttara Phalguni",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 351.142266,
+        "sign": "Pisces",
+        "degree_in_sign": 21,
+        "minute_in_sign": 8,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 186.192775,
+        "sign": "Libra",
+        "degree_in_sign": 6,
+        "minute_in_sign": 11,
+        "nakshatra": "Chitra",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 268.448048,
+        "sign": "Sagittarius",
+        "degree_in_sign": 28,
+        "minute_in_sign": 26,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 173.137066,
+        "sign": "Virgo",
+        "degree_in_sign": 23,
+        "minute_in_sign": 8,
+        "nakshatra": "Hasta",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 272.689225,
+        "sign": "Capricorn",
+        "degree_in_sign": 2,
+        "minute_in_sign": 41,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 2
+      },
+      "Rahu": {
+        "longitude": 56.184641,
+        "sign": "Taurus",
+        "degree_in_sign": 26,
+        "minute_in_sign": 11,
+        "nakshatra": "Mrigashira",
+        "pada": 1
+      },
+      "Ketu": {
+        "longitude": 236.184641,
+        "sign": "Scorpio",
+        "degree_in_sign": 26,
+        "minute_in_sign": 11,
+        "nakshatra": "Jyeshtha",
+        "pada": 3
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Sun",
+      "balance_years": 4.7245,
+      "balance_days": 1725.6,
+      "fraction_remaining": 0.7874
+    }
+  },
+  {
+    "name": "Standard Benchmark 2005",
+    "dob": "2005-02-28",
+    "tob": "04:30:00",
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "tz": "Asia/Kolkata",
+    "expected_lagna": {
+      "longitude": 287.368511,
+      "sign": "Capricorn",
+      "degree_in_sign": 17,
+      "minute_in_sign": 22,
+      "nakshatra": "Shravana",
+      "pada": 3
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 315.52524,
+        "sign": "Aquarius",
+        "degree_in_sign": 15,
+        "minute_in_sign": 31,
+        "nakshatra": "Shatabhisha",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 178.871299,
+        "sign": "Virgo",
+        "degree_in_sign": 28,
+        "minute_in_sign": 52,
+        "nakshatra": "Chitra",
+        "pada": 2
+      },
+      "Mars": {
+        "longitude": 261.127807,
+        "sign": "Sagittarius",
+        "degree_in_sign": 21,
+        "minute_in_sign": 7,
+        "nakshatra": "Purva Ashadha",
+        "pada": 3
+      },
+      "Mercury": {
+        "longitude": 327.006645,
+        "sign": "Aquarius",
+        "degree_in_sign": 27,
+        "minute_in_sign": 0,
+        "nakshatra": "Purva Bhadrapada",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 173.896129,
+        "sign": "Virgo",
+        "degree_in_sign": 23,
+        "minute_in_sign": 53,
+        "nakshatra": "Chitra",
+        "pada": 1
+      },
+      "Venus": {
+        "longitude": 307.732203,
+        "sign": "Aquarius",
+        "degree_in_sign": 7,
+        "minute_in_sign": 43,
+        "nakshatra": "Shatabhisha",
+        "pada": 1
+      },
+      "Saturn": {
+        "longitude": 86.915922,
+        "sign": "Gemini",
+        "degree_in_sign": 26,
+        "minute_in_sign": 54,
+        "nakshatra": "Punarvasu",
+        "pada": 3
+      },
+      "Rahu": {
+        "longitude": 359.498396,
+        "sign": "Pisces",
+        "degree_in_sign": 29,
+        "minute_in_sign": 29,
+        "nakshatra": "Revati",
+        "pada": 4
+      },
+      "Ketu": {
+        "longitude": 179.498396,
+        "sign": "Virgo",
+        "degree_in_sign": 29,
+        "minute_in_sign": 29,
+        "nakshatra": "Chitra",
+        "pada": 2
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Mars",
+      "balance_years": 4.0926,
+      "balance_days": 1494.8,
+      "fraction_remaining": 0.5847
+    }
+  },
+  {
+    "name": "High Latitude Oslo",
+    "dob": "1990-06-21",
+    "tob": "12:00:00",
+    "lat": 59.9139,
+    "lon": 10.7522,
+    "tz": "Europe/Oslo",
+    "expected_lagna": {
+      "longitude": 143.878993,
+      "sign": "Leo",
+      "degree_in_sign": 23,
+      "minute_in_sign": 52,
+      "nakshatra": "Purva Phalguni",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 66.051811,
+        "sign": "Gemini",
+        "degree_in_sign": 6,
+        "minute_in_sign": 3,
+        "nakshatra": "Mrigashira",
+        "pada": 4
+      },
+      "Moon": {
+        "longitude": 46.783239,
+        "sign": "Taurus",
+        "degree_in_sign": 16,
+        "minute_in_sign": 46,
+        "nakshatra": "Rohini",
+        "pada": 3
+      },
+      "Mars": {
+        "longitude": 351.546476,
+        "sign": "Pisces",
+        "degree_in_sign": 21,
+        "minute_in_sign": 32,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 52.890112,
+        "sign": "Taurus",
+        "degree_in_sign": 22,
+        "minute_in_sign": 53,
+        "nakshatra": "Rohini",
+        "pada": 4
+      },
+      "Jupiter": {
+        "longitude": 83.452984,
+        "sign": "Gemini",
+        "degree_in_sign": 23,
+        "minute_in_sign": 27,
+        "nakshatra": "Punarvasu",
+        "pada": 2
+      },
+      "Venus": {
+        "longitude": 32.023547,
+        "sign": "Taurus",
+        "degree_in_sign": 2,
+        "minute_in_sign": 1,
+        "nakshatra": "Krittika",
+        "pada": 2
+      },
+      "Saturn": {
+        "longitude": 269.94081,
+        "sign": "Sagittarius",
+        "degree_in_sign": 29,
+        "minute_in_sign": 56,
+        "nakshatra": "Uttara Ashadha",
+        "pada": 1
+      },
+      "Rahu": {
+        "longitude": 284.087223,
+        "sign": "Capricorn",
+        "degree_in_sign": 14,
+        "minute_in_sign": 5,
+        "nakshatra": "Shravana",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 104.087223,
+        "sign": "Cancer",
+        "degree_in_sign": 14,
+        "minute_in_sign": 5,
+        "nakshatra": "Pushya",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Moon",
+      "balance_years": 4.9126,
+      "balance_days": 1794.3,
+      "fraction_remaining": 0.4913
+    }
+  },
+  {
+    "name": "Southern Hemisphere Sydney",
+    "dob": "1988-12-25",
+    "tob": "15:30:00",
+    "lat": -33.8688,
+    "lon": 151.2093,
+    "tz": "Australia/Sydney",
+    "expected_lagna": {
+      "longitude": 11.999288,
+      "sign": "Aries",
+      "degree_in_sign": 11,
+      "minute_in_sign": 59,
+      "nakshatra": "Ashwini",
+      "pada": 4
+    },
+    "expected_planets": {
+      "Sun": {
+        "longitude": 249.903098,
+        "sign": "Sagittarius",
+        "degree_in_sign": 9,
+        "minute_in_sign": 54,
+        "nakshatra": "Mula",
+        "pada": 3
+      },
+      "Moon": {
+        "longitude": 93.412632,
+        "sign": "Cancer",
+        "degree_in_sign": 3,
+        "minute_in_sign": 24,
+        "nakshatra": "Pushya",
+        "pada": 1
+      },
+      "Mars": {
+        "longitude": 353.111903,
+        "sign": "Pisces",
+        "degree_in_sign": 23,
+        "minute_in_sign": 6,
+        "nakshatra": "Revati",
+        "pada": 2
+      },
+      "Mercury": {
+        "longitude": 263.175042,
+        "sign": "Sagittarius",
+        "degree_in_sign": 23,
+        "minute_in_sign": 10,
+        "nakshatra": "Purva Ashadha",
+        "pada": 3
+      },
+      "Jupiter": {
+        "longitude": 33.536635,
+        "sign": "Taurus",
+        "degree_in_sign": 3,
+        "minute_in_sign": 32,
+        "nakshatra": "Krittika",
+        "pada": 3
+      },
+      "Venus": {
+        "longitude": 225.577034,
+        "sign": "Scorpio",
+        "degree_in_sign": 15,
+        "minute_in_sign": 34,
+        "nakshatra": "Anuradha",
+        "pada": 4
+      },
+      "Saturn": {
+        "longitude": 251.082891,
+        "sign": "Sagittarius",
+        "degree_in_sign": 11,
+        "minute_in_sign": 4,
+        "nakshatra": "Mula",
+        "pada": 4
+      },
+      "Rahu": {
+        "longitude": 313.06931,
+        "sign": "Aquarius",
+        "degree_in_sign": 13,
+        "minute_in_sign": 4,
+        "nakshatra": "Shatabhisha",
+        "pada": 2
+      },
+      "Ketu": {
+        "longitude": 133.06931,
+        "sign": "Leo",
+        "degree_in_sign": 13,
+        "minute_in_sign": 4,
+        "nakshatra": "Magha",
+        "pada": 4
+      }
+    },
+    "expected_dasha_balance": {
+      "lord": "Saturn",
+      "balance_years": 18.887,
+      "balance_days": 6898.3,
+      "fraction_remaining": 0.9941
+    }
+  }
+]

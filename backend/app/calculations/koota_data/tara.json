@@ -1,0 +1,24 @@
+{
+  "version": "1.0.0",
+  "name": "Tara (Dina) Koota",
+  "max_points": 3,
+  "citation": "Brihat Parashara Hora Shastra Chapter 81 Slokas 7-10; Muhurtha Chintamani",
+  "description": "Evaluates destiny, longevity, health, and mutual prosperity calculated by counting lunar mansions modulo 9.",
+  "taras": {
+    "1": {"name": "Janma", "nature": "Inauspicious", "meaning": "Birth / Body stress"},
+    "2": {"name": "Sampat", "nature": "Auspicious", "meaning": "Prosperity & Wealth"},
+    "3": {"name": "Vipat", "nature": "Inauspicious", "meaning": "Calamity & Loss"},
+    "4": {"name": "Kshema", "nature": "Auspicious", "meaning": "Security & Comfort"},
+    "5": {"name": "Pratyak", "nature": "Inauspicious", "meaning": "Opposition & Hindrances"},
+    "6": {"name": "Sadhana", "nature": "Auspicious", "meaning": "Success & Accomplishment"},
+    "7": {"name": "Naidhana", "nature": "Inauspicious", "meaning": "Danger & Sorrow"},
+    "8": {"name": "Mitra", "nature": "Auspicious", "meaning": "Friendship & Harmony"},
+    "9": {"name": "Paramamitra", "nature": "Auspicious", "meaning": "Deep intimacy & Alliance"}
+  },
+  "auspicious_tara_indices": [2, 4, 6, 8, 9],
+  "scoring_rules": {
+    "both_auspicious": 3.0,
+    "one_auspicious": 1.5,
+    "neither_auspicious": 0.0
+  }
+}
