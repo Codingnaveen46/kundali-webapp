@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "language": "en",
+  "description": "Deterministic plain-language astrological glossary for AI compatibility report generation.",
+  "items": {
+    "Dina Porutham": "Dina Porutham evaluates day-to-day vitality and health harmony between birth stars.",
+    "Gana Porutham": "Gana Porutham assesses temperamental alignment and social attitudes between the couple.",
+    "Mahendra Porutham": "Mahendra Porutham evaluates family growth, progeny welfare, and enduring attachment.",
+    "Stree Deergha Porutham": "Stree Deergha Porutham checks lunar distance to promote the wife's wellbeing and prosperity.",
+    "Yoni Porutham": "Yoni Porutham checks biological affinity and mutual attraction between animal archetypes.",
+    "Rasi Porutham": "Rasi Porutham examines the Moon sign distance for emotional and domestic accord.",
+    "Rasyadhipathi Porutham": "Rasyadhipathi Porutham evaluates friendship between planetary rulers of the Moon signs.",
+    "Vashya Porutham": "Vashya Porutham measures natural interpersonal amenability and mutual respect.",
+    "Rajju Porutham": "Rajju Porutham evaluates longevity and mangalya protection across spinal and bodily stations.",
+    "Vedha Porutham": "Vedha Porutham verifies the absence of mutually afflicted or repellent star pairings.",
+    "Varna Koota": "Varna Koota evaluates spiritual compatibility and ego alignment.",
+    "Vashya Koota": "Vashya Koota measures mutual psychological attraction and natural amenability.",
+    "Tara Koota": "Tara Koota evaluates mental health, fortune, and wellbeing across nakshatra cycles.",
+    "Yoni Koota": "Yoni Koota assesses biological and physical affinity through animal archetypes.",
+    "Graha Maitri Koota": "Graha Maitri Koota assesses intellectual friendship and outlook between Moon sign rulers.",
+    "Gana Koota": "Gana Koota evaluates temperamental harmony across Deva, Manushya, and Rakshasa temperaments.",
+    "Bhakoot Koota": "Bhakoot Koota measures emotional bonding, financial stability, and family welfare.",
+    "Nadi Koota": "Nadi Koota evaluates Ayurvedic physiological and nervous system balance across Vata, Pitta, and Kapha.",
+    "Mangal Dosha": "Mangal Dosha evaluates Mars placement from Lagna and Moon for temperamental friction and domestic adjustment.",
+    "Dosha Samya": "Dosha Samya assesses whether Mars afflictions between charts are mutually balanced or un-neutralized."
+  }
+}

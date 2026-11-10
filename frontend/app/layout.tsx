@@ -20,8 +20,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Kundli - Accurate Vedic Astrology & Ashtakoota Marriage Matching",
-  description: "Generate high-precision Janma Kundali and Ashtakoota Milan using Swiss Ephemeris. Privacy-first, zero-storage by default.",
+  title: "Kundli · High-Precision Vedic Astrology & Ashtakoota Milan",
+  description: "Swiss Ephemeris precision Janma Kundali, Ashtakoota Guna Milan, and South Indian Dasa Porutham. Privacy-first, zero-storage by default.",
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen celestial-bg`}
       >
         {children}
       </body>

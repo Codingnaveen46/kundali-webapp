@@ -42,7 +42,7 @@
       },
       "matrix": {
         "Chatushpada": {"Chatushpada": 2.0, "Manava": 0.5, "Jalachara": 1.0, "Keeta": 1.0, "Vanachara": 0.0},
-        "Manava": {"Chatushpada": 1.0, "Manava": 2.0, "Jalachara": 0.5, "Keeta": 1.0, "Vanachara": 0.0},
+        "Manava": {"Chatushpada": 1.0, "Manava": 2.0, "Jalachara": 0.0, "Keeta": 1.0, "Vanachara": 0.0},
         "Jalachara": {"Chatushpada": 1.0, "Manava": 0.5, "Jalachara": 2.0, "Keeta": 1.0, "Vanachara": 1.0},
         "Keeta": {"Chatushpada": 1.0, "Manava": 1.0, "Jalachara": 1.0, "Keeta": 2.0, "Vanachara": 0.0},
         "Vanachara": {"Chatushpada": 0.0, "Manava": 0.0, "Jalachara": 0.0, "Keeta": 0.0, "Vanachara": 2.0}

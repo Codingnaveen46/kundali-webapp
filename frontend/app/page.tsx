@@ -7,12 +7,16 @@ import { IntakePanel } from "@/components/intake/IntakePanel";
 import { ManualFormData } from "@/components/intake/ManualForm";
 import { BirthChartReport } from "@/components/reports/BirthChartReport";
 import { MarriageMatchReport } from "@/components/reports/MarriageMatchReport";
-import { exportReportToPdf } from "@/components/reports/PdfExporter";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { ConsentModal } from "@/components/ui/ConsentModal";
 import { Footer } from "@/components/ui/Footer";
 import { LanguageCode, TRANSLATIONS } from "@/i18n/translations";
-import { Moon, Sun, Heart, Sparkles, AlertCircle, RefreshCw } from "lucide-react";
+import { Moon, Sun, Heart, Sparkles, AlertCircle, RefreshCw, Compass } from "lucide-react";
+
+/** Opens the dedicated print layout route (browser print-to-PDF, selectable text). */
+function openPrintLayout(path: string): void {
+  window.location.assign(path);
+}
 
 export default function Home() {
   const [lang, setLang] = useState<LanguageCode>("en");
@@ -46,13 +50,21 @@ export default function Home() {
         birth_date: formData.birth_date,
         birth_time: formData.is_time_unknown ? undefined : formData.birth_time,
         is_time_unknown: formData.is_time_unknown,
+        place_of_birth: formData.place_of_birth,
         latitude: formData.latitude ?? undefined,
         longitude: formData.longitude ?? undefined,
         iana_timezone: formData.iana_timezone,
         ayanamsa: "LAHIRI",
         house_system: "W",
+        node_type: "mean",
       });
       setBirthChart(chart);
+      // Persist for the dedicated print route (kept in session storage only; never on any server)
+      try {
+        sessionStorage.setItem("kundli:lastBirthChart", JSON.stringify(chart));
+      } catch {
+        /* storage unavailable (private mode) — print route refetches */
+      }
     } catch (err: any) {
       setBirthChartError(err.message || "Failed to generate birth chart.");
     } finally {
@@ -79,6 +91,7 @@ export default function Home() {
           latitude: groomData.latitude ?? undefined,
           longitude: groomData.longitude ?? undefined,
           iana_timezone: groomData.iana_timezone,
+          node_type: "mean",
         },
         bride: {
           name: brideData.name,
@@ -89,10 +102,17 @@ export default function Home() {
           latitude: brideData.latitude ?? undefined,
           longitude: brideData.longitude ?? undefined,
           iana_timezone: brideData.iana_timezone,
+          node_type: "mean",
         },
-        min_score_threshold: 18.0,
+        node_type: "mean",
       });
       setMatchResult(match);
+      // Persist for the dedicated print route (kept in session storage only; never on any server)
+      try {
+        sessionStorage.setItem("kundli:lastMatch", JSON.stringify(match));
+      } catch {
+        /* storage unavailable (private mode) — print route refetches */
+      }
     } catch (err: any) {
       setMatchError(err.message || "Failed to generate marriage compatibility report.");
     } finally {
@@ -108,19 +128,24 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "dark bg-stone-950 text-stone-100" : "bg-stone-50/60 text-stone-900"}`}>
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-30 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md border-b border-stone-200 dark:border-stone-800 py-3 px-4">
+    <div className={`min-h-screen ${isDarkMode ? "dark bg-stone-950 text-stone-100" : "bg-stone-50/70 text-stone-900"}`}>
+      {/* Refined Navigation Header */}
+      <header className="sticky top-0 z-30 bg-white/85 dark:bg-stone-900/85 backdrop-blur-xl border-b border-stone-200/80 dark:border-stone-800 shadow-sm py-3.5 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-amber-600 to-amber-400 text-white flex items-center justify-center shadow-md font-bold">
-              <Sparkles className="w-5 h-5" />
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-600 via-amber-500 to-amber-400 text-white flex items-center justify-center shadow-lg shadow-amber-500/20 font-bold ring-2 ring-amber-500/20">
+              <Sparkles className="w-5 h-5 text-white" />
             </div>
             <div>
-              <span className="font-black text-lg tracking-tight text-amber-700 dark:text-amber-400 block leading-tight">
-                {t.app_title}
-              </span>
-              <span className="text-[10px] text-stone-500 hidden sm:block">
+              <div className="flex items-center gap-2">
+                <span className="font-extrabold text-xl tracking-tight text-stone-900 dark:text-stone-50 font-serif-vedic">
+                  {t.app_title}
+                </span>
+                <span className="hidden md:inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-wider bg-amber-500/10 text-amber-700 dark:text-amber-400 border border-amber-500/20">
+                  <Compass className="w-2.5 h-2.5" /> Swiss Ephemeris
+                </span>
+              </div>
+              <span className="text-[11px] text-stone-500 dark:text-stone-400 hidden sm:block">
                 {t.app_subtitle}
               </span>
             </div>
@@ -131,7 +156,7 @@ export default function Home() {
             <button
               type="button"
               onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-xl bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:text-amber-600"
+              className="p-2.5 rounded-xl bg-stone-100 dark:bg-stone-800/80 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 border border-stone-200/60 dark:border-stone-700 transition-all shadow-sm active:scale-95"
               title="Toggle Dark Mode"
             >
               {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
@@ -141,24 +166,24 @@ export default function Home() {
       </header>
 
       {/* Main Container */}
-      <main className="max-w-6xl mx-auto p-4 sm:p-6">
+      <main className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
         {/* Primary Feature Tabs */}
         <div className="flex justify-center mb-8">
-          <div className="inline-flex bg-stone-200/80 dark:bg-stone-800 p-1.5 rounded-2xl shadow-inner text-xs sm:text-sm font-bold">
+          <div className="inline-flex bg-stone-200/70 dark:bg-stone-800/80 p-1.5 rounded-2xl shadow-inner text-xs sm:text-sm font-bold border border-stone-300/40 dark:border-stone-700/60 backdrop-blur-md">
             <button
               type="button"
               onClick={() => {
                 setActiveTab("birth_chart");
                 setMatchResult(null);
               }}
-              className={`px-4 sm:px-6 py-2.5 rounded-xl transition-all flex items-center gap-2 ${
+              className={`px-5 sm:px-7 py-3 rounded-xl transition-all duration-200 flex items-center gap-2.5 ${
                 activeTab === "birth_chart"
-                  ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-md"
-                  : "text-stone-600 dark:text-stone-400 hover:text-stone-900"
+                  ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-md shadow-amber-500/5 ring-1 ring-stone-900/5"
+                  : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
               }`}
             >
-              <Moon className="w-4 h-4" />
-              <span>{t.tab_birth_chart}</span>
+              <Moon className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+              <span className="tracking-tight">{t.tab_birth_chart}</span>
             </button>
 
             <button
@@ -167,14 +192,14 @@ export default function Home() {
                 setActiveTab("marriage_match");
                 setBirthChart(null);
               }}
-              className={`px-4 sm:px-6 py-2.5 rounded-xl transition-all flex items-center gap-2 ${
+              className={`px-5 sm:px-7 py-3 rounded-xl transition-all duration-200 flex items-center gap-2.5 ${
                 activeTab === "marriage_match"
-                  ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-md"
-                  : "text-stone-600 dark:text-stone-400 hover:text-stone-900"
+                  ? "bg-white dark:bg-stone-700 text-rose-700 dark:text-rose-400 shadow-md shadow-rose-500/5 ring-1 ring-stone-900/5"
+                  : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100"
               }`}
             >
-              <Heart className="w-4 h-4 text-rose-500" />
-              <span>{t.tab_marriage_match}</span>
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500/20" />
+              <span className="tracking-tight">{t.tab_marriage_match}</span>
             </button>
           </div>
         </div>
@@ -185,10 +210,10 @@ export default function Home() {
             {!birthChart ? (
               <div className="max-w-xl mx-auto space-y-4">
                 <div className="text-center mb-6">
-                  <h2 className="text-xl font-extrabold text-stone-900 dark:text-stone-100">
+                  <h2 className="text-2xl font-black text-stone-900 dark:text-stone-100 font-serif-vedic">
                     Generate Your Janma Kundali
                   </h2>
-                  <p className="text-xs text-stone-500 mt-1">
+                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 max-w-md mx-auto">
                     Upload an existing biodata, paste text/WhatsApp message, or fill in manual birth details.
                   </p>
                 </div>
@@ -200,15 +225,15 @@ export default function Home() {
                 />
 
                 {isBirthChartLoading && (
-                  <div className="p-4 text-center text-xs text-amber-700 dark:text-amber-400 font-semibold animate-pulse flex items-center justify-center gap-2">
-                    <RefreshCw className="w-4 h-4 animate-spin" />
-                    Computing high-precision planetary ephemeris, houses, and Vimshottari dasha...
+                  <div className="p-5 bg-amber-500/10 dark:bg-amber-950/40 rounded-2xl border border-amber-500/30 text-center text-xs text-amber-800 dark:text-amber-300 font-bold animate-pulse flex items-center justify-center gap-2.5 shadow-sm">
+                    <RefreshCw className="w-4 h-4 animate-spin text-amber-600" />
+                    <span>Computing high-precision planetary ephemeris, houses, and Vimshottari dasha...</span>
                   </div>
                 )}
 
                 {birthChartError && (
-                  <div className="p-4 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-xl border border-rose-200 dark:border-rose-900 flex items-center gap-2">
-                    <AlertCircle className="w-4 h-4 shrink-0" />
+                  <div className="p-4 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-2xl border border-rose-200 dark:border-rose-900 flex items-center gap-2.5 shadow-sm">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
                     <span>{birthChartError}</span>
                   </div>
                 )}
@@ -216,13 +241,11 @@ export default function Home() {
             ) : (
               <BirthChartReport
                 chart={birthChart}
-                onReset={() => setBirthChart(null)}
-                onExportPdf={() =>
-                  exportReportToPdf(
-                    "printable-birth-chart",
-                    `${birthChart.metadata.name.replace(/\s+/g, "_")}_Kundali.pdf`
-                  )
-                }
+                onReset={() => {
+                  setBirthChart(null);
+                  sessionStorage.removeItem("kundli:lastBirthChart");
+                }}
+                onExportPdf={() => openPrintLayout("/print/janma")}
               />
             )}
           </div>
@@ -234,10 +257,10 @@ export default function Home() {
             {!matchResult ? (
               <div className="space-y-6">
                 <div className="text-center max-w-xl mx-auto mb-6">
-                  <h2 className="text-xl font-extrabold text-stone-900 dark:text-stone-100">
+                  <h2 className="text-2xl font-black text-stone-900 dark:text-stone-100 font-serif-vedic">
                     Kundali Milan: Ashtakoota &amp; Dasa Koota
                   </h2>
-                  <p className="text-xs text-stone-500 mt-1">
+                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
                     Enter or upload details for Groom and Bride independently. Mix and match methods (e.g. upload groom, type bride).
                   </p>
                 </div>
@@ -246,6 +269,12 @@ export default function Home() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
                   {/* Groom Intake Panel */}
                   <div className="space-y-3">
+                    <div className="flex items-center gap-2 px-1">
+                      <span className="w-2 h-2 rounded-full bg-amber-500" />
+                      <span className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">
+                        Groom Details (Varana)
+                      </span>
+                    </div>
                     <IntakePanel
                       panelLabel="Groom Details"
                       initialProfile={groomInitialProfile}
@@ -256,12 +285,14 @@ export default function Home() {
                       onDualProfileDetected={handleDualProfileDetected}
                     />
                     {groomData && (
-                      <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 text-xs rounded-xl border border-emerald-200 dark:border-emerald-900 flex items-center justify-between">
-                        <span>✓ Groom confirmed: <strong>{groomData.name}</strong> ({groomData.birth_date})</span>
+                      <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 text-xs rounded-2xl border border-emerald-300 dark:border-emerald-800 flex items-center justify-between shadow-sm">
+                        <span className="font-medium">
+                          ✓ Groom confirmed: <strong>{groomData.name}</strong> ({groomData.birth_date})
+                        </span>
                         <button
                           type="button"
                           onClick={() => setGroomData(null)}
-                          className="text-[11px] font-semibold text-emerald-700 underline"
+                          className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 underline hover:no-underline px-2 py-0.5"
                         >
                           Change
                         </button>
@@ -271,6 +302,12 @@ export default function Home() {
 
                   {/* Bride Intake Panel */}
                   <div className="space-y-3">
+                    <div className="flex items-center gap-2 px-1">
+                      <span className="w-2 h-2 rounded-full bg-rose-500" />
+                      <span className="text-xs font-bold text-rose-700 dark:text-rose-400 uppercase tracking-wider">
+                        Bride Details (Kanya)
+                      </span>
+                    </div>
                     <IntakePanel
                       panelLabel="Bride Details"
                       initialProfile={brideInitialProfile}
@@ -281,12 +318,14 @@ export default function Home() {
                       onDualProfileDetected={handleDualProfileDetected}
                     />
                     {brideData && (
-                      <div className="p-3 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 text-xs rounded-xl border border-emerald-200 dark:border-emerald-900 flex items-center justify-between">
-                        <span>✓ Bride confirmed: <strong>{brideData.name}</strong> ({brideData.birth_date})</span>
+                      <div className="p-3.5 bg-emerald-50 dark:bg-emerald-950/30 text-emerald-800 dark:text-emerald-300 text-xs rounded-2xl border border-emerald-300 dark:border-emerald-800 flex items-center justify-between shadow-sm">
+                        <span className="font-medium">
+                          ✓ Bride confirmed: <strong>{brideData.name}</strong> ({brideData.birth_date})
+                        </span>
                         <button
                           type="button"
                           onClick={() => setBrideData(null)}
-                          className="text-[11px] font-semibold text-emerald-700 underline"
+                          className="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 underline hover:no-underline px-2 py-0.5"
                         >
                           Change
                         </button>
@@ -301,30 +340,30 @@ export default function Home() {
                     type="button"
                     disabled={!groomData || !brideData || isMatchLoading}
                     onClick={handleGenerateMarriageMatch}
-                    className="w-full py-3.5 px-6 bg-gradient-to-r from-amber-600 to-rose-600 hover:from-amber-700 hover:to-rose-700 disabled:opacity-50 text-white font-extrabold rounded-2xl shadow-xl transition-all flex items-center justify-center gap-2 text-sm"
+                    className="w-full py-4 px-6 bg-gradient-to-r from-amber-600 via-amber-700 to-rose-600 hover:from-amber-700 hover:to-rose-700 disabled:opacity-40 text-white font-extrabold rounded-2xl shadow-xl shadow-amber-600/25 transition-all duration-200 flex items-center justify-center gap-2.5 text-sm active:scale-98"
                   >
                     {isMatchLoading ? (
                       <>
-                        <RefreshCw className="w-4 h-4 animate-spin" />
-                        Evaluating Ashtakoota, Nadi/Bhakoot Cancellations &amp; Dosha Samya...
+                        <RefreshCw className="w-4 h-4 animate-spin text-white" />
+                        <span>Evaluating Ashtakoota, Nadi/Bhakoot Cancellations &amp; Dosha Samya...</span>
                       </>
                     ) : (
                       <>
                         <Heart className="w-4 h-4 fill-white" />
-                        Calculate Ashtakoota &amp; Dasa Koota Match
+                        <span>Calculate Ashtakoota &amp; Dasa Koota Match</span>
                       </>
                     )}
                   </button>
 
                   {(!groomData || !brideData) && (
-                    <p className="text-[11px] text-stone-500 mt-2">
+                    <p className="text-[11px] text-stone-500 dark:text-stone-400 mt-2.5">
                       Please confirm both Groom and Bride details above to calculate compatibility.
                     </p>
                   )}
 
                   {matchError && (
-                    <div className="mt-3 p-3 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-xl border border-rose-200 dark:border-rose-900 flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0" />
+                    <div className="mt-3.5 p-3.5 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-2xl border border-rose-200 dark:border-rose-900 flex items-center gap-2 shadow-sm">
+                      <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
                       <span>{matchError}</span>
                     </div>
                   )}
@@ -333,13 +372,11 @@ export default function Home() {
             ) : (
               <MarriageMatchReport
                 matchResult={matchResult}
-                onReset={() => setMatchResult(null)}
-                onExportPdf={() =>
-                  exportReportToPdf(
-                    "printable-marriage-match",
-                    `${matchResult.groom_summary.name}_and_${matchResult.bride_summary.name}_Milan.pdf`
-                  )
-                }
+                onReset={() => {
+                  setMatchResult(null);
+                  sessionStorage.removeItem("kundli:lastMatch");
+                }}
+                onExportPdf={() => openPrintLayout("/print/match")}
               />
             )}
           </div>

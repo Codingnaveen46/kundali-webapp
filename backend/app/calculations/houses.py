@@ -37,7 +37,8 @@ def calculate_lagna(
     nak_idx, nak_name, pada, rem_deg = get_nakshatra_and_pada(lagna_long)
     
     # Navamsa calculation for Lagna:
-    navamsa_sign_idx = int(lagna_long // (3.0 + 20.0 / 60.0)) % 12
+    total_minutes = (lagna_long % 360.0) * 60.0
+    navamsa_sign_idx = int((total_minutes + 1e-9) // 200.0) % 12
     
     # Calculate houses
     houses: List[Dict[str, Any]] = []
@@ -103,7 +104,8 @@ def assign_houses_to_planets(
         
         # D9 Navamsa Sign & House
         p_long = p_data["longitude"]
-        navamsa_sign_idx = int(p_long // (3.0 + 20.0 / 60.0)) % 12
+        p_min = (p_long % 360.0) * 60.0
+        navamsa_sign_idx = int((p_min + 1e-9) // 200.0) % 12
         navamsa_house = ((navamsa_sign_idx - lagna_navamsa_idx) % 12) + 1
         
         p_data["navamsa_sign"] = SIGNS[navamsa_sign_idx]

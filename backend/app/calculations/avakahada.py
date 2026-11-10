@@ -16,6 +16,63 @@ def load_json(filename: str) -> Dict[str, Any]:
         return json.load(f)
 
 
+# Name syllable per nakshatra-pada (the 108-syllable Avakahada name table
+# most almanacs print for naming-letter suggestions; unchanged for D1 use).
+NAME_SYLLABLES = [
+    ["Chu", "Che", "Cho", "La"],          # Ashwini
+    ["Li", "Lu", "Le", "Lo"],             # Bharani
+    ["A", "I", "U", "E"],                 # Krittika
+    ["O", "Va", "Vi", "Vu"],              # Rohini
+    ["Ve", "Vo", "Ka", "Ki"],             # Mrigashira
+    ["Ku", "Gha", "Nga", "Chha"],         # Ardra
+    ["Ke", "Ko", "Ha", "Hi"],             # Punarvasu
+    ["Hu", "He", "Ho", "Da"],             # Pushya
+    ["Di", "Du", "De", "Do"],             # Ashlesha
+    ["Ma", "Mi", "Mu", "Me"],             # Magha
+    ["Mo", "Ta", "Ti", "Tu"],             # Purva Phalguni
+    ["Te", "To", "Pa", "Pi"],             # Uttara Phalguni
+    ["Pu", "Sha", "Na", "Tha"],           # Hasta
+    ["Pe", "Po", "Ra", "Ri"],             # Chitra
+    ["Ru", "Re", "Ro", "Ta"],             # Swati
+    ["Ti", "Tu", "Te", "To"],             # Vishakha
+    ["Na", "Ni", "Nu", "Ne"],             # Anuradha
+    ["No", "Ya", "Yi", "Yu"],             # Jyeshtha
+    ["Ye", "Yo", "Bha", "Bhi"],           # Mula
+    ["Bhu", "Dha", "Pha", "Dha"],         # Purva Ashadha
+    ["Bhe", "Bho", "Ja", "Ji"],           # Uttara Ashadha
+    ["Khi", "Khu", "Khe", "Kho"],         # Shravana
+    ["Ga", "Gi", "Gu", "Ge"],             # Dhanishta
+    ["Go", "Sa", "Si", "Su"],             # Shatabhisha
+    ["Se", "So", "Da", "Di"],             # Purva Bhadrapada
+    ["Du", "Tha", "Jha", "Na"],           # Uttara Bhadrapada
+    ["De", "Do", "Cha", "Chi"],           # Revati
+]
+
+# Yunja: classical three-fold nakshatra division (purva / madhya / apara) of
+# the Vimshottari star wheel: first part Revati→Mrigashira (6 stars),
+# middle Ardra→Anuradha (12), last Jyeshtha→Uttara Bhadrapada (9).
+# (Narada Samhita chapter 6, as commonly quoted; traditions differ on the
+# exact grouping, and some reports show a half-division instead.)
+NAKSHATRA_IDX = list(range(27))
+YUNJA_MAPPING = {}
+for _i in (26, 0, 1, 2, 3, 4):
+    YUNJA_MAPPING[_i] = "Purva (First)"
+for _i in range(5, 17):          # Ardra .. Anuradha
+    YUNJA_MAPPING[_i] = "Madhya (Middle)"
+for _i in range(17, 26):         # Jyeshtha .. Uttara Bhadrapada
+    YUNJA_MAPPING[_i] = "Apara (Last)"
+
+# Second Paya school: metal from the birth star itself (almanac practice;
+# no single classical rule — the house-from-Lagna method above is the other
+# common convention and the two can disagree).
+PAYA_NAKSHATRA_GROUPS = {
+    "Swarna (Gold)": {26, 0, 1},     # Revati, Ashwini, Bharani
+    "Loha (Iron)": {2, 3, 4},        # Krittika, Rohini, Mrigashira
+    "Rajata (Silver)": set(range(5, 17)),    # Ardra .. Anuradha
+    "Tamra (Copper)": set(range(17, 26)),    # Jyeshtha .. Uttara Bhadrapada
+}
+
+
 VARNA_DATA = load_json("varna.json")
 GANA_DATA = load_json("gana.json")
 YONI_DATA = load_json("yoni.json")
@@ -46,6 +103,35 @@ PAYA_MAPPING = {
 }
 
 
+def get_vashya_category(sign: str, moon_long: Optional[float] = None, capricorn_mode: str = "split") -> str:
+    """Resolves Vashya category for a zodiac sign and moon longitude.
+    Shared helper used across Ashtakoota, Dasa Koota, and Janma Avakahada.
+    """
+    if sign in ("Aries", "Taurus"):
+        return "Chatushpada"
+    elif sign in ("Gemini", "Virgo", "Libra", "Aquarius"):
+        return "Manava"
+    elif sign in ("Cancer", "Pisces"):
+        return "Jalachara"
+    elif sign == "Scorpio":
+        return "Keeta"
+    elif sign == "Leo":
+        return "Vanachara"
+    elif sign == "Sagittarius":
+        if moon_long is not None:
+            deg = moon_long % 30.0
+            return "Manava" if deg < 15.0 else "Chatushpada"
+        return "Manava"
+    elif sign == "Capricorn":
+        if capricorn_mode == "whole_jalachara":
+            return "Jalachara"
+        if moon_long is not None:
+            deg = moon_long % 30.0
+            return "Chatushpada" if deg < 15.0 else "Jalachara"
+        return "Chatushpada"
+    return "Manava"
+
+
 def calculate_avakahada(
     moon_longitude: float,
     lagna_sign_idx: Optional[int] = None
@@ -62,21 +148,8 @@ def calculate_avakahada(
     yoni_info = YONI_DATA["nakshatra_yoni_mapping"].get(nak_name, {"animal": "Unknown", "gender": "Unknown"})
     nadi = NADI_DATA["nakshatra_nadi_mapping"].get(nak_name, "Unknown")
     
-    # Vashya classification
-    vashya = "Unknown"
-    for cat, signs in VASHYA_DATA["schools"]["category_matrix"]["categories"].items():
-        if isinstance(signs, list) and sign_en in signs:
-            vashya = cat
-            break
-    if vashya == "Unknown":
-        if sign_en == "Sagittarius":
-            vashya = "Manava (1st half) / Chatushpada (2nd half)"
-        elif sign_en == "Capricorn":
-            vashya = "Chatushpada (1st half) / Jalachara (2nd half)"
-        elif sign_en == "Leo":
-            vashya = "Vanachara"
-        elif sign_en == "Scorpio":
-            vashya = "Keeta"
+    # Vashya classification (shared helper with Ashtakoota / Dasa Koota)
+    vashya = get_vashya_category(sign_en, moon_longitude)
             
     tatwa = SIGN_TATWAS[moon_sign_idx]
     
@@ -89,6 +162,15 @@ def calculate_avakahada(
             "result": PAYA_MAPPING.get(moon_house, {"name": "Rajata", "result": "Auspicious"})["result"]
         }
         
+    # Second school: paya by the birth star itself (almanac practice; the two
+    # methods can give different metals for the same birth — shown side by
+    # side, never averaged or chosen between).
+    nakshatra_paya = "Unknown"
+    for metal, naks in PAYA_NAKSHATRA_GROUPS.items():
+        if nak_idx in naks:
+            nakshatra_paya = metal
+            break
+            
     return {
         "rashi": sign_en,
         "rashi_sanskrit": sign_sa,
@@ -104,5 +186,11 @@ def calculate_avakahada(
         "gana": gana,
         "nadi": nadi,
         "tatwa": tatwa,
-        "paya": paya_info
+        # Name letter suggestion for the birth star / pada (108-syllable table)
+        "name_alphabet": NAME_SYLLABLES[nak_idx][pada - 1],
+        # Yunja: three-fold nakshatra division (purva / madhya / apara)
+        "yunja": YUNJA_MAPPING.get(nak_idx, "Unknown"),
+        # Both paya schools, side by side (values only; no good/bad reading)
+        "paya": paya_info,
+        "nakshatra_paya": nakshatra_paya
     }

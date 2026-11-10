@@ -64,9 +64,9 @@
     },
     {
       "code": "NADI_EXEMPT_NAKSHATRA",
-      "name": "Classical Exempt Nakshatra",
-      "description": "Classical authorities exempt Rohini, Mrigashira, Ardra, Punarvasu, Pushya, Shravana, Dhanishta, Shatabhisha, and Uttara Bhadrapada from severe Nadi Dosha.",
-      "authority": "Muhurtha Chintamani"
+      "name": "Exempt Nakshatras List",
+      "description": "Tradition claim exempting Rohini, Mrigashira, Ardra, Punarvasu, Pushya, Shravana, Dhanishta, Shatabhisha, and Uttara Bhadrapada from severe Nadi Dosha (unverified; traditions differ).",
+      "authority": "Source: unverified; traditions differ."
     },
     {
       "code": "NADI_DIFF_PADA_SAME_NAKSHATRA",

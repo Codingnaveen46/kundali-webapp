@@ -7,14 +7,15 @@ __pycache__/
 backend/venv/
 venv/
 ENV/
+# Python packaging / build
 build/
 develop-eggs/
 dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+/lib/
+/lib64/
 parts/
 sdist/
 var/
@@ -39,9 +40,11 @@ frontend/build/
 .env.test.local
 .env.production.local
 
-# OS
+# OS & Editor
 .DS_Store
 *.pem
+.vscode/
+.serena/
 
 # Swiss Ephemeris data files if cached locally
 *.se1
@@ -51,7 +54,27 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Playwright
+# Playwright & MCP
 frontend/test-results/
 frontend/playwright-report/
+.playwright-mcp/
 
+# Tests (excluded for public repository)
+backend/tests/
+tests/
+frontend/e2e/
+*.spec.ts
+pytest.txt
+
+# Media, PDFs and Images (excluded for public repository)
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.webp
+pdf_pages/
+review/
+proofs/
+page-images/
+frontend/screenshots/
+*-images/

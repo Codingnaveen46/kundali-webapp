@@ -1,11 +1,17 @@
 """Geocoding adapter supporting offline Indian/global cities and configurable external providers."""
 
+import re
 from typing import List, Dict, Any, Optional
 
 # Curated reference database of major Indian and global cities with IANA timezones
 PREPACKAGED_CITIES: List[Dict[str, Any]] = [
-    {"name": "Bengaluru", "state": "Karnataka", "country": "India", "lat": 12.9716, "lon": 77.5946, "tz": "Asia/Kolkata"},
-    {"name": "Mysuru (Mysore)", "state": "Karnataka", "country": "India", "lat": 12.2958, "lon": 76.6394, "tz": "Asia/Kolkata"},
+    {"name": "Bengaluru", "aliases": ["Bangalore"], "state": "Karnataka", "country": "India", "lat": 12.9716, "lon": 77.5946, "tz": "Asia/Kolkata"},
+    {"name": "Chintamani", "aliases": ["Chintamani"], "state": "Karnataka", "country": "India", "lat": 13.4010, "lon": 78.0540, "tz": "Asia/Kolkata"},
+    {"name": "Madanapalle", "aliases": ["Madanapalle"], "state": "Andhra Pradesh", "country": "India", "lat": 13.5500, "lon": 78.5000, "tz": "Asia/Kolkata"},
+    {"name": "Malur", "aliases": ["Malur"], "state": "Karnataka", "country": "India", "lat": 13.0040, "lon": 77.9400, "tz": "Asia/Kolkata"},
+    {"name": "Kolar", "aliases": ["Kolar"], "state": "Karnataka", "country": "India", "lat": 13.1378, "lon": 78.1293, "tz": "Asia/Kolkata"},
+    {"name": "Tumakuru (Tumkur)", "aliases": ["Tumkur"], "state": "Karnataka", "country": "India", "lat": 13.3409, "lon": 77.1010, "tz": "Asia/Kolkata"},
+    {"name": "Mysuru (Mysore)", "aliases": ["Mysore"], "state": "Karnataka", "country": "India", "lat": 12.2958, "lon": 76.6394, "tz": "Asia/Kolkata"},
     {"name": "Mangaluru (Mangalore)", "state": "Karnataka", "country": "India", "lat": 12.9141, "lon": 74.8560, "tz": "Asia/Kolkata"},
     {"name": "Hubballi-Dharwad", "state": "Karnataka", "country": "India", "lat": 15.3647, "lon": 75.1240, "tz": "Asia/Kolkata"},
     {"name": "Belagavi (Belgaum)", "state": "Karnataka", "country": "India", "lat": 15.8497, "lon": 74.4977, "tz": "Asia/Kolkata"},
@@ -84,7 +90,8 @@ class GeocodingAdapter:
             
         results = []
         for city in PREPACKAGED_CITIES:
-            searchable = f"{city['name']} {city['state']} {city['country']}".lower()
+            aliases_str = " ".join(city.get("aliases", []))
+            searchable = f"{city['name']} {aliases_str} {city['state']} {city['country']}".lower()
             if q in searchable:
                 results.append({
                     "display_name": f"{city['name']}, {city['state']}, {city['country']}",
@@ -102,7 +109,48 @@ class GeocodingAdapter:
 
     def resolve_city(self, city_name: str) -> Optional[Dict[str, Any]]:
         """Resolves best matching city coordinates and timezone."""
-        matches = self.search_cities(city_name, limit=1)
+        if not city_name or not city_name.strip():
+            return None
+            
+        clean_name = city_name.strip()
+        
+        # 1. Check for explicit coordinates in the string: e.g. "12.9716 N, 77.5946 E" or "(13.401, 78.054)"
+        coord_match = re.search(
+            r"(-?\d+\.?\d*)\s*°?\s*([NSns])?[\s,]+(-?\d+\.?\d*)\s*°?\s*([EWew])?",
+            clean_name
+        )
+        if coord_match:
+            try:
+                lat_val = float(coord_match.group(1))
+                if coord_match.group(2) and coord_match.group(2).upper() == "S":
+                    lat_val = -lat_val
+                lon_val = float(coord_match.group(3))
+                if coord_match.group(4) and coord_match.group(4).upper() == "W":
+                    lon_val = -lon_val
+                    
+                city_label = re.sub(r"\(.*?\)", "", clean_name).strip() or "Custom Location"
+                return {
+                    "display_name": f"{city_label} ({lat_val:.4f}, {lon_val:.4f})",
+                    "city": city_label,
+                    "state": "",
+                    "country": "",
+                    "latitude": lat_val,
+                    "longitude": lon_val,
+                    "iana_timezone": "Asia/Kolkata" if 68 <= lon_val <= 97 and 6 <= lat_val <= 38 else "UTC"
+                }
+            except (ValueError, TypeError):
+                pass
+
+        # 2. Search database matching
+        matches = self.search_cities(clean_name, limit=1)
         if matches:
             return matches[0]
+            
+        # 3. Strip parentheses or prefixes: e.g. "Bangalore (Urban)" -> "Bangalore"
+        simplified = re.sub(r"\(.*?\)", "", clean_name).strip()
+        if simplified and simplified != clean_name:
+            matches = self.search_cities(simplified, limit=1)
+            if matches:
+                return matches[0]
+
         return None

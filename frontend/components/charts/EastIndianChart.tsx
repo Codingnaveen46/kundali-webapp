@@ -43,6 +43,27 @@ export const EastIndianChart: React.FC<EastIndianChartProps> = ({
     });
   });
 
+  const SANSKRIT_NAMES = [
+    "Mesha", "Vrishabha", "Mithuna", "Karka",
+    "Simha", "Kanya", "Tula", "Vrischika",
+    "Dhanu", "Makara", "Kumbha", "Meena"
+  ];
+
+  const SIGN_CENTERS: Record<number, { cx: number; cy: number }> = {
+    0:  { cx: 220, cy: 55 },
+    1:  { cx: 55,  cy: 55 },
+    2:  { cx: 55,  cy: 165 },
+    3:  { cx: 55,  cy: 275 },
+    4:  { cx: 55,  cy: 385 },
+    5:  { cx: 220, cy: 385 },
+    6:  { cx: 385, cy: 385 },
+    7:  { cx: 385, cy: 275 },
+    8:  { cx: 385, cy: 165 },
+    9:  { cx: 385, cy: 55 },
+    10: { cx: 275, cy: 110 },
+    11: { cx: 165, cy: 110 },
+  };
+
   return (
     <div className="flex flex-col items-center">
       <svg
@@ -86,6 +107,46 @@ export const EastIndianChart: React.FC<EastIndianChartProps> = ({
         >
           {lagnaSign ? `Asc: ${lagnaSign}` : "Chandra Lagna"}
         </text>
+
+        {/* Render 12 Signs & Planets */}
+        {Object.entries(SIGN_CENTERS).map(([sStr, coord]) => {
+          const sIdx = Number(sStr);
+          const sPlanets = planetsBySign[sIdx] || [];
+          const isLagna = lagna && (isNavamsa ? lagna.navamsa_sign_idx === sIdx : lagna.sign_idx === sIdx);
+
+          return (
+            <g key={`east-sign-${sIdx}`} transform={`translate(${coord.cx}, ${coord.cy})`}>
+              {/* Sign label */}
+              <text
+                x="0"
+                y="-18"
+                textAnchor="middle"
+                className="fill-stone-400 dark:fill-stone-500 font-semibold text-[9px]"
+              >
+                {SANSKRIT_NAMES[sIdx]}
+                {isLagna && <tspan className="fill-amber-600 font-bold ml-1"> (ASC)</tspan>}
+              </text>
+
+              {/* Planets */}
+              {sPlanets.map((p, pIdx) => {
+                const py = (pIdx - (sPlanets.length - 1) / 2) * 14;
+                return (
+                  <text
+                    key={`${p.name}-${pIdx}`}
+                    x="0"
+                    y={py}
+                    textAnchor="middle"
+                    className="fill-stone-900 dark:fill-stone-100 font-bold text-[10px]"
+                  >
+                    {p.name}
+                    {p.isR && <tspan className="fill-rose-500 font-bold text-[8px]">(R)</tspan>}
+                    {p.isC && <tspan className="fill-amber-500 font-bold text-[8px]">(C)</tspan>}
+                  </text>
+                );
+              })}
+            </g>
+          );
+        })}
       </svg>
     </div>
   );

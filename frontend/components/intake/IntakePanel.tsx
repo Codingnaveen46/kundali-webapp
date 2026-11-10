@@ -52,22 +52,22 @@ export const IntakePanel: React.FC<IntakePanelProps> = ({
   };
 
   return (
-    <div data-testid={testId} className="bg-white dark:bg-stone-900 rounded-2xl border border-stone-200 dark:border-stone-800 shadow-md p-5">
+    <div data-testid={testId} className="bg-white dark:bg-stone-900 rounded-3xl border border-stone-200/80 dark:border-stone-800 shadow-md p-5 sm:p-6 transition-all">
       {/* Panel Title */}
-      <h3 className="text-base font-bold text-stone-900 dark:text-stone-100 mb-3 flex items-center justify-between">
-        <span>{panelLabel}</span>
-        <span className="text-xs font-normal text-stone-500">Choose any of 3 input methods</span>
+      <h3 className="text-base font-extrabold text-stone-900 dark:text-stone-100 mb-3.5 flex items-center justify-between">
+        <span className="font-serif-vedic">{panelLabel}</span>
+        <span className="text-[11px] font-medium text-stone-500 dark:text-stone-400">Choose any of 3 input methods</span>
       </h3>
 
       {/* 3 Intake Method Tabs */}
-      <div className="grid grid-cols-3 bg-stone-100 dark:bg-stone-800 p-1 rounded-xl mb-5 text-xs font-semibold">
+      <div className="grid grid-cols-3 bg-stone-100/80 dark:bg-stone-800/80 p-1.5 rounded-2xl mb-5 text-xs font-bold border border-stone-200/60 dark:border-stone-700/60">
         <button
           type="button"
           onClick={() => setActiveTab("upload")}
-          className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+          className={`py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 ${
             activeTab === "upload"
               ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-sm"
-              : "text-stone-600 dark:text-stone-400 hover:text-stone-900"
+              : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
           }`}
         >
           <Upload className="w-3.5 h-3.5" />
@@ -77,10 +77,10 @@ export const IntakePanel: React.FC<IntakePanelProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab("paste")}
-          className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+          className={`py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 ${
             activeTab === "paste"
               ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-sm"
-              : "text-stone-600 dark:text-stone-400 hover:text-stone-900"
+              : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
           }`}
         >
           <Clipboard className="w-3.5 h-3.5" />
@@ -90,10 +90,10 @@ export const IntakePanel: React.FC<IntakePanelProps> = ({
         <button
           type="button"
           onClick={() => setActiveTab("manual")}
-          className={`py-2 rounded-lg transition-all flex items-center justify-center gap-1.5 ${
+          className={`py-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 ${
             activeTab === "manual"
               ? "bg-white dark:bg-stone-700 text-amber-700 dark:text-amber-400 shadow-sm"
-              : "text-stone-600 dark:text-stone-400 hover:text-stone-900"
+              : "text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200"
           }`}
         >
           <Edit3 className="w-3.5 h-3.5" />

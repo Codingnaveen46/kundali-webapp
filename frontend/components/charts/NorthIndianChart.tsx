@@ -9,6 +9,7 @@ interface NorthIndianChartProps {
   isNavamsa?: boolean;
   chartTitle?: string;
   theme?: "light" | "dark";
+  lang?: "en" | "kn";
 }
 
 const PLANET_SHORT_NAMES: Record<string, string> = {
@@ -16,12 +17,18 @@ const PLANET_SHORT_NAMES: Record<string, string> = {
   Jupiter: "Ju", Venus: "Ve", Saturn: "Sa", Rahu: "Ra", Ketu: "Ke"
 };
 
+const PLANET_SHORT_NAMES_KN: Record<string, string> = {
+  Sun: "ರ", Moon: "ಚಂ", Mars: "ಕು", Mercury: "ಬು",
+  Jupiter: "ಗು", Venus: "ಶು", Saturn: "ಶ", Rahu: "ರಾ", Ketu: "ಕೇ"
+};
+
 export const NorthIndianChart: React.FC<NorthIndianChartProps> = ({
   planets,
   lagna,
   isNavamsa = false,
   chartTitle,
-  theme = "dark"
+  theme = "dark",
+  lang = "en",
 }) => {
   const size = 440;
   const isDark = theme === "dark";
@@ -37,8 +44,11 @@ export const NorthIndianChart: React.FC<NorthIndianChartProps> = ({
     const targetSignIdx = isNavamsa ? (p.navamsa_sign_idx ?? p.sign_idx) : p.sign_idx;
     // House = ((targetSignIdx - lagnaSignIdx) % 12) + 1
     const h = (((targetSignIdx - lagnaSignIdx) % 12) + 12) % 12 + 1;
+    const shortName = lang === "kn"
+      ? (PLANET_SHORT_NAMES_KN[p.name] || p.name.slice(0, 2))
+      : (PLANET_SHORT_NAMES[p.name] || p.name.slice(0, 2));
     planetsByHouse[h].push({
-      name: PLANET_SHORT_NAMES[p.name] || p.name.slice(0, 2),
+      name: shortName,
       isR: p.is_retrograde,
       isC: p.is_combust
     });
@@ -139,8 +149,8 @@ export const NorthIndianChart: React.FC<NorthIndianChartProps> = ({
                       className="fill-stone-900 dark:fill-stone-100 font-bold text-[11px]"
                     >
                       {p.name}
-                      {p.isR && <tspan className="fill-rose-500 font-bold text-[9px]">(R)</tspan>}
-                      {p.isC && <tspan className="fill-amber-500 font-bold text-[9px]">(C)</tspan>}
+                      {p.isR && <tspan className="fill-rose-500 font-bold text-[9px]">{lang === "kn" ? "(ವ)" : "(R)"}</tspan>}
+                      {p.isC && <tspan className="fill-amber-500 font-bold text-[9px]">{lang === "kn" ? "(ಅ)" : "(C)"}</tspan>}
                     </text>
                   );
                 })}

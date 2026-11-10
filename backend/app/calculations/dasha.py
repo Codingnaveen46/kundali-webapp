@@ -22,6 +22,8 @@ def calculate_vimshottari_dasha(
     """
     if current_dt is None:
         current_dt = datetime.now(timezone.utc)
+    elif current_dt.tzinfo is None:
+        current_dt = current_dt.replace(tzinfo=timezone.utc)
         
     nak_idx, nak_name, pada, rem_deg = get_nakshatra_and_pada(moon_longitude)
     nak_span = 13.0 + (20.0 / 60.0)
@@ -119,11 +121,17 @@ def calculate_vimshottari_dasha(
         if is_current_md:
             active_mahadasha = md_entry
             
+    pct = fraction_remaining * 100.0
+    working_str = f"Fraction of nakshatra remaining × {first_lord}'s {first_lord_total_years} years: {pct:.1f}% × {first_lord_total_years} = {balance_years:.2f} years"
+
     balance_at_birth = {
         "lord": first_lord,
+        "total_years": first_lord_total_years,
         "balance_years": round(balance_years, 4),
         "balance_days": round(balance_days, 1),
-        "fraction_remaining": round(fraction_remaining, 4)
+        "fraction_remaining": round(fraction_remaining, 4),
+        "percentage_remaining": round(pct, 1),
+        "working_str": working_str
     }
     
     return {

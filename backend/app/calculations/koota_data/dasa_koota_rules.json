@@ -1,0 +1,123 @@
+{
+  "system": "Dasa Koota (10 Poruthams)",
+  "tradition": "South Indian Jyotish (Tamil, Kannada, Andhra, Kerala)",
+  "primary_source": "Kalaprakashika, Chapter 11 (Ashtakoota & Dasa Koota); Muhurtha Ratna; Muhurtha Padavi",
+  "rules": {
+    "dina": {
+      "name": "Dina Porutham",
+      "dimension": "Physical Health, Vitality, and Longevity",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Count from bride's star to groom's star, divide by 9. Remainder 2, 4, 6, 8, 0 pass; remainder 1, 3, 5, 7 fail. Standard rule strictly applied.",
+      "auspicious_remainders": [2, 4, 6, 8, 0],
+      "inauspicious_remainders": [1, 3, 5, 7]
+    },
+    "gana": {
+      "name": "Gana Porutham",
+      "dimension": "Temperamental Compatibility and Social Instincts",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Same Gana (Deva-Deva, Manushya-Manushya, Rakshasa-Rakshasa) or Deva Groom with Manushya Bride passes (Pass). Manushya Groom with Deva Bride is conditionally acceptable (Conditional). Any pairing involving Rakshasa with Deva or Manushya fails (Fail).",
+      "pass_pairings": [
+        ["Deva", "Deva"],
+        ["Manushya", "Manushya"],
+        ["Rakshasa", "Rakshasa"],
+        ["Deva", "Manushya"]
+      ],
+      "conditional_pairings": [
+        ["Manushya", "Deva"]
+      ],
+      "fail_pairings": [
+        ["Deva", "Rakshasa"],
+        ["Rakshasa", "Deva"],
+        ["Manushya", "Rakshasa"],
+        ["Rakshasa", "Manushya"]
+      ]
+    },
+    "mahendra": {
+      "name": "Mahendra Porutham",
+      "dimension": "Lineage, Family Growth, Progeny, and Wealth",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Count from Bride star to Groom star must be one of: 4, 7, 10, 13, 16, 19, 22, 25 (Pass); all other counts fail.",
+      "auspicious_counts": [4, 7, 10, 13, 16, 19, 22, 25]
+    },
+    "stree_deergha": {
+      "name": "Stree Deergha Porutham",
+      "dimension": "Longevity, Comfort, and Wellbeing of the Wife",
+      "citation": "Source: unverified; traditions differ.",
+      "thresholds": {
+        "pass": "> 13 nakshatras (Uthama)",
+        "conditional": "8 to 13 nakshatras (Madhyama)",
+        "fail": "<= 7 nakshatras (Adhama)"
+      },
+      "rule": "Count from Bride star to Groom star: > 13 Pass (Uthama); 8 to 13 Conditional (Madhyama); <= 7 Fail (Adhama)."
+    },
+    "yoni": {
+      "name": "Yoni Porutham",
+      "dimension": "Yoni (Animal Affinity) — rule category only",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "The birth stars' animal pairs are scored in the Yoni table used here (unverified; traditions differ). Enemy (Maha Vaira) pair does not pass (Fail). Same animal passes (Pass). Neutral animal is conditional (Conditional).",
+      "sworn_enemies": [
+        ["Cow", "Tiger"],
+        ["Elephant", "Lion"],
+        ["Horse", "Buffalo"],
+        ["Dog", "Deer"],
+        ["Cat", "Rat"],
+        ["Serpent", "Mongoose"],
+        ["Monkey", "Sheep"]
+      ]
+    },
+    "rasi": {
+      "name": "Rasi Porutham",
+      "dimension": "Domestic Harmony, Lineage Continuity, and Unity",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Moon sign distance from Bride to Groom should be 7 (Samasaptaka), 3, 4, 10, or 11 (Pass). Dispositions 6/8 (Shadashtaka) and 2/12 (Dwirdwadasha) fail (Fail) unless cancelled by same or friendly lord.",
+      "favorable_distances": [1, 3, 4, 7, 10, 11],
+      "unfavorable_distances": [2, 5, 6, 8, 12]
+    },
+    "rasyadhipathi": {
+      "name": "Rasyadhipathi Porutham",
+      "dimension": "Mental Friendship between Moon Sign Rulers",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Planetary rulers of Groom and Bride Moon signs must be natural mutual friends or identical (Pass). Friendly-neutral or neutral-neutral is conditional (Conditional). Inimical rulers fail (Fail)."
+    },
+    "vashya": {
+      "name": "Vashya Porutham",
+      "dimension": "Mutual Fascination and Natural Amenability",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "One sign must naturally exert classical Vashya over the other sign (Pass). Mutual Vashya is highest. Total absence of Vashya relationship fails (Fail)."
+    },
+    "rajju": {
+      "name": "Rajju Porutham",
+      "dimension": "Rajju (Marital Bond) — rule category only (CRITICAL)",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Birth stars must not belong to the same Rajju (Shiro, Kantha, Udara, Kati, Pada). Same Rajju does not pass (Fail). Different Rajjus pass (Pass). (unverified; traditions differ)",
+      "types": {
+        "Shiro": {"name": "Head", "impact": "Longevity of husband", "stars": ["Mrigashira", "Chitra", "Dhanishta"]},
+        "Kantha": {"name": "Neck", "impact": "Longevity of wife", "stars": ["Rohini", "Ardra", "Hasta", "Swati", "Shravana", "Shatabhisha"]},
+        "Udara": {"name": "Navel/Stomach", "impact": "Progeny and children", "stars": ["Krittika", "Punarvasu", "Uttara Phalguni", "Vishakha", "Uttara Ashadha", "Purva Bhadrapada"]},
+        "Kati": {"name": "Hip/Thigh", "impact": "Financial prosperity", "stars": ["Bharani", "Pushya", "Purva Phalguni", "Anuradha", "Purva Ashadha", "Uttara Bhadrapada"]},
+        "Pada": {"name": "Foot", "impact": "Domestic stability and wandering", "stars": ["Ashwini", "Ashlesha", "Magha", "Jyeshtha", "Mula", "Revati"]}
+      }
+    },
+    "vedha": {
+      "name": "Vedha Porutham",
+      "dimension": "Vedha (Star Repulsion) — rule category only (CRITICAL)",
+      "citation": "Source: unverified; traditions differ.",
+      "rule": "Birth stars must not form the Vedha pairs used here (Star Repulsion). Vedha presence fails the porutham (Fail). Absence of Vedha passes (Pass). (unverified; traditions differ)",
+      "pairs": [
+        ["Ashwini", "Jyeshtha"],
+        ["Bharani", "Anuradha"],
+        ["Krittika", "Vishakha"],
+        ["Rohini", "Swati"],
+        ["Ardra", "Shravana"],
+        ["Punarvasu", "Uttara Ashadha"],
+        ["Pushya", "Purva Ashadha"],
+        ["Ashlesha", "Mula"],
+        ["Magha", "Revati"],
+        ["Purva Phalguni", "Uttara Bhadrapada"],
+        ["Uttara Phalguni", "Purva Bhadrapada"],
+        ["Hasta", "Shatabhisha"],
+        ["Mrigashira", "Dhanishta"]
+      ]
+    }
+  }
+}

@@ -46,7 +46,7 @@
     "muhurtha_chintamani": {
       "citation": "Muhurtha Chintamani",
       "matrix": {
-        "Deva":     {"Deva": 6.0, "Manushya": 6.0, "Rakshasa": 1.0},
+        "Deva":     {"Deva": 6.0, "Manushya": 5.0, "Rakshasa": 1.0},
         "Manushya": {"Deva": 5.0, "Manushya": 6.0, "Rakshasa": 0.0},
         "Rakshasa": {"Deva": 0.0, "Manushya": 0.0, "Rakshasa": 6.0}
       }

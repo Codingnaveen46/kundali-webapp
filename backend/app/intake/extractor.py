@@ -236,6 +236,24 @@ def extract_profile_from_text(text: str) -> IntakeProfile:
                 profile.longitude = city["longitude"]
                 profile.iana_timezone = city["iana_timezone"]
                 break
+
+    # If coordinates were not resolved yet, scan for explicit coordinates in the text
+    if profile.latitude is None:
+        coord_match = re.search(r"(-?\d+\.?\d*)\s*°?\s*([NSns])?[\s,]+(-?\d+\.?\d*)\s*°?\s*([EWew])?", sanitized)
+        if coord_match:
+            try:
+                lat_v = float(coord_match.group(1))
+                if coord_match.group(2) and coord_match.group(2).upper() == "S":
+                    lat_v = -lat_v
+                lon_v = float(coord_match.group(3))
+                if coord_match.group(4) and coord_match.group(4).upper() == "W":
+                    lon_v = -lon_v
+                if 0 <= abs(lat_v) <= 90 and 0 <= abs(lon_v) <= 180:
+                    profile.latitude = lat_v
+                    profile.longitude = lon_v
+                    profile.iana_timezone = "Asia/Kolkata" if 68 <= lon_v <= 97 and 6 <= lat_v <= 38 else "UTC"
+            except Exception:
+                pass
                 
     # 6. Stated Rashi
     rashi_match = re.search(

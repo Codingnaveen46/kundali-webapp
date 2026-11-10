@@ -9,23 +9,26 @@ interface SouthIndianChartProps {
   isNavamsa?: boolean;
   chartTitle?: string;
   theme?: "light" | "dark";
+  /** Multiplier applied to all text inside the chart (print layouts use > 1 for legibility at reduced chart width). */
+  labelScale?: number;
+  lang?: "en" | "kn";
 }
 
 // Fixed positions of the 12 signs in the classical South Indian 4x4 grid
 // Grid coordinates: col (0 to 3), row (0 to 3)
-const SIGN_COORDINATES: Record<string, { col: number; row: number; label: string; sa: string }> = {
-  Pisces:      { col: 0, row: 0, label: "Pisces", sa: "Meena" },
-  Aries:       { col: 1, row: 0, label: "Aries", sa: "Mesha" },
-  Taurus:      { col: 2, row: 0, label: "Taurus", sa: "Vrishabha" },
-  Gemini:      { col: 3, row: 0, label: "Gemini", sa: "Mithuna" },
-  Cancer:      { col: 3, row: 1, label: "Cancer", sa: "Karka" },
-  Leo:         { col: 3, row: 2, label: "Leo", sa: "Simha" },
-  Virgo:       { col: 3, row: 3, label: "Virgo", sa: "Kanya" },
-  Libra:       { col: 2, row: 3, label: "Libra", sa: "Tula" },
-  Scorpio:     { col: 1, row: 3, label: "Scorpio", sa: "Vrischika" },
-  Sagittarius: { col: 0, row: 3, label: "Sagittarius", sa: "Dhanu" },
-  Capricorn:   { col: 0, row: 2, label: "Capricorn", sa: "Makara" },
-  Aquarius:    { col: 0, row: 1, label: "Aquarius", sa: "Kumbha" },
+const SIGN_COORDINATES: Record<string, { col: number; row: number; label: string; sa: string; kn: string }> = {
+  Pisces:      { col: 0, row: 0, label: "Pisces", sa: "Meena", kn: "ಮೀನ" },
+  Aries:       { col: 1, row: 0, label: "Aries", sa: "Mesha", kn: "ಮೇಷ" },
+  Taurus:      { col: 2, row: 0, label: "Taurus", sa: "Vrishabha", kn: "ವೃಷಭ" },
+  Gemini:      { col: 3, row: 0, label: "Gemini", sa: "Mithuna", kn: "ಮಿಥುನ" },
+  Cancer:      { col: 3, row: 1, label: "Cancer", sa: "Karka", kn: "ಕರ್ಕಾಟಕ" },
+  Leo:         { col: 3, row: 2, label: "Leo", sa: "Simha", kn: "ಸಿಂಹ" },
+  Virgo:       { col: 3, row: 3, label: "Virgo", sa: "Kanya", kn: "ಕನ್ಯಾ" },
+  Libra:       { col: 2, row: 3, label: "Libra", sa: "Tula", kn: "ತುಲಾ" },
+  Scorpio:     { col: 1, row: 3, label: "Scorpio", sa: "Vrischika", kn: "ವೃಶ್ಚಿಕ" },
+  Sagittarius: { col: 0, row: 3, label: "Sagittarius", sa: "Dhanu", kn: "ಧನು" },
+  Capricorn:   { col: 0, row: 2, label: "Capricorn", sa: "Makara", kn: "ಮಕರ" },
+  Aquarius:    { col: 0, row: 1, label: "Aquarius", sa: "Kumbha", kn: "ಕುಂಭ" },
 };
 
 const PLANET_SHORT_NAMES: Record<string, string> = {
@@ -40,15 +43,30 @@ const PLANET_SHORT_NAMES: Record<string, string> = {
   Ketu: "Ke",
 };
 
+const PLANET_SHORT_NAMES_KN: Record<string, string> = {
+  Sun: "ರ",
+  Moon: "ಚಂ",
+  Mars: "ಕು",
+  Mercury: "ಬು",
+  Jupiter: "ಗು",
+  Venus: "ಶು",
+  Saturn: "ಶ",
+  Rahu: "ರಾ",
+  Ketu: "ಕೇ",
+};
+
 export const SouthIndianChart: React.FC<SouthIndianChartProps> = ({
   planets,
   lagna,
   isNavamsa = false,
   chartTitle,
-  theme = "dark"
+  theme = "dark",
+  labelScale = 1,
+  lang = "en",
 }) => {
   const size = 440;
   const cellSize = size / 4;
+  const s = labelScale;
 
   // Group planets by their respective sign in D1 or D9
   const planetsBySign: Record<string, Array<{ name: string; deg: string; isR: boolean; isC: boolean }>> = {};
@@ -60,11 +78,17 @@ export const SouthIndianChart: React.FC<SouthIndianChartProps> = ({
     const targetSign = isNavamsa ? (p.navamsa_sign || p.sign) : p.sign;
     if (planetsBySign[targetSign]) {
       const degStr = `${p.degree_in_sign}°${String(p.minute_in_sign).padStart(2, "0")}'`;
+      const shortName = lang === "kn"
+        ? (PLANET_SHORT_NAMES_KN[p.name] || p.name.slice(0, 2))
+        : (PLANET_SHORT_NAMES[p.name] || p.name.slice(0, 2));
       planetsBySign[targetSign].push({
-        name: PLANET_SHORT_NAMES[p.name] || p.name.slice(0, 2),
-        deg: degStr,
-        isR: p.is_retrograde,
-        isC: p.is_combust
+        name: shortName,
+        // D9 (Navamsa) charts show planet abbreviations only: the degree,
+        // retrograde and combust flags come from the D1 chart and would
+        // misrepresent the Navamsa placement.
+        deg: isNavamsa ? "" : degStr,
+        isR: !isNavamsa && p.is_retrograde,
+        isC: !isNavamsa && p.is_combust
       });
     }
   });
@@ -115,35 +139,41 @@ export const SouthIndianChart: React.FC<SouthIndianChartProps> = ({
         />
         <text
           x={size / 2}
-          y={size / 2 - 25}
+          y={size / 2 - 25 * s}
           textAnchor="middle"
-          className="fill-amber-600 dark:fill-amber-400 font-bold text-sm"
+          className="fill-amber-600 dark:fill-amber-400 font-bold"
+          fontSize={14 * s}
         >
-          {chartTitle || (isNavamsa ? "Navamsa (D9)" : "Janma Rashi (D1)")}
+          {chartTitle || (isNavamsa ? (lang === "kn" ? "ನವಾಂಶ ಕುಂಡಲಿ (D9)" : "Navamsa (D9)") : (lang === "kn" ? "ಜನ್ಮ ಕುಂಡಲಿ (D1)" : "Janma Rashi (D1)"))}
         </text>
         <text
           x={size / 2}
-          y={size / 2 - 4}
+          y={size / 2 - 4 * s}
           textAnchor="middle"
-          className="fill-stone-600 dark:fill-stone-300 text-xs font-medium"
+          className="fill-stone-600 dark:fill-stone-300 font-medium"
+          fontSize={12 * s}
         >
-          {lagnaSign ? `Asc: ${lagnaSign}` : "Chandra Lagna"}
+          {lagnaSign
+            ? (lang === "kn" ? `ಲಗ್ನ: ${SIGN_COORDINATES[lagnaSign]?.kn || lagnaSign}` : `Asc: ${lagnaSign}`)
+            : (lang === "kn" ? "ಚಂದ್ರ ಲಗ್ನ" : "Chandra Lagna")}
         </text>
         <text
           x={size / 2}
-          y={size / 2 + 16}
+          y={size / 2 + 16 * s}
           textAnchor="middle"
-          className="fill-stone-500 dark:fill-stone-400 text-[11px]"
+          className="fill-stone-500 dark:fill-stone-400"
+          fontSize={11 * s}
         >
-          South Indian Format
+          {lang === "kn" ? "ದಕ್ಷಿಣ ಭಾರತೀಯ ಶೈಲಿ" : "South Indian Format"}
         </text>
         <text
           x={size / 2}
-          y={size / 2 + 34}
+          y={size / 2 + 34 * s}
           textAnchor="middle"
-          className="fill-amber-700/80 dark:fill-amber-500/80 text-[10px]"
+          className="fill-amber-700/80 dark:fill-amber-500/80"
+          fontSize={10 * s}
         >
-          Lahiri Ayanamsa • Fixed Signs
+          {lang === "kn" ? "ಲಾಹಿರಿ ಅಯನಾಂಶ • ಸ್ಥಿರ ರಾಶಿಗಳು" : "Lahiri Ayanamsa • Fixed Signs"}
         </text>
 
         {/* 12 Sign Cells */}
@@ -169,26 +199,27 @@ export const SouthIndianChart: React.FC<SouthIndianChartProps> = ({
                   {/* Classical South Indian double diagonal corner mark for Lagna */}
                   <line
                     x1="2"
-                    y1="22"
-                    x2="22"
+                    y1={13 * s}
+                    x2={13 * s}
                     y2="2"
                     stroke={isDark ? "#f59e0b" : "#b45309"}
-                    strokeWidth="2"
+                    strokeWidth="1.8"
                   />
                   <line
                     x1="2"
-                    y1="28"
-                    x2="28"
+                    y1={18 * s}
+                    x2={18 * s}
                     y2="2"
                     stroke={isDark ? "#f59e0b" : "#b45309"}
-                    strokeWidth="2"
+                    strokeWidth="1.8"
                   />
                   <text
-                    x="6"
-                    y="18"
-                    className="fill-amber-600 dark:fill-amber-400 font-extrabold text-[11px]"
+                    x={22 * s}
+                    y={14 * s}
+                    className="fill-amber-600 dark:fill-amber-400 font-extrabold"
+                    fontSize={10.5 * s}
                   >
-                    ASC
+                    {lang === "kn" ? "ಲಗ್ನ" : "Asc"}
                   </text>
                 </>
               )}
@@ -196,50 +227,48 @@ export const SouthIndianChart: React.FC<SouthIndianChartProps> = ({
               {/* Rashi Name in Top Right corner */}
               <text
                 x={cellSize - 6}
-                y="14"
+                y={14 * s}
                 textAnchor="end"
-                className="fill-stone-400 dark:fill-stone-500 text-[9px] font-semibold tracking-wider"
+                className="fill-stone-400 dark:fill-stone-500 font-semibold tracking-wider"
+                fontSize={9 * s}
               >
-                {coord.sa}
+                {lang === "kn" ? coord.kn : coord.sa}
               </text>
 
               {/* Planets inside this Rashi box */}
               {signPlanets.map((p, idx) => {
-                const py = 28 + idx * 16;
+                const py = 28 * s + idx * 16 * s;
                 return (
                   <g key={`${p.name}-${idx}`} transform={`translate(8, ${py})`}>
                     <text
                       x="0"
                       y="0"
-                      className="fill-stone-900 dark:fill-stone-100 font-bold text-[12px]"
+                      className="fill-stone-900 dark:fill-stone-100 font-bold"
+                      fontSize={11.5 * s}
                     >
-                      {p.name}
+                      <tspan>{p.name}</tspan>
+                      {p.isR && (
+                        <tspan className="fill-rose-500 font-bold" dx={2.5 * s}>
+                          {lang === "kn" ? "(ವ)" : "(R)"}
+                        </tspan>
+                      )}
+                      {p.isC && (
+                        <tspan className="fill-amber-500 font-bold" dx={2 * s}>
+                          {lang === "kn" ? "(ಅ)" : "(C)"}
+                        </tspan>
+                      )}
                     </text>
-                    <text
-                      x="25"
-                      y="0"
-                      className="fill-stone-500 dark:fill-stone-400 text-[10px]"
-                    >
-                      {p.deg}
-                    </text>
-                    {p.isR && (
+                    {p.deg ? (
                       <text
-                        x="72"
+                        x={cellSize - 18}
                         y="0"
-                        className="fill-rose-500 font-bold text-[10px]"
+                        textAnchor="end"
+                        className="fill-stone-500 dark:fill-stone-400"
+                        fontSize={9.5 * s}
                       >
-                        (R)
+                        {p.deg}
                       </text>
-                    )}
-                    {p.isC && (
-                      <text
-                        x="88"
-                        y="0"
-                        className="fill-amber-500 font-bold text-[10px]"
-                      >
-                        (C)
-                      </text>
-                    )}
+                    ) : null}
                   </g>
                 );
               })}

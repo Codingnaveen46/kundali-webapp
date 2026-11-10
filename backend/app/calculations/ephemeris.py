@@ -28,7 +28,7 @@ PLANET_IDS = {
     "Jupiter": swe.JUPITER,
     "Venus": swe.VENUS,
     "Saturn": swe.SATURN,
-    "Rahu": swe.TRUE_NODE  # True node for Rahu as required
+    "Rahu": swe.MEAN_NODE  # Default Mean Node (swe.MEAN_NODE); True Node selectable via node_type
 }
 
 
@@ -82,24 +82,93 @@ def get_nakshatra_and_pada(longitude: float) -> tuple[int, str, int, float]:
     return nak_idx, NAKSHATRAS[nak_idx], pada, rem_deg
 
 
+def get_nakshatra_working(longitude: float, body_name: str = "Moon") -> Dict[str, Any]:
+    """Produces step-by-step working string and data for nakshatra and pada calculation.
+    Example: 'Moon 162.68° ÷ 13.3333° = 12.2 -> 13th nakshatra Hasta (160° to 173°20\'); pada = (162.68 − 160) ÷ 3.3333 = 0.80 -> pada 1'.
+    """
+    nak_span = 13.0 + (20.0 / 60.0)  # 13.333333333333334
+    pada_span = 3.0 + (20.0 / 60.0)  # 3.3333333333333335
+    norm_long = longitude % 360.0
+    nak_idx = int(norm_long // nak_span)
+    if nak_idx >= 27:
+        nak_idx = 26
+    nak_num = nak_idx + 1
+    nak_name = NAKSHATRAS[nak_idx]
+
+    start_deg = nak_idx * nak_span
+    end_deg = (nak_idx + 1) * nak_span
+    rem_deg = norm_long - start_deg
+    pada = int(rem_deg // pada_span) + 1
+    if pada > 4:
+        pada = 4
+
+    def deg_min_str(d: float) -> str:
+        d_int = int(d)
+        m_int = int(round((d - d_int) * 60.0))
+        if m_int == 60:
+            d_int += 1
+            m_int = 0
+        if m_int == 0:
+            return f"{d_int}°"
+        return f"{d_int}°{m_int:02d}'"
+
+    start_str = deg_min_str(start_deg)
+    end_str = deg_min_str(end_deg)
+
+    quotient = norm_long / 13.333333333333334
+    pada_calc = rem_deg / 3.3333333333333335
+
+    suffix = "th"
+    if nak_num in (1, 21):
+        suffix = "st"
+    elif nak_num in (2, 22):
+        suffix = "nd"
+    elif nak_num in (3, 23):
+        suffix = "rd"
+
+    start_deg_int = int(round(start_deg)) if abs(start_deg - round(start_deg)) < 1e-4 else round(start_deg, 2)
+    working_str = (
+        f"{body_name} {norm_long:.2f}° ÷ 13.3333° = {quotient:.1f} -> {nak_num}{suffix} nakshatra {nak_name} "
+        f"({start_str} to {end_str}); pada = ({norm_long:.2f} − {start_deg_int}) ÷ 3.3333 = {pada_calc:.2f} -> pada {pada}"
+    )
+
+    return {
+        "body_name": body_name,
+        "longitude": norm_long,
+        "nakshatra_number": nak_num,
+        "nakshatra_name": nak_name,
+        "pada": pada,
+        "start_degree": start_deg,
+        "end_degree": end_deg,
+        "working_str": working_str
+    }
+
+
 def calculate_planet_positions(
     jd: float,
-    ayanamsa_name: str = "LAHIRI"
+    ayanamsa_name: str = "LAHIRI",
+    node_type: str = "mean"
 ) -> Dict[str, Dict[str, Any]]:
     """Calculates sidereal positions for all 9 Vedic Grahas.
     
+    node_type: 'mean' (default, matches classical almanacs / Prokerala) or 'true'.
+    
     Returns structured dictionary with sign, degree, minute, second,
-    nakshatra, pada, retrograde, and speed.
+    nakshatra, pada, retrograde, speed, and node_type.
     """
     set_ayanamsa(ayanamsa_name)
     flags = swe.FLG_SIDEREAL | swe.FLG_SPEED
     
+    norm_node_type = "true" if str(node_type).strip().lower() == "true" else "mean"
+    rahu_node_id = swe.TRUE_NODE if norm_node_type == "true" else swe.MEAN_NODE
+
     planets: Dict[str, Dict[str, Any]] = {}
     sun_long = 0.0
     
     # 1. Calculate standard 7 planets + Rahu
     for name, pid in PLANET_IDS.items():
-        res, ret_flags = swe.calc_ut(jd, pid, flags)
+        actual_pid = rahu_node_id if name == "Rahu" else pid
+        res, ret_flags = swe.calc_ut(jd, actual_pid, flags)
         longitude = res[0] % 360.0
         speed = res[3]
         
@@ -133,7 +202,8 @@ def calculate_planet_positions(
             "nakshatra_elapsed_deg": round(rem_deg, 4),
             "speed": round(speed, 6),
             "is_retrograde": is_retrograde,
-            "is_combust": False  # Evaluated below
+            "is_combust": False,  # Evaluated below
+            "node_type": norm_node_type if name == "Rahu" else None
         }
     
     # 2. Ketu is exactly 180° opposite to Rahu
@@ -163,7 +233,8 @@ def calculate_planet_positions(
         "nakshatra_elapsed_deg": round(k_rem, 4),
         "speed": round(-planets["Rahu"]["speed"], 6),
         "is_retrograde": True,
-        "is_combust": False
+        "is_combust": False,
+        "node_type": norm_node_type
     }
     
     # 3. Determine combustion (Asta)

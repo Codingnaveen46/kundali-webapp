@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { extractFromText } from "@/lib/api";
 import { ExtractionResponse } from "@/lib/types";
-import { Clipboard, Sparkles, Loader2, Image as ImageIcon } from "lucide-react";
+import { Clipboard, Sparkles, Loader2 } from "lucide-react";
 
 interface PasteTextProps {
   onExtracted: (response: ExtractionResponse) => void;
@@ -56,7 +56,7 @@ export const PasteText: React.FC<PasteTextProps> = ({ onExtracted }) => {
       if (clipText) {
         setText(clipText);
       }
-    } catch (e) {
+    } catch {
       // Permission error or clipboard empty
     }
   };
@@ -64,13 +64,14 @@ export const PasteText: React.FC<PasteTextProps> = ({ onExtracted }) => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <label className="text-sm font-medium text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
-          <Clipboard className="w-4 h-4 text-amber-600" /> Paste Biodata Text or WhatsApp Message
+        <label className="text-xs font-bold text-stone-700 dark:text-stone-300 flex items-center gap-1.5">
+          <Clipboard className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+          <span>Paste Biodata Text or WhatsApp Message</span>
         </label>
         <button
           type="button"
           onClick={handlePasteClipboard}
-          className="text-xs text-amber-600 hover:text-amber-700 font-semibold"
+          className="text-xs text-amber-600 dark:text-amber-400 hover:text-amber-700 font-bold transition-colors"
         >
           Paste from Clipboard
         </button>
@@ -81,19 +82,21 @@ export const PasteText: React.FC<PasteTextProps> = ({ onExtracted }) => {
         value={text}
         onChange={(e) => setText(e.target.value)}
         placeholder="Paste copied biodata text, WhatsApp forward, or key-value details in any order..."
-        className="w-full p-3 rounded-xl border border-stone-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-sm focus:ring-2 focus:ring-amber-500 outline-none resize-none font-mono"
+        className="w-full p-3.5 rounded-2xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 text-xs sm:text-sm focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none resize-none font-mono shadow-sm transition-all"
       />
 
       {/* Preset sample buttons */}
       <div>
-        <span className="text-xs text-stone-500 block mb-1.5">Or try a preloaded sample:</span>
+        <span className="text-[11px] font-bold text-stone-400 uppercase tracking-wider block mb-1.5">
+          Quick Test Samples:
+        </span>
         <div className="flex flex-wrap gap-1.5">
           {PRESET_SAMPLES.map((s, idx) => (
             <button
               key={idx}
               type="button"
               onClick={() => setText(s.text)}
-              className="px-2.5 py-1 text-xs rounded-lg border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800 hover:bg-amber-50 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 transition-colors"
+              className="px-2.5 py-1 text-xs font-semibold rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-50 dark:bg-stone-800/80 hover:bg-amber-50/80 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 hover:text-amber-800 dark:hover:text-amber-300 transition-all shadow-sm active:scale-95"
             >
               {s.label}
             </button>
@@ -102,7 +105,7 @@ export const PasteText: React.FC<PasteTextProps> = ({ onExtracted }) => {
       </div>
 
       {error && (
-        <div className="p-3 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-xl border border-rose-200 dark:border-rose-900">
+        <div className="p-3 bg-rose-50 dark:bg-rose-950/40 text-rose-700 dark:text-rose-400 text-xs rounded-xl border border-rose-200 dark:border-rose-900 shadow-sm">
           {error}
         </div>
       )}
@@ -111,15 +114,17 @@ export const PasteText: React.FC<PasteTextProps> = ({ onExtracted }) => {
         type="button"
         disabled={isLoading || !text.trim()}
         onClick={handleExtract}
-        className="w-full py-2.5 px-4 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 text-white font-semibold rounded-xl shadow-md transition-colors flex items-center justify-center gap-2"
+        className="w-full py-3 px-4 bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 disabled:opacity-40 text-white font-extrabold rounded-xl shadow-lg shadow-amber-600/20 transition-all flex items-center justify-center gap-2 text-sm active:scale-98"
       >
         {isLoading ? (
           <>
-            <Loader2 className="w-4 h-4 animate-spin" /> Extracting Details...
+            <Loader2 className="w-4 h-4 animate-spin" />
+            <span>Extracting Details...</span>
           </>
         ) : (
           <>
-            <Sparkles className="w-4 h-4" /> Extract & Review Details
+            <Sparkles className="w-4 h-4" />
+            <span>Extract &amp; Review Details</span>
           </>
         )}
       </button>

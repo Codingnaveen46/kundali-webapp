@@ -1,0 +1,1112 @@
+/**
+ * Dedicated print stylesheet for the /print/* report routes.
+ *
+ * Rules (Phase 2, item B):
+ * - A4 portrait, 15 mm margins, white background, black text.
+ * - Local Noto Sans / Noto Sans Kannada embedded via locally hosted font files
+ *   (no font downloading from the internet at print time).
+ * - Body text >= 10 pt, table text >= 9 pt, nothing below 8 pt.
+ * - Light grey table headers only (print-color-adjust: exact), no dark hero
+ *   banner, no buttons, no animations or shadows.
+ * - Break rules: keep rows/tables/charts/cards whole; repeat table headers;
+ *   keep headings with their following content; force new pages before the
+ *   Dasha, Ashtakoota, Dosha and Dasa Koota sections.
+ */
+
+/* ---------- Local fonts (hosted from /public/fonts, offline) ---------- */
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans";
+  src: url("/fonts/NotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Noto Sans Kannada";
+  src: url("/fonts/NotoSansKannada-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ---------- Page setup ---------- */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  .print-doc {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
+
+/* ---------- Document base ---------- */
+.print-doc {
+  background: #ffffff;
+  color: #111111;
+  font-family: "Noto Sans", "Noto Sans Kannada", sans-serif;
+  font-size: 10.5pt; /* body text >= 10 pt */
+  line-height: 1.45;
+  margin: 0 auto;
+  padding: 24px 0 96px;
+  /* Printable content width of A4 portrait with 15 mm margins */
+  max-width: 180mm;
+  width: auto;
+}
+.print-doc:has(.print-doc--chapter) {
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 210mm !important;
+  width: 210mm !important;
+}
+.print-doc--kn,
+.print-doc--kn .font-sans,
+.print-doc--kn .font-kannada,
+.print-doc--kn .font-serif-vedic {
+  font-family: "Noto Sans Kannada", "Noto Sans", sans-serif;
+}
+
+/* Substitute every other font family used by the report with the local Noto fonts */
+.print-doc,
+.print-doc .font-sans,
+.print-doc .font-serif-vedic,
+.print-doc .font-serif {
+  font-family: "Noto Sans", sans-serif;
+}
+
+/* ---------- Neutralise screen-only styling ---------- */
+.print-doc *,
+.print-doc *::before,
+.print-doc *::after {
+  box-shadow: none !important;
+  text-shadow: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+.print-doc [class*="bg-gradient"] {
+  background-image: none !important;
+  background-color: #ffffff !important;
+  border: 1px solid #cccccc !important;
+}
+.print-doc [class*="bg-"] {
+  background-color: transparent !important;
+}
+.print-doc [class*="border-"] {
+  border-color: #d4d4d4 !important;
+  border-style: solid !important;
+}
+.print-doc,
+.print-doc * {
+  color: #111111 !important;
+}
+/* Keep SVG drawings monochrome and legible on white */
+.print-doc svg text {
+  fill: #111111 !important;
+}
+.print-doc svg rect,
+.print-doc svg line {
+  stroke: #444444 !important;
+}
+.print-doc svg rect {
+  fill: #ffffff !important;
+}
+.print-doc svg rect[fill="#fef08a"] {
+  fill: #f0f0f0 !important; /* Lagna highlight cell (light grey) */
+}
+.print-doc svg [class*="fill-"] {
+  fill: #111111 !important;
+}
+
+/* ---------- Type floor: nothing smaller than 8 pt (10.7px) ---------- */
+.print-doc .text-\[9px\],
+.print-doc .text-\[10px\],
+.print-doc .text-\[9px\] * {
+  font-size: 10.7px !important;
+}
+.print-doc .text-\[11px\] {
+  font-size: 11px !important; /* 8.25 pt (non-table prose only) */
+}
+.print-doc .text-xs {
+  font-size: 12px !important; /* 9 pt — minimum for table text */
+}
+
+/* ---------- Table styling: light grey headers only ---------- */
+.print-doc thead th {
+  background-color: #efefef !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  border-bottom: 1px solid #999999 !important;
+  font-weight: 700;
+}
+.print-doc table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+}
+.print-doc td,
+.print-doc th {
+  border-bottom: 1px solid #e2e2e2 !important;
+  /* tight padding keeps 10-column astro tables inside 180 mm */
+  padding: 3px 4px !important;
+  vertical-align: top;
+  /* Table text floor: 12px = 9 pt */
+  font-size: 12px !important;
+}
+
+/* ---------- Fragmentation rules ---------- */
+@media print {
+  .print-doc tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-doc thead {
+    display: table-header-group; /* repeat table headers across pages */
+  }
+  .print-doc tfoot {
+    display: table-footer-group;
+  }
+  .print-doc .print-section,
+  .print-doc .print-break-inside-avoid,
+  .print-doc .avoid-break,
+  .print-doc .overflow-x-auto {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .print-doc h2,
+  .print-doc h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .print-doc .print-page-break {
+    break-before: page !important;
+    page-break-before: always !important;
+  }
+  html,
+  body {
+    background: #ffffff !important;
+  }
+}
+
+/* Charts as vector blocks: keep each chart row whole */
+.print-doc svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Running header / footer (browser print path) ---------- */
+/* In the generated PDF the generator script provides identical running
+   header/footer plus "Page X of Y" via Chromium's displayHeaderFooter. */
+.print-running-header,
+.print-running-footer {
+  display: none;
+}
+@media print {
+  .print-running-header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    font-size: 9pt; /* 12px */
+    border-bottom: 1px solid #999999;
+    padding-bottom: 2px;
+    background: #ffffff;
+  }
+  .print-running-footer {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: space-between;
+    font-size: 9pt; /* 12px */
+    border-top: 1px solid #999999;
+    padding-top: 2px;
+    background: #ffffff;
+  }
+}
+/* Hidden when the PDF is generated by the script (templates supply these) */
+.print-doc--gen .print-running-header,
+.print-doc--gen .print-running-footer {
+  display: none !important;
+}
+
+/* Screen toolbar on the print page (never printed) */
+.print-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 9999;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media screen {
+  body:has(.print-toolbar) {
+    padding-top: 56px !important;
+    background-color: #f1f5f9;
+  }
+}
+@media print {
+  .print-toolbar {
+    display: none !important;
+  }
+  body {
+    padding-top: 0 !important;
+    background-color: #ffffff !important;
+  }
+}
+
+.print-toolbar-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #1e293b;
+  flex-shrink: 0;
+}
+.print-toolbar-badge {
+  background-color: #f1f5f9;
+  color: #475569;
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.print-toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: nowrap;
+}
+
+.print-toolbar-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #475569;
+}
+.print-toolbar-item label {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.print-toolbar-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 14px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 5px 28px 5px 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #1e293b;
+  height: 32px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.print-toolbar-select:focus {
+  border-color: #b8860b;
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+}
+
+.print-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.print-toolbar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  height: 32px;
+  box-sizing: border-box;
+  outline: none;
+}
+.print-toolbar-btn--primary {
+  background-color: #b8860b;
+  color: #ffffff;
+  border: 1px solid #b8860b;
+  box-shadow: 0 1px 2px rgba(184, 134, 11, 0.2);
+}
+.print-toolbar-btn--primary:hover {
+  background-color: #996f08;
+  border-color: #996f08;
+}
+.print-toolbar-btn--secondary {
+  background-color: #ffffff;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+.print-toolbar-btn--secondary:hover {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* ---------- Optional colour print theme (.print-doc--color) ----------
+ * Restrained palette on a white page with dark text:
+ *  - deep indigo headings (#312e81, ~13:1 on white, WCAG AA/AAA)
+ *  - warm gold accent line under section titles (#b45309, decorative)
+ *  - lightly tinted table headers (#e9ebf6), Lagna chart cells and badges
+ *  - green = externally checked, amber = unverified / objection,
+ *    grey = not applicable. Never red/green for good/bad compatibility.
+ * Text stays selectable; fonts and break rules are untouched.
+ */
+.print-doc--color h1,
+.print-doc--color h2,
+.print-doc--color h3 {
+  color: #312e81 !important; /* deep indigo, WCAG AA on white */
+}
+/* Gold accent line under section titles (h2 carries the section border) */
+.print-doc .print-doc--color h2,
+.print-doc .print-doc--color h3 {
+  border-bottom: 2.5px solid #b45309 !important;
+  padding-bottom: 2px !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.print-doc--color thead th {
+  background-color: #e9ebf6 !important; /* light indigo-tinted header */
+  color: #1e1b4b !important;
+  border-bottom: 1px solid #9d9fb8 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+/* Chart Lagna cell: soft gold tint instead of the B&W grey */
+@media print {
+  .print-doc--color svg rect[fill="#fef08a"] {
+    fill: #f7e8b5 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+/* Status badge tints (never used to imply good/bad compatibility) */
+.print-doc--color .status-verified {
+  background-color: #e2f0e0 !important;  /* green: externally checked */
+  color: #14401d !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.print-doc--color .status-unverified,
+.print-doc--color .status-objection,
+.print-doc--color .status-current {
+  background-color: #faf0d2 !important;  /* amber: unverified / objection noted */
+  color: #5b4307 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.print-doc--color .status-neutral {
+  background-color: #ececeb !important;  /* grey: not applicable */
+  color: #333333 !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.print-doc--color .print-running-header,
+.print-doc--color .print-running-footer {
+  color: #111111 !important; /* header/footer stay plain dark for contrast */
+}
+
+/* ==========================================================================
+   Janma Kundali Chapter Print Document Design System (.print-doc--chapter)
+   Scope: ONLY the Janma Kundali print report.
+   A4 portrait (210mm x 297mm), 15mm margins, white background, text #1F2933.
+   Colour theme: Gold accent #B8860B (rules, badges, section bars, active pills).
+   B&W theme: Crisp dark charcoal #2B2D42 accent.
+   Light grey table lines (#E5E7EB) and subtle header fills (#F5F5F4 / #F8F6F0).
+   Fonts: Poppins for headings, Noto Sans for body, Noto Sans Kannada for Kannada.
+   Body 10 pt (13.3px), table 9 pt (12px), minimum 8 pt (10.7px).
+   No browser header/footer. Self-contained 11-page fixed layout.
+   ========================================================================== */
+
+.print-doc--chapter,
+.pc-root {
+  --pc-text: #1F2933;
+  --pc-muted: #6B7280;
+  --pc-accent: #2B2D42; /* Crisp dark ink for B&W print */
+  --pc-line: #E5E7EB;
+  --pc-head-bg: #F5F5F4;
+  color: var(--pc-text);
+  font-family: "Noto Sans", "Noto Sans Kannada", sans-serif;
+  font-size: 13.3px; /* 10 pt body */
+  line-height: 1.5;
+  width: 210mm;
+  max-width: 210mm;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+/* Colour print theme: warm gold accent */
+.print-doc--color.print-doc--chapter,
+.print-doc--color .pc-root,
+.print-doc--color {
+  --pc-accent: #B8860B;
+  --pc-head-bg: #F8F6F0;
+}
+
+.print-doc--chapter h1,
+.print-doc--chapter h2,
+.print-doc--chapter h3,
+.print-doc--chapter .pc-badge {
+  font-family: "Poppins", "Noto Sans", "Noto Sans Kannada", sans-serif;
+}
+
+/* ---------- Fixed Page Box (210mm x 297mm) ---------- */
+.pc-page {
+  width: 210mm;
+  height: 296mm;
+  max-height: 296mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 10mm 15mm 8mm;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+.pc-page:not(:last-child) {
+  break-after: page !important;
+  page-break-after: always !important;
+}
+.pc-page:last-child {
+  break-after: avoid !important;
+  page-break-after: avoid !important;
+}
+
+.pc-page-body {
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Running Header & Running Footer (Strictly inside 15mm side margins) */
+.pc-phead {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--pc-muted, #6B7280) !important;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--pc-line, #E5E7EB);
+  margin-bottom: 3mm;
+  flex: 0 0 auto;
+}
+.pc-pfoot {
+  margin-top: auto;
+  padding-top: 3px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 10px;
+  color: var(--pc-muted, #6B7280) !important;
+  border-top: 1px solid var(--pc-line, #E5E7EB);
+  flex: 0 0 auto;
+}
+
+/* ---------- Cover / Header (Compact layout for 4-page report) ---------- */
+.pc-cover-compact {
+  text-align: center;
+  margin-bottom: 4px;
+  padding-top: 0.5mm;
+}
+.pc-cover-compact .pc-cover-toprule {
+  border-top: 2px solid var(--pc-accent);
+  width: 60px;
+  margin: 0 auto 4px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-cover-compact .pc-cover-app {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--pc-accent);
+  font-weight: 600;
+}
+.pc-cover-compact .pc-cover-kind {
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--pc-muted);
+  margin-top: 1px;
+}
+.pc-cover-compact h1 {
+  margin: 3px 0 1px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--pc-text);
+}
+.pc-cover-compact h2.pc-cover-title {
+  border: none !important;
+  padding-bottom: 0 !important;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: var(--pc-muted);
+  margin-bottom: 3px;
+}
+
+.pc-cover {
+  position: relative;
+  padding: 18mm 10mm 10mm;
+  text-align: center;
+}
+.pc-cover-toprule {
+  border-top: 2.5px solid var(--pc-accent);
+  width: 120px;
+  margin: 0 auto 24px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-cover-app {
+  font-size: 13.3px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pc-accent);
+  font-weight: 600;
+}
+.pc-cover-kind {
+  margin-top: 8px;
+  color: var(--pc-muted);
+  font-size: 13.3px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.pc-cover h1 {
+  margin: 28px 0 8px;
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--pc-text);
+}
+.pc-cover h2.pc-cover-title {
+  border: none !important;
+  padding-bottom: 0 !important;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pc-muted);
+}
+.pc-cover-kv {
+  margin: 26px auto 0;
+  max-width: 420px;
+}
+.pc-cover-kv .pc-cover-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  border-bottom: 1px solid var(--pc-line);
+  padding: 6.5px 0;
+  text-align: left;
+  font-size: 13px;
+}
+.pc-cover-kv .pc-cover-row .lb {
+  color: var(--pc-muted);
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+}
+.pc-cover-kv .pc-cover-row .vl {
+  font-weight: 600;
+  color: var(--pc-text);
+}
+.pc-cover-generated {
+  margin-top: 10mm;
+  font-size: 11px;
+  color: var(--pc-muted);
+}
+
+/* ---------- Chapter Headers & Badges ---------- */
+.pc-chapter-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 10px;
+  padding-bottom: 6px;
+  border-bottom: 1.5px solid var(--pc-accent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  flex: 0 0 auto;
+}
+.pc-badge {
+  flex: 0 0 auto;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 6px;
+  border-radius: 8px;
+  background-color: var(--pc-accent);
+  color: #ffffff !important;
+  font-weight: 600;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-chapter-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pc-text);
+  line-height: 1.25;
+}
+
+/* ---------- Section Titles & Plain Captions ---------- */
+.pc-section-wrap {
+  margin: 6px 0 2px;
+  flex: 0 0 auto;
+}
+.pc-section {
+  margin: 4px 0 2px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--pc-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.pc-section::before {
+  content: "";
+  width: 16px;
+  height: 3.5px;
+  border-radius: 2px;
+  background-color: var(--pc-accent);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-caption {
+  margin: 0 0 2px;
+  font-size: 8.5px;
+  color: var(--pc-muted) !important;
+  line-height: 1.25;
+  border-left: 2px solid var(--pc-accent);
+  padding-left: 5px;
+}
+.pc-avoid { break-inside: avoid; page-break-inside: avoid; }
+.pc-note {
+  font-size: 9.5px;
+  color: var(--pc-muted);
+  line-height: 1.4;
+  margin: 3px 0;
+}
+
+/* ---------- Key-Value Grid (Page 2 compact 2-column cards) ---------- */
+.pc-kv {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background-color: var(--pc-line);
+  border: 1px solid var(--pc-line);
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 3.5px;
+  flex: 0 0 auto;
+}
+.pc-kv-item {
+  background-color: #ffffff;
+  padding: 2.2px 7px;
+}
+.pc-kv-item .lb {
+  display: block;
+  font-size: 8px;
+  color: var(--pc-muted);
+  font-variant: small-caps;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5px;
+}
+.pc-kv-item .vl {
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--pc-text);
+  line-height: 1.2;
+  word-break: break-word;
+}
+.pc-kv-item--wide { grid-column: 1 / -1; }
+
+/* ---------- Tables ---------- */
+.print-doc--chapter table.pc-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 11.5px;
+  margin: 4px 0 6px;
+}
+.print-doc--chapter .pc-table th {
+  background-color: var(--pc-head-bg);
+  border: none;
+  border-bottom: 1.5px solid #D6D3D1 !important;
+  color: var(--pc-text);
+  font-weight: 600;
+  text-align: left;
+  padding: 4px 5px !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.print-doc--chapter .pc-table td {
+  border: none;
+  border-bottom: 1px solid var(--pc-line) !important;
+  color: var(--pc-text);
+  padding: 3.5px 5px !important;
+  vertical-align: top;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+.print-doc--chapter .pc-table td.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Planetary positions table (fixed layout) */
+.pc-ptable {
+  table-layout: fixed;
+  width: 100%;
+}
+.pc-ptable th {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  padding: 2.5px 2px !important;
+  font-size: 8.5px !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.pc-ptable td {
+  white-space: normal;
+  overflow: visible;
+  padding: 2px 2.5px !important;
+  font-size: 8.5pt !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+.pc-ptable td:first-child { font-weight: 600; }
+.pc-row--lagna td {
+  font-weight: 600;
+  background-color: var(--pc-head-bg);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-sign-sa {
+  display: block;
+  font-size: 8px;
+  color: var(--pc-muted) !important;
+  font-weight: normal;
+  line-height: 1.05;
+}
+
+/* Dasha tables (Page 5) */
+.pc-mdtable td:last-child, .pc-mdtable th:last-child { white-space: nowrap; }
+.pc-row--active {
+  background-color: var(--pc-head-bg);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Antardasha cards (Pages 6 to 8) */
+.pc-antargrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: start;
+}
+.pc-antargrid .pc-antarcard:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 50%;
+  width: 100%;
+}
+.pc-antarcard {
+  border: 1px solid var(--pc-line);
+  border-radius: 6px;
+  overflow: hidden;
+  background: #ffffff;
+}
+.pc-antarcard-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 3.5px 6px;
+  background-color: var(--pc-head-bg);
+  border-bottom: 1px solid var(--pc-line);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-antarcard-lord { font-weight: 700; font-size: 12px; color: var(--pc-text); }
+.pc-antarcard-dates { color: var(--pc-muted) !important; font-size: 9.5px; }
+.pc-antarcard-head .pc-pill { margin-left: auto; }
+.pc-antartable {
+  font-size: 10px !important;
+  width: 100%;
+  border-collapse: collapse;
+}
+.pc-antartable td, .pc-antartable th {
+  padding: 2px 5px !important;
+  font-size: 10px !important;
+}
+
+/* Small reference table on Doshas page (Page 9) */
+.pc-ref-table {
+  max-width: 140mm;
+  margin: 4px 0 6px;
+}
+
+/* Pills and Badges */
+.pc-pill {
+  display: inline-block;
+  padding: 1.5px 8px;
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-pill--active {
+  background-color: var(--pc-accent);
+  color: #ffffff !important;
+  letter-spacing: 0.05em;
+}
+.pc-state {
+  display: inline-block;
+  padding: 2.5px 10px;
+  border-radius: 5px;
+  background-color: #ECECEB;
+  color: #1F2933 !important;
+  font-weight: 600;
+  font-size: 12px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.pc-tag {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 0 3px;
+  border-radius: 3px;
+  background-color: var(--pc-head-bg);
+  font-size: 9.5px;
+  font-weight: 600;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  white-space: nowrap;
+}
+
+/* Charts (Page 3) */
+.pc-chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.pc-chart-caption {
+  margin-top: 5px;
+  font-size: 10px;
+  color: var(--pc-muted);
+  text-align: center;
+}
+
+/* Glossary (Page 10) */
+.pc-glossary {
+  margin: 2px 0 0;
+  display: flex;
+  flex-direction: column;
+}
+.pc-glossary-item {
+  break-inside: avoid;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--pc-line);
+}
+.pc-glossary-item dt {
+  font-family: "Poppins", "Noto Sans", sans-serif;
+  font-weight: 600;
+  font-size: 11.5px;
+  color: var(--pc-text);
+  display: inline;
+  margin-right: 6px;
+}
+.pc-glossary-item dt::after {
+  content: ":";
+}
+.pc-glossary-item dd {
+  display: inline;
+  margin: 0;
+  font-size: 10.5px;
+  color: var(--pc-text);
+  line-height: 1.45;
+}
+
+/* About Page (Page 11) */
+.pc-about-p {
+  margin: 0 0 5px;
+  font-size: 11.5px;
+  line-height: 1.45;
+  max-width: 180mm;
+  color: var(--pc-text);
+}
+.pc-about-table {
+  width: 100%;
+  max-width: 180mm;
+  margin: 4px 0 8px;
+}
+.pc-about-table td {
+  padding: 2.5px 5px !important;
+  font-size: 10.5px !important;
+}
+.pc-notes-list {
+  margin: 2px 0 0;
+  padding-left: 18px;
+  font-size: 10.5px;
+  line-height: 1.45;
+  max-width: 180mm;
+}
+.pc-notes-list li { margin-bottom: 4px; color: var(--pc-text); }
+
+/* Overrides for text color in chapter document */
+.print-doc--chapter, .print-doc--chapter * {
+  color: var(--pc-text);
+}
+.print-doc--chapter .pc-cover-app,
+.print-doc--chapter .pc-cover-kv .lb,
+.print-doc--chapter .pc-note,
+.print-doc--chapter .pc-kv-item .lb,
+.print-doc--chapter .pc-chart-caption,
+.print-doc--chapter .pc-cover-generated,
+.print-doc--chapter .pc-cover-kind,
+.print-doc--chapter .pc-sign-sa {
+  color: var(--pc-muted) !important;
+}
+.print-doc--chapter .pc-badge,
+.print-doc--chapter .pc-pill--active {
+  color: #ffffff !important;
+}
+.print-doc--chapter h1,
+.print-doc--chapter h2,
+.print-doc--chapter h3 {
+  color: var(--pc-text) !important;
+  border-bottom: none !important;
+  border-top: none !important;
+  padding-bottom: 0 !important;
+}
+
+/* Kannada Typography & Print Layout Rules (.print-doc--kn) */
+.print-doc--kn,
+.print-doc--kn * {
+  font-family: "Noto Sans Kannada", "Noto Sans", sans-serif !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+
+.print-doc--kn .pc-page-body {
+  line-height: 1.5;
+}
+
+.print-doc--kn .pc-table th,
+.print-doc--kn .pc-table td {
+  white-space: nowrap;
+}
+
+.print-doc--kn .pc-table td:nth-child(2) {
+  white-space: normal;
+}
+
+.print-doc--kn .pc-caption,
+.print-doc--kn .pc-note,
+.print-doc--kn .pc-notes-list li {
+  line-height: 1.5;
+  letter-spacing: normal !important;
+}
+
+

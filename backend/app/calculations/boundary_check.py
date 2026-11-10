@@ -51,7 +51,21 @@ def check_boundary_warnings(
             )
         })
         
-    # 2. Moon nakshatra boundary check
+    # 2. Vashya Capricorn 15° split boundary check (within 1 degree of 15° Capricorn)
+    if sign_idx == 9:  # Capricorn (Makara)
+        cap_split_dist = abs(deg_in_sign - 15.0)
+        if cap_split_dist <= 1.0:
+            warnings.append({
+                "target": "Moon",
+                "type": "Vashya Capricorn 15° Boundary",
+                "severity": "Medium",
+                "current_position": f"{deg_in_sign:.2f}° in Capricorn",
+                "distance_to_boundary": round(cap_split_dist, 2),
+                "boundary": "Capricorn 15° split",
+                "message": "Vashya result depends on the Capricorn 15° split"
+            })
+
+    # 3. Moon nakshatra boundary check
     nak_span = 13.0 + (20.0 / 60.0)  # 13.333333°
     deg_in_nak = moon_longitude % nak_span
     nak_idx = int(moon_longitude // nak_span)
