@@ -1,0 +1,5 @@
+# The Next.js app lives in /frontend; the repo root has no web app.
+[build]
+  base = "frontend"
+  command = "npm ci --include=dev && npm run build"
+  publish = ".next"
