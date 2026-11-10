@@ -10,11 +10,11 @@ import React from "react";
  */
 
 const CONJUNCT_SAMPLES: Array<{ label: string; text: string }> = [
-  { label: "Sample name", text: "ನವೀನ್ ಎಸ್ ಮತ್ತು ಸೋನಿಕಾ ಎಂ ಆರ್" },
+  { label: "Sample name", text: "ವರ ಮತ್ತು ವಧು — ಜಾತಕ ಹೊಂದಾಣಿಕೆ" },
   { label: "Script title", text: "ವಿವಾಹ ಹೊಂದಾಣಿಕೆ ವರದಿ (ಅಷ್ಟಕೂಟ ಮತ್ತು ದಶ ಕೂಟ)" },
   { label: "Nakshatras", text: "ಹಸ್ತ ನಕ್ಷತ್ರ, ಶ್ರವಣ ನಕ್ಷತ್ರ, ರೋಹಿಣಿ, ಅಶ್ವಿನಿ, ಉತ್ತರಾಯಣ" },
   { label: "Consonant clusters", text: "ಸಂಪೂರ್ಣ ಸ್ವಾತಂತ್ರ್ಯ, ಕೃಷ್ಣ, ಸೌಮ್ಯ, ಜ್ಞಾನ, ಕ್ಷಮಾಶೀಲ" },
-  { label: "Vowel signs + numbers", text: "ಗುಣ ೨೫/೩೬, ಶೇಕಡಾವಾರು ೬೯.೪; ಜನ್ಮ ದಿನಾಂಕ: ೦೪-೦೬-೧೯೯೮" },
+  { label: "Vowel signs + numbers", text: "ಗುಣ ೨೫/೩೬, ಶೇಕಡಾವಾರು ೬೯.೪; ಜನ್ಮ ದಿನಾಂಕ: ೦೧-೦೧-೧೯೯೮" },
   { label: "Rashi names", text: "ಮೇಷ, ವೃಷಭ, ಮಿಥುನ, ಕರ್ಕ, ಸಿಂಹ, ಕನ್ಯ, ತುಲ, ವೃಶ್ಚಿಕ, ಧನು, ಮಕರ, ಕುಂಭ, ಮೀನ" },
 ];
 
