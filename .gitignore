@@ -68,7 +68,6 @@ pytest.txt
 
 # Media, PDFs and Images (excluded for public repository)
 *.pdf
-*.png
 *.jpg
 *.jpeg
 *.webp
