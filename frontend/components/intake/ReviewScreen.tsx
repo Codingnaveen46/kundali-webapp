@@ -59,13 +59,13 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
 }) => {
   const [name, setName] = useState(initialProfile.full_name.value || "");
   const [gender, setGender] = useState(initialProfile.gender.value || "Male");
-  const [birthDate, setBirthDate] = useState(initialProfile.date_of_birth.value || "1994-08-15");
-  const [birthTime, setBirthTime] = useState(initialProfile.time_of_birth.value || "06:45");
+  const [birthDate, setBirthDate] = useState(initialProfile.date_of_birth.value || "");
+  const [birthTime, setBirthTime] = useState(initialProfile.time_of_birth.value || "");
   const [isTimeUnknown, setIsTimeUnknown] = useState(!initialProfile.time_of_birth.value);
 
   // Ambiguous date candidate choice if applicable
   const [selectedCandidate, setSelectedCandidate] = useState<string>(
-    initialProfile.date_of_birth.value || "1994-08-15"
+    initialProfile.date_of_birth.value || ""
   );
 
   // Place of Birth states
@@ -76,9 +76,9 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
   const [continueWithoutPlace, setContinueWithoutPlace] = useState(false);
 
   // Stated attributes
-  const [statedRashi, setStatedRashi] = useState(initialProfile.stated_rashi.value || "");
-  const [statedNakshatra, setStatedNakshatra] = useState(initialProfile.stated_nakshatra.value || "");
-  const [statedGothra, setStatedGothra] = useState(initialProfile.stated_gothra.value || "");
+  const [statedRashi] = useState(initialProfile.stated_rashi.value || "");
+  const [statedNakshatra] = useState(initialProfile.stated_nakshatra.value || "");
+  const [statedGothra] = useState(initialProfile.stated_gothra.value || "");
 
   // Autocomplete
   const [citySuggestions, setCitySuggestions] = useState<any[]>([]);
@@ -319,7 +319,7 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
                 className="px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs sm:text-sm font-bold outline-none focus:ring-2 focus:ring-amber-500/30 shadow-sm"
               />
               <div className="text-xs text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-800 p-3 rounded-xl border border-stone-200 dark:border-stone-700 shadow-sm">
-                <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">12-Hour format:</span>
+                <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">12 hour format:</span>
                 <span className="font-extrabold text-amber-700 dark:text-amber-400 text-xs sm:text-sm">
                   {formatTime12Hr(birthTime) || "Not Set"}
                 </span>
@@ -379,45 +379,6 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
               Generating Moon-based results only (Rashi, Nakshatra, Ashtakoota, Dasha). Rising sign (Lagna) and houses will be excluded.
             </div>
           )}
-        </div>
-
-        {/* Optional Stated Astrological Details */}
-        <div className="p-3.5 bg-stone-50 dark:bg-stone-800/40 rounded-2xl border border-stone-200 dark:border-stone-700">
-          <span className="text-[11px] font-bold text-stone-500 dark:text-stone-400 uppercase tracking-wider block mb-2">
-            Stated Astrological Details (from Biodata)
-          </span>
-          <div className="grid grid-cols-3 gap-2.5 text-xs">
-            <div>
-              <span className="text-stone-400 block mb-1 text-[11px] font-semibold">Stated Rashi:</span>
-              <input
-                type="text"
-                value={statedRashi}
-                onChange={(e) => setStatedRashi(e.target.value)}
-                placeholder="e.g. Vrishabha"
-                className="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 font-medium"
-              />
-            </div>
-            <div>
-              <span className="text-stone-400 block mb-1 text-[11px] font-semibold">Stated Nakshatra:</span>
-              <input
-                type="text"
-                value={statedNakshatra}
-                onChange={(e) => setStatedNakshatra(e.target.value)}
-                placeholder="e.g. Rohini"
-                className="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 font-medium"
-              />
-            </div>
-            <div>
-              <span className="text-stone-400 block mb-1 text-[11px] font-semibold">Gothra (Display):</span>
-              <input
-                type="text"
-                value={statedGothra}
-                onChange={(e) => setStatedGothra(e.target.value)}
-                placeholder="e.g. Kashyapa"
-                className="w-full px-2.5 py-1.5 rounded-lg border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 font-medium"
-              />
-            </div>
-          </div>
         </div>
 
         {/* Action Buttons */}

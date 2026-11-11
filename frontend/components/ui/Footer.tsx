@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Shield, Code2, BookOpen } from "lucide-react";
+import { Shield, Code2, BookOpen, Sparkles, Heart } from "lucide-react";
 
 export const Footer: React.FC = () => {
   return (
@@ -61,6 +61,23 @@ export const Footer: React.FC = () => {
         {/* Legal Disclaimer */}
         <div className="pt-6 border-t border-stone-200/60 dark:border-stone-800 text-[11px] text-stone-400 text-center leading-relaxed max-w-3xl mx-auto">
           <strong>Astrological Disclaimer:</strong> Vedic astrology is a cultural and symbolic tradition. The generated charts and compatibility indicators are intended for personal reflection and informational purposes only. They do not constitute scientific, medical, financial, or legal advice. No fear-based claims or paid remedial guarantees are endorsed.
+        </div>
+
+        {/* Signature */}
+        <div className="pt-8 pb-2 text-center space-y-2.5">
+          <div className="flex items-center justify-center gap-3" aria-hidden="true">
+            <span className="h-px w-16 sm:w-24 bg-gradient-to-r from-transparent via-amber-400/60 to-amber-400/60" />
+            <Sparkles className="w-4 h-4 text-amber-500" />
+            <span className="h-px w-16 sm:w-24 bg-gradient-to-l from-transparent via-amber-400/60 to-amber-400/60" />
+          </div>
+          <p className="text-sm sm:text-base italic font-serif-vedic text-stone-600 dark:text-amber-100/90">
+            &ldquo;As above, so below — as the universe, so the soul.&rdquo;
+          </p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-amber-700 dark:text-amber-400 flex items-center justify-center gap-1.5">
+            Crafted with
+            <Heart className="w-3 h-3 text-rose-500 fill-rose-500" aria-label="love" />
+            by Naveen
+          </p>
         </div>
       </div>
     </footer>

@@ -32,18 +32,18 @@ export const ManualForm: React.FC<ManualFormProps> = ({
 }) => {
   const [name, setName] = useState(initialData?.name || "");
   const [gender, setGender] = useState(initialData?.gender || "Male");
-  const [birthDate, setBirthDate] = useState(initialData?.birth_date || "1994-08-15");
-  
-  // 12-hour time states
-  const [hour12, setHour12] = useState("06");
-  const [minute, setMinute] = useState("45");
+  const [birthDate, setBirthDate] = useState(initialData?.birth_date || "");
+
+  // 12-hour time states (empty until the user chooses)
+  const [hour12, setHour12] = useState("");
+  const [minute, setMinute] = useState("");
   const [meridiem, setMeridiem] = useState<"AM" | "PM">("AM");
   const [isTimeUnknown, setIsTimeUnknown] = useState(initialData?.is_time_unknown || false);
 
-  // Place & Autocomplete states
-  const [pob, setPob] = useState(initialData?.place_of_birth || "Bengaluru");
-  const [lat, setLat] = useState<number | null>(initialData?.latitude ?? 12.9716);
-  const [lon, setLon] = useState<number | null>(initialData?.longitude ?? 77.5946);
+  // Place & Autocomplete states (empty; backend geocodes the typed place)
+  const [pob, setPob] = useState(initialData?.place_of_birth || "");
+  const [lat, setLat] = useState<number | null>(initialData?.latitude ?? null);
+  const [lon, setLon] = useState<number | null>(initialData?.longitude ?? null);
   const [tz, setTz] = useState(initialData?.iana_timezone || "Asia/Kolkata");
   const [citySuggestions, setCitySuggestions] = useState<any[]>([]);
   const [isSearchingCities, setIsSearchingCities] = useState(false);
@@ -99,9 +99,10 @@ export const ManualForm: React.FC<ManualFormProps> = ({
     let time24 = "";
     if (!isTimeUnknown) {
       let h = parseInt(hour12, 10);
+      if (Number.isNaN(h)) return; // no hour chosen — required attr should prevent this
       if (meridiem === "PM" && h < 12) h += 12;
       if (meridiem === "AM" && h === 12) h = 0;
-      time24 = `${String(h).padStart(2, "0")}:${minute}`;
+      time24 = `${String(h).padStart(2, "0")}:${String(parseInt(minute, 10) || 0).padStart(2, "0")}`;
     }
 
     let submitLat = lat;
@@ -119,11 +120,8 @@ export const ManualForm: React.FC<ManualFormProps> = ({
         submitLon = match.longitude;
         submitTz = match.iana_timezone;
       }
-    } else if (cleanPob && !cleanPob.includes("bengaluru") && !cleanPob.includes("bangalore") && submitLat === 12.9716 && submitLon === 77.5946) {
-      // User typed a non-Bangalore city but did not pick from dropdown; let backend geocode
-      submitLat = null;
-      submitLon = null;
     }
+    // No suggestion picked: leave lat/lon null — the backend geocodes the typed place.
 
     onSubmit({
       name: name.trim() || "User",
@@ -155,7 +153,7 @@ export const ManualForm: React.FC<ManualFormProps> = ({
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="e.g. Arun Kumar"
+              placeholder="e.g. Naveen"
               className="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 placeholder-stone-400 focus:ring-2 focus:ring-amber-500/30 focus:border-amber-500 outline-none transition-all shadow-sm"
               required
             />
@@ -200,7 +198,7 @@ export const ManualForm: React.FC<ManualFormProps> = ({
         <div className="flex items-center justify-between mb-2.5">
           <label className="font-bold text-xs text-stone-800 dark:text-stone-200 flex items-center gap-1.5">
             <Clock className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
-            <span>Time of Birth (12-Hour)</span>
+            <span>Time of Birth</span>
           </label>
           <label className="flex items-center gap-1.5 text-xs text-stone-600 dark:text-stone-400 cursor-pointer font-medium hover:text-amber-600">
             <input
@@ -220,8 +218,10 @@ export const ManualForm: React.FC<ManualFormProps> = ({
               <select
                 value={hour12}
                 onChange={(e) => setHour12(e.target.value)}
+                required
                 className="w-full py-2 px-2 text-center rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 font-bold text-stone-900 dark:text-stone-100 text-sm focus:ring-2 focus:ring-amber-500/30 outline-none"
               >
+                <option value="" disabled>Select</option>
                 {Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, "0")).map((h) => (
                   <option key={h} value={h}>{h}</option>
                 ))}
@@ -229,15 +229,24 @@ export const ManualForm: React.FC<ManualFormProps> = ({
             </div>
             <div>
               <span className="text-[10px] uppercase font-bold text-stone-400 block mb-1">Minute</span>
-              <select
+              <input
+                type="number"
+                inputMode="numeric"
+                min={0}
+                max={59}
                 value={minute}
-                onChange={(e) => setMinute(e.target.value)}
+                onChange={(e) => {
+                  const raw = e.target.value.replace(/[^0-9]/g, "").slice(0, 2);
+                  if (raw === "") { setMinute(""); return; }
+                  const n = Math.max(0, Math.min(59, parseInt(raw, 10)));
+                  setMinute(String(n));
+                }}
+                onBlur={() => setMinute(String(parseInt(minute, 10) || 0).padStart(2, "0"))}
+                required
+                placeholder="00"
+                aria-label="Minute of birth"
                 className="w-full py-2 px-2 text-center rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 font-bold text-stone-900 dark:text-stone-100 text-sm focus:ring-2 focus:ring-amber-500/30 outline-none"
-              >
-                {Array.from({ length: 60 }, (_, i) => String(i).padStart(2, "0")).map((m) => (
-                  <option key={m} value={m}>{m}</option>
-                ))}
-              </select>
+              />
             </div>
             <div>
               <span className="text-[10px] uppercase font-bold text-stone-400 block mb-1">AM / PM</span>
@@ -290,6 +299,7 @@ export const ManualForm: React.FC<ManualFormProps> = ({
             onFocus={() => {
               if (citySuggestions.length > 0) setShowSuggestions(true);
             }}
+            required
           />
           {isSearchingCities && (
             <Search className="absolute right-3.5 top-3 w-4 h-4 text-amber-500 animate-spin" />

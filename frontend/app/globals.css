@@ -157,3 +157,109 @@ body {
     page-break-after: auto;
   }
 }
+
+/* ============================================================
+   Zodiac Wheel — animated astrolabe (hero banner)
+   ============================================================ */
+.zodiac-wheel-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.zodiac-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.zodiac-star {
+  position: absolute;
+  border-radius: 9999px;
+  background: #fde68a;
+  animation: zw-twinkle linear infinite;
+}
+
+@keyframes zw-twinkle {
+  0%, 100% { transform: scale(0.6); opacity: 0.15; }
+  50% { transform: scale(1.15); opacity: 0.9; }
+}
+
+.zodiac-perspective {
+  position: absolute;
+  inset: 0;
+  perspective: 780px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.zodiac-tilt {
+  width: 92%;
+  max-width: 560px;
+  transition: transform 0.35s ease-out;
+  filter: drop-shadow(0 0 34px rgba(245, 158, 11, 0.35));
+}
+
+/* Full-page ambient background layer */
+.zw-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.zw-ambient .zodiac-star {
+  opacity: 0.3;
+}
+
+.dark .zw-ambient .zodiac-star {
+  opacity: 0.55;
+}
+
+.zw-ambient-wheel {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 175vmin;
+  transform: translate(-50%, -50%) rotateX(58deg);
+  opacity: 0.15;
+}
+
+.dark .zw-ambient-wheel {
+  opacity: 0.3;
+}
+
+.zodiac-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.zw-spin-slow        { animation: zw-rotate 80s linear infinite; transform-origin: 200px 200px; }
+.zw-spin-rev-slow    { animation: zw-rotate-rev 110s linear infinite; transform-origin: 200px 200px; }
+.zw-spin-med         { animation: zw-rotate-rev 55s linear infinite; transform-origin: 200px 200px; }
+.zw-spin-slow-inner  { animation: zw-rotate 45s linear infinite; transform-origin: 200px 200px; }
+.zw-sun              { animation: zw-pulse 4.5s ease-in-out infinite; transform-origin: 200px 200px; }
+
+@keyframes zw-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes zw-rotate-rev {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+
+@keyframes zw-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1; }
+  50%      { transform: scale(1.07); opacity: 0.88; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zw-spin-slow, .zw-spin-rev-slow, .zw-spin-med,
+  .zw-spin-slow-inner, .zw-sun, .zodiac-star {
+    animation: none;
+  }
+}

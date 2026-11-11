@@ -14,9 +14,10 @@
  * - Single gold accent #B8860B (colour theme) or dark charcoal #2B2D42 (B&W theme).
  * - Fixed table layout, Lagna row first, right-aligned numeric values.
  * - Zero banned strings ("unverified", "verified", "traditions differ", "rule status", "experimental").
- * - Running footer on EVERY page: "Computer-generated report" (left) | "Page X of 6" (right).
+ * - Running footer on EVERY page: "Built by Naveen" (left) | "Page X of 6" (right).
  */
 import React from "react";
+import { SacredHeader } from "./SacredHeader";
 import { BirthChartResponse, PlanetTableRow } from "@/lib/types";
 import { SouthIndianChart } from "@/components/charts/SouthIndianChart";
 import { NorthIndianChart } from "@/components/charts/NorthIndianChart";
@@ -303,12 +304,12 @@ function Page({
       {running ? (
         <div className="pc-phead">
           <span>{running}</span>
-          <span>{t("running_title", lang)}</span>
+          <span>{t("app_name", lang)}</span>
         </div>
       ) : null}
       <div className="pc-page-body">{children}</div>
       <div className="pc-pfoot">
-        <span>{lang === "kn" ? "ಕಂಪ್ಯೂಟರ್ ರಚಿತ ವರದಿ" : "Computer-generated report"}</span>
+        <span>{lang === "kn" ? "ನಿರ್ಮಿಸಿದವರು: ನವೀನ್ ❤️" : "Built with ❤️ by Naveen"}</span>
         <span>{lang === "kn" ? `ಪುಟ ${pageNo} / ${total}` : `${t("page_of", lang)} ${pageNo} of ${total}`}</span>
       </div>
     </section>
@@ -463,6 +464,13 @@ export const JanmaPrintReport: React.FC<JanmaPrintReportProps> = ({
           ====================================================================== */}
       <Page pageNo={1} total={TOTAL} lang={lang}>
         <div className="pc-cover-compact">
+          <SacredHeader
+            blessing={
+              lang === "kn"
+                ? "ಶುಭಂ ಭವತು · ಗ್ರಹಗಳು ಒಳ್ಳೆಯದನ್ನೇ ಮಾಡಲಿ"
+                : "Shubham Bhavatu · May the stars favour your path"
+            }
+          />
           <div className="pc-cover-toprule" />
           <div className="pc-cover-app">{t("app_name", lang)}</div>
           <div className="pc-cover-kind">{t("report_kind", lang)}</div>
@@ -901,30 +909,6 @@ export const JanmaPrintReport: React.FC<JanmaPrintReportProps> = ({
           ====================================================================== */}
       <Page pageNo={6} total={TOTAL} running={running} lang={lang}>
         <ChapterHeader num="06" title={t("ch_about", lang)} />
-
-        <Section title={t("sec_settings", lang)} caption={t("cap_settings", lang)} />
-        <table className="pc-table pc-about-table">
-          <tbody>
-            <tr>
-              <td><strong>{t("ayanamsa", lang)}</strong></td>
-              <td>{md.ayanamsa || "Lahiri"} ({md.ayanamsa_dms || "Chitra Paksha"})</td>
-              <td><strong>{t("node_type", lang)}</strong></td>
-              <td>{md.node_type === "true" ? (lang === "kn" ? "ನಿಜ (True)" : "True") : (lang === "kn" ? "ಮಧ್ಯಮ (Mean)" : "Mean")}</td>
-            </tr>
-            <tr>
-              <td><strong>{t("house_system", lang)}</strong></td>
-              <td>{lang === "kn" ? "ಸಂಪೂರ್ಣ ರಾಶಿ ಭಾವ (W)" : "Whole Sign (W)"}</td>
-              <td><strong>{t("dasha_year", lang)}</strong></td>
-              <td>365.2425 {lang === "kn" ? "ದಿನಗಳು (ಸೌರ ವರ್ಷ)" : "days (Gregorian solar year)"}</td>
-            </tr>
-            <tr>
-              <td><strong>{t("methodology", lang)}</strong></td>
-              <td>{lang === "kn" ? (md.methodology_version || "1.1.0").replace(/^v/i, "") : (md.methodology_version || "v1.1.0")}</td>
-              <td><strong>{t("chart_id", lang)}</strong></td>
-              <td><code>{rawPersonName.replace(/\s+/g, "_")}_Lahiri_W</code></td>
-            </tr>
-          </tbody>
-        </table>
 
         <Section title={t("sec_methodology", lang)} />
         <p className="pc-about-p">

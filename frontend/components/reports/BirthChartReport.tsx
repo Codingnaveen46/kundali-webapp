@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import { BirthChartResponse, PlanetTableRow } from "@/lib/types";
 import { ChartContainer } from "../charts/ChartContainer";
 import { SouthIndianChart } from "@/components/charts/SouthIndianChart";
-import verificationLog from "@/lib/verification_log.json";
 import {
   Calendar, Clock, MapPin, AlertTriangle, Download,
   Compass, Sun, Sparkles, ChevronDown, ChevronUp, RotateCcw,
@@ -46,8 +45,6 @@ export const BirthChartReport: React.FC<BirthChartReportProps> = ({
     boundary_warnings, calculation_appendix, planets_table, lagna_vargottama
   } = chart;
   const isKn = printLanguage === "kn";
-  const isVerified = process.env.NEXT_PUBLIC_CALCULATIONS_VERIFIED === "true" || (chart as any).is_verified === true;
-
   // Astrologer table: use the backend planets_table when present, fall back
   // to a locally built table from the planets payload (older responses).
   const tableRows: PlanetTableRow[] = (planets_table && planets_table.length > 0)
@@ -68,10 +65,6 @@ export const BirthChartReport: React.FC<BirthChartReportProps> = ({
         is_vargottama: false,
         dignity: "",
       }));
-
-  // Verification log entries for this chart (by name), plus fallback
-  const verifiedCharts = (verificationLog as any)?.verified_charts || {};
-  const personVerified = verifiedCharts[metadata?.name] || null;
 
   return (
     <div className={`space-y-6 font-sans ${isKn ? "font-kannada" : ""}`} id="printable-birth-chart">
@@ -95,22 +88,6 @@ export const BirthChartReport: React.FC<BirthChartReportProps> = ({
           </div>
           <div className="text-[11px] mt-1">
             Calculated by software, not reviewed by an astrologer. Traditions differ. An aid, not advice.
-          </div>
-        </div>
-      )}
-
-      {/* Verification Banner (screen only: the print layout carries the same
-          disclosure line in the title block and the running footer) */}
-      {!printMode && !isVerified && (
-        <div className="bg-amber-500/15 border-2 border-amber-500/40 rounded-2xl p-4 sm:p-5 flex items-start sm:items-center gap-3.5 text-amber-950 dark:text-amber-200 shadow-sm print-break-inside-avoid">
-          <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5 sm:mt-0" />
-          <div className="flex-1">
-            <h3 className="font-semibold text-sm sm:text-base tracking-wide">
-              Calculations have not yet been independently verified. Please confirm with an astrologer.
-            </h3>
-            <p className="text-xs sm:text-sm text-amber-800/80 dark:text-amber-300/80 mt-0.5">
-              Rules and chart benchmarks remain unverified pending external benchmark entry.
-            </p>
           </div>
         </div>
       )}
@@ -776,69 +753,6 @@ export const BirthChartReport: React.FC<BirthChartReportProps> = ({
         )}
       </section>
       )}
-
-      {/* =========================================================================
-          SECTION 8: VERIFICATION LOG (WHAT WAS EXTERNALLY CHECKED)
-          ========================================================================= */}
-      <section className="bg-white dark:bg-stone-900 p-5 sm:p-7 rounded-3xl border border-stone-200/80 dark:border-stone-800 shadow-md space-y-3 print:p-0 print:border-none print:shadow-none print:rounded-none print-section print-page-break">
-        <div className="flex items-center justify-between pb-3 border-b border-stone-200 dark:border-stone-800">
-          <h2 className="text-base sm:text-lg font-extrabold text-stone-900 dark:text-stone-100 font-serif-vedic flex items-center gap-2">
-            <CheckCircle2 className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>8. Verification Log (What was externally checked)</span>
-          </h2>
-          <span className="text-[10px] font-mono font-bold text-amber-600 bg-amber-50 dark:bg-amber-950/60 px-2 py-0.5 rounded-lg border border-amber-200 dark:border-amber-900">
-            Log: compliance/verification_log.json
-          </span>
-        </div>
-
-        <table className="w-full text-left text-xs border-collapse">
-          <thead>
-            <tr className="border-b border-stone-200 dark:border-stone-800 text-stone-500 text-[10px] uppercase font-bold bg-stone-50">
-              <th className="py-2 px-3.5">Field</th>
-              <th className="py-2 px-3.5">Source</th>
-              <th className="py-2 px-3.5">Status</th>
-              <th className="py-2 px-4">Provenance</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-stone-100 dark:divide-stone-800/60 font-medium">
-            {personVerified ? (
-              personVerified.checks.map((c: any, i: number) => (
-                <tr key={i} className="hover:bg-amber-50/20 dark:hover:bg-stone-800/40 transition-colors">
-                  <td className="py-2 px-3.5 font-bold text-stone-900 dark:text-stone-100">{metadata.name} — {c.field}</td>
-                  <td className="py-2 px-3.5 font-sans">{c.source}</td>
-                  <td className="py-2 px-3.5 font-semibold">
-                    <span className="status-verified px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/20">
-                      {c.status}
-                    </span>
-                  </td>
-                  <td className="py-2 px-4 text-stone-600 dark:text-stone-400">{c.provenance}</td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td className="py-2 px-3.5 font-bold">{metadata.name}</td>
-                <td className="py-2 px-3.5">—</td>
-                <td className="py-2 px-3.5 font-semibold text-stone-500">Not yet verified</td>
-                <td className="py-2 px-4 text-stone-500">No external check logged</td>
-              </tr>
-            )}
-
-            {((verificationLog as any)?.unverified_items || []).map((item: string, idx: number) => (
-              <tr key={`unverified-${idx}`} className="bg-amber-500/5 dark:bg-amber-950/20">
-                <td className="py-2 px-3.5 font-medium text-stone-700 dark:text-stone-300" colSpan={2}>
-                  {item}
-                </td>
-                <td className="py-2 px-3.5 font-semibold">
-                  <span className="status-unverified px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/20">
-                    UNVERIFIED
-                  </span>
-                </td>
-                <td className="py-2 px-4 text-stone-500 dark:text-stone-400">Subject to tradition and regional variance</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </section>
     </div>
   );
 };

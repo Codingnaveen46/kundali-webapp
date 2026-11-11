@@ -50,26 +50,37 @@ export default function PrintJanmaPage() {
   const [lang, setLang] = useState<"en" | "kn">("en");
   const [chartStyle, setChartStyle] = useState<"south" | "north">("south");
   const [person, setPerson] = useState<string | null>(null);
+  /** A reference person explicitly requested via ?person= (PDF generator) or
+   *  chosen in the toolbar. null = no explicit request: the user's own chart
+   *  from sessionStorage (or, as a last resort, the default sample) is shown. */
+  const [explicitPerson, setExplicitPerson] = useState<string | null>(null);
   const printTriggered = useRef(false);
 
-  // Route flags + data: sessionStorage first (real user flow), then reference
-  // chart from backend (PDF generation / direct opening).
+  // Route flags: an explicit ?person= in the URL always wins (PDF generator
+  // flow). Without it the page shows the user's own chart when one was
+  // generated, falling back to the default sample only on direct opening.
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     setIsGen(params.get("gen") === "1");
     setLang(params.get("lang") === "kn" ? "kn" : "en");
     setChartStyle(params.get("chart") === "north" ? "north" : "south");
     const p = params.get("person");
-    setPerson(REFERENCE_PERSONS[p || ""] ? p : DEFAULT_PERSON);
+    if (p && REFERENCE_PERSONS[p]) {
+      setExplicitPerson(p);
+      setPerson(p);
+    } else {
+      setExplicitPerson(null);
+      setPerson(null);
+    }
   }, []);
 
 
   useEffect(() => {
     async function loadData() {
-      // If user switched person to a reference person explicitly, fetch that reference person
-      if (person && REFERENCE_PERSONS[person]) {
+      // 1. Explicit reference person (PDF generator ?person= or toolbar choice).
+      if (explicitPerson && REFERENCE_PERSONS[explicitPerson]) {
         try {
-          const payload = REFERENCE_PERSONS[person];
+          const payload = REFERENCE_PERSONS[explicitPerson];
           const res = await fetch(`${API_BASE_URL}/api/birth-chart`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -84,6 +95,7 @@ export default function PrintJanmaPage() {
         }
       }
 
+      // 2. Real user flow: the chart generated in the app this session.
       const stored = sessionStorage.getItem("kundli:lastBirthChart");
       if (stored) {
         try {
@@ -91,10 +103,11 @@ export default function PrintJanmaPage() {
           setChart(data);
           return;
         } catch {
-          /* ignore; fall back to reference fetch */
+          /* ignore; fall back to the default sample */
         }
       }
-      if (person === null) return;
+
+      // 3. Direct opening with no user chart in this session: default sample.
       try {
         const payload = REFERENCE_PERSONS[DEFAULT_PERSON];
         const res = await fetch(`${API_BASE_URL}/api/birth-chart`, {
@@ -109,7 +122,7 @@ export default function PrintJanmaPage() {
       }
     }
     loadData();
-  }, [person]);
+  }, [person, explicitPerson]);
 
   useEffect(() => {
     if (!chart) return;
@@ -140,21 +153,6 @@ export default function PrintJanmaPage() {
         </div>
 
         <div className="print-toolbar-controls">
-          {/* Person Selector */}
-          <div className="print-toolbar-item">
-            <label htmlFor="tb-person">{lang === "kn" ? "ವ್ಯಕ್ತಿ:" : "Person:"}</label>
-            <select
-              id="tb-person"
-              className="print-toolbar-select"
-              value={person || DEFAULT_PERSON}
-              onChange={(e) => setPerson(e.target.value)}
-              aria-label="Select person"
-            >
-              <option value="Sample Person 1">Sample Person 1</option>
-              <option value="Sample Person 2">Sample Person 2</option>
-            </select>
-          </div>
-
           {/* Language Selector */}
           <div className="print-toolbar-item">
             <label htmlFor="tb-lang">{lang === "kn" ? "ಭಾಷೆ:" : "Language:"}</label>
@@ -187,10 +185,14 @@ export default function PrintJanmaPage() {
         </div>
 
         <div className="print-toolbar-actions">
+          <span className="print-toolbar-hint">
+            {lang === "kn" ? "ಸಂಭಾಷಣೆಯಲ್ಲಿ \"PDF ಆಗಿ ಉಳಿಸಿ\" ಆಯ್ಕೆಮಾಡಿ" : "Choose “Save as PDF” in the dialog"}
+          </span>
           <button
             type="button"
             className="print-toolbar-btn print-toolbar-btn--primary"
             onClick={() => window.print()}
+            title="Opens the print dialog — choose Save as PDF to download"
           >
             <svg
               width="14"
@@ -203,11 +205,11 @@ export default function PrintJanmaPage() {
               strokeLinejoin="round"
               style={{ marginRight: 6 }}
             >
-              <polyline points="6 9 6 2 18 2 18 9" />
-              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
-              <rect x="6" y="14" width="12" height="8" />
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
             </svg>
-            {lang === "kn" ? "ಮುದ್ರಿಸಿ (Print)" : "Print"}
+            {lang === "kn" ? "PDF ಡೌನ್‌ಲೋಡ್" : "Download PDF"}
           </button>
           <button
             type="button"
@@ -226,7 +228,7 @@ export default function PrintJanmaPage() {
           chart={chart}
           printLanguage={lang}
           chartStyle={chartStyle}
-          placeName={REFERENCE_PERSONS[person || ""]?.place_name || (chart.metadata as any)?.place_name || (chart.metadata as any)?.place_of_birth}
+          placeName={REFERENCE_PERSONS[explicitPerson || ""]?.place_name || (chart.metadata as any)?.place_name || (chart.metadata as any)?.place_of_birth}
         />
       )}
     </div>

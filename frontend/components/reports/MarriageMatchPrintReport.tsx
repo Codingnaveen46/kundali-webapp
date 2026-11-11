@@ -13,10 +13,11 @@
  * - Zero mitigation/cancellation claims ("mitigat*", "ಶಮನ" absent).
  * - No percentage labelled compatibility ("25 of 36").
  * - No truncated cells ("…" absent).
- * - Running footer on EVERY page: "Computer-generated report" | "Page X of 6".
+ * - Running footer on EVERY page: "Built by Naveen" (left) | "Page X of 6" (right).
  * - Consistent Western digits 0-9 across English and Kannada.
  */
 import React from "react";
+import { SacredHeader } from "./SacredHeader";
 import { MarriageMatchResponse, KootaScore, PoruthamResult } from "@/lib/types";
 import { SouthIndianChart } from "@/components/charts/SouthIndianChart";
 import { NorthIndianChart } from "@/components/charts/NorthIndianChart";
@@ -123,12 +124,12 @@ function Page({
       {running ? (
         <div className="pc-phead">
           <span>{running}</span>
-          <span>{t("running_title", lang)}</span>
+          <span>{t("app_name", lang)}</span>
         </div>
       ) : null}
       <div className="pc-page-body">{children}</div>
       <div className="pc-pfoot">
-        <span>{lang === "kn" ? "ಕಂಪ್ಯೂಟರ್ ರಚಿತ ವರದಿ" : "Computer-generated report"}</span>
+        <span>{lang === "kn" ? "ನಿರ್ಮಿಸಿದವರು: ನವೀನ್ ❤️" : "Built with ❤️ by Naveen"}</span>
         <span>{lang === "kn" ? `ಪುಟ ${pageNo} / ${total}` : `${t("page_of", lang)} ${pageNo} of ${total}`}</span>
       </div>
     </section>
@@ -355,6 +356,13 @@ export const MarriageMatchPrintReport: React.FC<MarriageMatchPrintReportProps> =
           ====================================================================== */}
       <Page pageNo={1} total={TOTAL} lang={lang}>
         <div className="pc-cover-compact">
+          <SacredHeader
+            blessing={
+              lang === "kn"
+                ? "ಶುಭಂ ಭವತು · ಈ ವೈವಾಹಿಕ ಬಾಂಧವ್ಯ ಸಮೃದ್ಧವಾಗಲಿ"
+                : "Shubham Bhavatu · May this union be blessed with harmony"
+            }
+          />
           <div className="pc-cover-toprule" />
           <div className="pc-cover-app">{t("app_name", lang)}</div>
           <div className="pc-cover-kind">{t("report_kind", lang)}</div>

@@ -7,11 +7,12 @@ import { IntakePanel } from "@/components/intake/IntakePanel";
 import { ManualFormData } from "@/components/intake/ManualForm";
 import { BirthChartReport } from "@/components/reports/BirthChartReport";
 import { MarriageMatchReport } from "@/components/reports/MarriageMatchReport";
+import { ZodiacWheel } from "@/components/charts/ZodiacWheel";
 import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { ConsentModal } from "@/components/ui/ConsentModal";
 import { Footer } from "@/components/ui/Footer";
 import { LanguageCode, TRANSLATIONS } from "@/i18n/translations";
-import { Moon, Sun, Heart, Sparkles, AlertCircle, RefreshCw, Compass } from "lucide-react";
+import { Moon, Heart, Sparkles, AlertCircle, RefreshCw, Compass } from "lucide-react";
 
 /** Opens the dedicated print layout route (browser print-to-PDF, selectable text). */
 function openPrintLayout(path: string): void {
@@ -21,8 +22,6 @@ function openPrintLayout(path: string): void {
 export default function Home() {
   const [lang, setLang] = useState<LanguageCode>("en");
   const [activeTab, setActiveTab] = useState<"birth_chart" | "marriage_match">("birth_chart");
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   // Birth Chart States
   const [birthChart, setBirthChart] = useState<BirthChartResponse | null>(null);
   const [isBirthChartLoading, setIsBirthChartLoading] = useState(false);
@@ -128,7 +127,11 @@ export default function Home() {
   };
 
   return (
-    <div className={`min-h-screen ${isDarkMode ? "dark bg-stone-950 text-stone-100" : "bg-stone-50/70 text-stone-900"}`}>
+    <div className="min-h-screen dark bg-stone-950 text-stone-100">
+      {/* Full-page cosmic background: animated zodiac wheel + stars */}
+      <ZodiacWheel variant="ambient" />
+
+      <div className="relative z-10">
       {/* Refined Navigation Header */}
       <header className="sticky top-0 z-30 bg-white/85 dark:bg-stone-900/85 backdrop-blur-xl border-b border-stone-200/80 dark:border-stone-800 shadow-sm py-3.5 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
@@ -153,14 +156,6 @@ export default function Home() {
 
           <div className="flex items-center gap-3">
             <LanguageSwitcher currentLang={lang} onSelectLang={setLang} />
-            <button
-              type="button"
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2.5 rounded-xl bg-stone-100 dark:bg-stone-800/80 text-stone-600 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 border border-stone-200/60 dark:border-stone-700 transition-all shadow-sm active:scale-95"
-              title="Toggle Dark Mode"
-            >
-              {isDarkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-            </button>
           </div>
         </div>
       </header>
@@ -209,13 +204,18 @@ export default function Home() {
           <div>
             {!birthChart ? (
               <div className="max-w-xl mx-auto space-y-4">
-                <div className="text-center mb-6">
-                  <h2 className="text-2xl font-black text-stone-900 dark:text-stone-100 font-serif-vedic">
-                    Generate Your Janma Kundali
-                  </h2>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1 max-w-md mx-auto">
-                    Upload an existing biodata, paste text/WhatsApp message, or fill in manual birth details.
-                  </p>
+                <div className="relative overflow-hidden rounded-3xl border border-amber-900/20 dark:border-amber-900/40 shadow-xl mb-6 bg-stone-950">
+                  <ZodiacWheel />
+                  {/* Scrim: keeps the heading readable over the bright wheel */}
+                  <div className="absolute inset-0 bg-stone-950/45 pointer-events-none" />
+                  <div className="relative z-10 px-6 py-12 sm:py-16 text-center">
+                    <h2 className="text-2xl sm:text-3xl font-black text-amber-50 font-serif-vedic drop-shadow-[0_2px_14px_rgba(12,10,9,0.95)]">
+                      Generate Your Janma Kundali
+                    </h2>
+                    <p className="text-xs text-amber-100/85 mt-2 drop-shadow-[0_1px_8px_rgba(12,10,9,0.9)]">
+                      Fill in the manual birth details below.
+                    </p>
+                  </div>
                 </div>
 
                 <IntakePanel
@@ -256,13 +256,18 @@ export default function Home() {
           <div>
             {!matchResult ? (
               <div className="space-y-6">
-                <div className="text-center max-w-xl mx-auto mb-6">
-                  <h2 className="text-2xl font-black text-stone-900 dark:text-stone-100 font-serif-vedic">
-                    Kundali Milan: Ashtakoota &amp; Dasa Koota
-                  </h2>
-                  <p className="text-xs text-stone-500 dark:text-stone-400 mt-1">
-                    Enter or upload details for Groom and Bride independently. Mix and match methods (e.g. upload groom, type bride).
-                  </p>
+                <div className="relative overflow-hidden rounded-3xl border border-amber-900/20 dark:border-amber-900/40 shadow-xl mb-2 bg-stone-950">
+                  <ZodiacWheel />
+                  {/* Scrim: keeps the heading readable over the bright wheel */}
+                  <div className="absolute inset-0 bg-stone-950/45 pointer-events-none" />
+                  <div className="relative z-10 px-6 py-12 sm:py-16 text-center max-w-xl mx-auto">
+                    <h2 className="text-2xl sm:text-3xl font-black text-amber-50 font-serif-vedic drop-shadow-[0_2px_14px_rgba(12,10,9,0.95)]">
+                      Kundali Milan: Ashtakoota &amp; Dasa Koota
+                    </h2>
+                    <p className="text-xs text-amber-100/85 mt-2 drop-shadow-[0_1px_8px_rgba(12,10,9,0.9)]">
+                      Enter the birth details for Groom and Bride independently.
+                    </p>
+                  </div>
                 </div>
 
                 {/* Two Panels: Groom and Bride */}
@@ -388,6 +393,7 @@ export default function Home() {
 
       {/* Footer with AGPL-3.0 Source Link and Legal Disclaimer */}
       <Footer />
+      </div>
     </div>
   );
 }
