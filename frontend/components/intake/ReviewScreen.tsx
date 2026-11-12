@@ -277,7 +277,7 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
                 setSelectedCandidate(e.target.value);
                 setBirthDate(e.target.value);
               }}
-              className="px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs sm:text-sm font-bold outline-none focus:ring-2 focus:ring-amber-500/30 shadow-sm"
+              className="w-full min-w-0 appearance-none px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs sm:text-sm font-bold outline-none focus:ring-2 focus:ring-amber-500/30 shadow-sm"
             />
             <div className="text-xs text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-800 p-3 rounded-xl border border-stone-200 dark:border-stone-700 shadow-sm">
               <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">Date in words:</span>
@@ -316,7 +316,7 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
                 type="time"
                 value={birthTime}
                 onChange={(e) => setBirthTime(e.target.value)}
-                className="px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs sm:text-sm font-bold outline-none focus:ring-2 focus:ring-amber-500/30 shadow-sm"
+                className="w-full min-w-0 appearance-none px-3.5 py-2.5 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs sm:text-sm font-bold outline-none focus:ring-2 focus:ring-amber-500/30 shadow-sm"
               />
               <div className="text-xs text-stone-600 dark:text-stone-400 bg-white dark:bg-stone-800 p-3 rounded-xl border border-stone-200 dark:border-stone-700 shadow-sm">
                 <span className="text-stone-400 block text-[10px] uppercase font-bold tracking-wider">12 hour format:</span>
