@@ -134,7 +134,7 @@ export default function Home() {
       <div className="relative z-10">
       {/* Refined Navigation Header */}
       <header className="sticky top-0 z-30 bg-white/85 dark:bg-stone-900/85 backdrop-blur-xl border-b border-stone-200/80 dark:border-stone-800 shadow-sm py-3.5 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-x-3 gap-y-2">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-amber-600 via-amber-500 to-amber-400 text-white flex items-center justify-center shadow-lg shadow-amber-500/20 font-bold ring-2 ring-amber-500/20">
               <Sparkles className="w-5 h-5 text-white" />

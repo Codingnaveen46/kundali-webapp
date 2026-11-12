@@ -1183,4 +1183,82 @@
   letter-spacing: normal !important;
 }
 
+/* ==========================================================================
+   MOBILE SCREEN PREVIEW (phones / small tablets)
+   Adapts the on-screen preview only. @media print output keeps the exact
+   A4 geometry (210mm x 297mm) — printed/PDF pages are untouched.
+   ========================================================================== */
+@media screen and (max-width: 820px) {
+  /* Sheet: shrink from fixed 210mm to the device width */
+  .print-doc:has(.print-doc--chapter),
+  .print-doc--chapter,
+  .pc-root {
+    width: auto !important;
+    max-width: 100% !important;
+  }
+
+  /* Pages flow naturally instead of a fixed 296mm box that would clip */
+  .pc-page {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 22px 14px 18px !important;
+    overflow: visible !important;
+  }
+  .pc-page:not(:last-child) {
+    border-bottom: 1px dashed #d4d4d4;
+  }
+  .pc-page-body {
+    overflow-x: auto !important; /* wide tables swipe horizontally, never break layout */
+    overflow-y: visible; /* pages flow naturally (computes to auto, harmless) */
+  }
+
+  /* Fixed-size artwork scales with the sheet instead of overflowing */
+  .print-doc svg,
+  .print-doc img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Tighter cell padding so multi-column tables fit narrow sheets */
+  .print-doc td,
+  .print-doc th {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+  }
+}
+
+/* Toolbar on phones: wrap into rows instead of running off-screen */
+@media screen and (max-width: 700px) {
+  .print-toolbar {
+    position: static; /* flows above the sheet — no fixed-height padding math */
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 6px 10px;
+  }
+  body:has(.print-toolbar) {
+    padding-top: 0 !important;
+  }
+  .print-toolbar-title {
+    font-size: 12.5px;
+    gap: 6px;
+    min-width: 0;
+  }
+  .print-toolbar-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+    min-width: 0;
+  }
+  .print-toolbar-actions {
+    margin-left: auto;
+  }
+  .print-toolbar-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+  .print-toolbar-select {
+    max-width: 150px;
+  }
+}
+
 

@@ -26,11 +26,11 @@ export const ConsentModal: React.FC = () => {
 
   if (!isOpen) {
     return (
-      <div className="fixed bottom-4 right-4 z-40 flex items-center gap-2 no-print">
+      <div className="fixed bottom-3 left-3 right-3 z-40 flex items-center gap-2 no-print sm:left-auto sm:right-4 sm:bottom-4 sm:w-auto">
         <button
           type="button"
           onClick={() => setIsOpen(true)}
-          className="px-3.5 py-2 bg-white/95 dark:bg-stone-900/95 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold rounded-2xl border border-stone-200 dark:border-stone-700/80 shadow-lg flex items-center gap-2 backdrop-blur-md transition-all active:scale-95"
+          className="flex-1 sm:flex-none px-3.5 py-2 bg-white/95 dark:bg-stone-900/95 hover:bg-stone-50 dark:hover:bg-stone-800 text-stone-700 dark:text-stone-300 text-xs font-bold rounded-2xl border border-stone-200 dark:border-stone-700/80 shadow-lg flex items-center justify-center sm:justify-start gap-2 backdrop-blur-md transition-all active:scale-95"
         >
           <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
           <span>Zero-Storage Mode Active</span>
